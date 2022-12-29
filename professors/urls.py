@@ -1,8 +1,9 @@
 from django.urls import path
 
 
-from .views import ProfessorListView
+from .views import ProfessorListView, ProfessorDetailView
 
 urlpatterns = [
-    path('', ProfessorListView.as_view()),
+    path('all', ProfessorListView.as_view()),
+    path('<int:pk>', ProfessorDetailView.as_view(), name='specific_professor'),
 ]

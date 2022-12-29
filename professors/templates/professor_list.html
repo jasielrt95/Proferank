@@ -2,7 +2,7 @@
   <!-- Iterate over object_list -->
   {% for object in object_list %}
   <!-- Display Objects -->
-  <li>{{ object.first_name }}</li>
+  <li><a href="{{object.pk}}">{{ object.first_name }}</a></li>
   <li>{{ object.average_grade }}</li>
 
   <hr />

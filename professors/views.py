@@ -4,7 +4,15 @@ from .models import Professor
 
 class ProfessorListView(ListView):
     model = Professor
-    template_name = "ProfessorList.html"
-    
+    template_name = "professor_list.html"
 
-# Create your views here.
+class ProfessorDetailView(DetailView):
+    
+    model = Professor
+    template_name = "professor.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profesor = Professor.objects.get(id=self.kwargs['pk'])
+        context['professor'] = profesor
+        return context
