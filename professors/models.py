@@ -22,7 +22,6 @@ class Professor(models.Model):
     UPRM = "Universidad de Puerto Rico, Mayaguez"
     COLLEGES = ((UPRRP, "UPRRP"), (UPRM, "UPRM"))
 
-
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=80)
     college = models.CharField(max_length=100, choices=COLLEGES)
@@ -31,10 +30,13 @@ class Professor(models.Model):
     average_grade = models.CharField(choices=DIFFICULTIES, max_length=1)
     pro_student = models.BooleanField()
     organized = models.BooleanField()
+    
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+    # Getter functions for 
+
     def __str__(self):
         return self.first_name + " " + self.last_name
-    
