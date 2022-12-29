@@ -11,10 +11,10 @@ class Comment(models.Model):
     # Like or Dislike options for buttons on the front-end
     like = "Like"
     dislike = "Dislike"
-    forOrAgainst = ((like, "LIKE"),(dislike,"DISLKE"))
+    forOrAgainst = ((like, "Like"),(dislike,"Dislike"))
 
-    likeOrDislike = models.CharField(choices=forOrAgainst,max_length=1)
-    
+    likeOrDislike = models.CharField(choices=forOrAgainst,max_length=7)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -35,8 +35,24 @@ class Professor(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # Getter functions for Professor class
+    def getCollege(self):   
+        return self.college 
+    def getFaculty(self):
+        return self.faculty
+    def getFirstName(self):
+        return self.first_name
+    def getLastName(self):
+        return self.last_name
+    def getAverageGrade(self):
+        return self.average_grade
+    def getAverageDifficulty(self):
+        return self.average_difficulty
+    def getIsProfProStudent(self):
+        return self.pro_student
+    def getIsProfOrganized(self):
+        return self.organized
 
-    # Getter functions for 
 
     def __str__(self):
         return self.first_name + " " + self.last_name
