@@ -8,15 +8,17 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.TextField(null=False)
 
-    # Like or Dislike options for buttons on the front-end
-    like = "Like"
-    dislike = "Dislike"
-    forOrAgainst = ((like, "Like"),(dislike,"Dislike"))
-
-    likeOrDislike = models.CharField(choices=forOrAgainst,max_length=7)
+    # Score
+    score = models.IntegerField(default=0)
+    upvotes = models.IntegerField(default=0)
+    downvotes = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.text
+
+    def calculate_score(self):
+        self.score = self.upvotes - self.downvotes
+        self.save()
