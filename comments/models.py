@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Comment(models.Model):
     course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
-    # user 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.TextField(null=False)
 
     # Like or Dislike options for buttons on the front-end
