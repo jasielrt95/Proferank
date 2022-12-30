@@ -1,0 +1,9 @@
+# ignore all cpython files
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.dll
+
+
