@@ -1,4 +1,4 @@
-<ul>
-    {{ professor.first_name }}
-    {{ professor.average_grade}}
-</ul>
+{% extends 'base.html' %} {% block content %}
+<h1>{{ professor.first_name }} {{ professor.last_name }}</h1>
+<h2>Average Grade: {{ professor.average_grade }}</h2>
+{% endblock %}
