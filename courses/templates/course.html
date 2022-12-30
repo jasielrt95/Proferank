@@ -1,0 +1,17 @@
+<ul>
+  <li>
+    <p>{{ course.name }}</p>
+  </li>
+  <li>
+    <p>{{ course.professor }}</p>
+  </li>
+  <li>
+    <p>{{ course.average_grade }}</p>
+  </li>
+  <h1>comments</h1>
+  {% for comment in comments %}
+  <li>
+    <p>{{comment.text}}</p>
+  </li>
+  {% endfor %}
+</ul>

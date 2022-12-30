@@ -1,0 +1,13 @@
+<ul>
+  <!-- Iterate over object_list -->
+  {% for object in object_list %}
+  <!-- Display Objects -->
+  <li><a href="{{object.pk}}">{{ object.name }}</a></li>
+  <li>{{ object.average_grade }}</li>
+
+  <hr />
+  <!-- If object_list is empty  -->
+  {% empty %}
+  <li>No objects yet.</li>
+  {% endfor %}
+</ul>
