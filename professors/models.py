@@ -42,6 +42,23 @@ class Professor(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @property
+    def avg_score(self):
+        if self.total_reviews == 0:
+            return 0
+        grade = self.score / self.total_reviews
+        if grade == 4:
+            return "A"
+        elif grade > 3:
+            return "B"
+        elif grade > 2:
+            return "C"
+        elif grade > 1:
+            return "D"
+        else:
+            return "F"
+
+
     # Getter functions for Professor class
     def getCollege(self):   
         return self.college

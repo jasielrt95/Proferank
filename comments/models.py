@@ -9,16 +9,15 @@ class Comment(models.Model):
     text = models.TextField(null=False)
 
     # Score
-    score = models.IntegerField(default=0)
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @property
+    def score(self):
+        return self.upvotes - self.downvotes
+    
     def __str__(self):
         return self.text
-
-    def calculate_score(self):
-        self.score = self.upvotes - self.downvotes
-        self.save()
