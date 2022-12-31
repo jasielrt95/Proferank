@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Professor List{% endblock %}
+{% block content %}
 <ul>
   <!-- Iterate over object_list -->
   {% for object in object_list %}
@@ -11,3 +15,4 @@
   <li>No objects yet.</li>
   {% endfor %}
 </ul>
+{% endblock %}
