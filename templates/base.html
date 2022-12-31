@@ -15,6 +15,8 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Iupi Hub</title>
   </head>
   <body>
@@ -23,16 +25,18 @@
         <a class="navbar-brand" href="#">Iupi Hub</a>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Courses</a>
+            <a class="nav-link" href="courses/all">Courses</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="professors/all">Profesores</a>
           </li>
-          <button type="button" class="btn btn-primary">Login</button>
-          <button type="button" class="btn btn-secondary">Sign-UP</button>
+          <div class="login-buttons">
+            <button type="button" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-secondary">Sign up</button>
+          </div>
         </ul>
       </div>
     </nav>
