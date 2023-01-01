@@ -1,3 +1,4 @@
+/* TODO: Instead of overwriting bootstrap classes here, download the css and change some variables there */
 .nav-link {
   color: white;
 }
@@ -5,13 +6,13 @@
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
-.btn-primary{
+.btn-primary {
   background-color: red;
   border-color: red;
 }
-.btn-primary:hover{
-  background-color: #212529 ;
-  border-color: #212529 ;
+.btn-primary:hover {
+  background-color: #212529;
+  border-color: #212529;
 }
 .confession {
   background-color: #212529 !important;
@@ -36,7 +37,7 @@
   color: red;
 }
 .title {
-  color: red; 
+  color: red;
 }
 .bi-chat-square-fill:hover {
   color: blue;
