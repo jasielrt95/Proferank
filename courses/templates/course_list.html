@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <ul>
   <!-- Iterate over object_list -->
   {% for object in object_list %}
@@ -11,3 +14,4 @@
   <li>No objects yet.</li>
   {% endfor %}
 </ul>
+{% endblock %}
