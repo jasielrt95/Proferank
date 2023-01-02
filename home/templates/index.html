@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}{% load static %} {% block content %}
 <div class="container col-xxl-8 px-4 py-5">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-10 col-sm-8 col-lg-6">
@@ -33,47 +33,26 @@
 <div class="trending-confessions container px-4 py-5">
   <div class="confessions g-2 py-2 align-items-center container col-xxl-8">
     <h1 class="display-4 fw-bold lh-1 mb-3">Confesiones Populares</h1>
+    {% for confession in confessions %}
     <div class="confession gap">
       <div class="confession-title">
-        <h3 class="display-6 fw-bold lh-1 mb-3">Eliam es pato</h3>
+        <h3 class="display-6 fw-bold lh-1 mb-3">{{ confession.title}}</h3>
       </div>
       <div class="confession-body">
         <p class="lead">
-          En verdad es pato, no se puede negar. Me cae mal por eso.
+          {% if confession.body|length > 100 %} {{ confession.body|slice:":100"
+          }}... {% else %} {{ confession.body }} {% endif %}
         </p>
       </div>
       <hr class="hr-blurry" />
       <div class="confession-icons">
         <div class="confession-icon">
-          <i class="bi bi-heart-fill"></i>
-          <p>45</p>
+          <i class="bi bi-arrow-up-circle"></i>
+          <i class="bi bi-arrow-down-circle"></i>
+          <p>{{confession.score}}</p>
         </div>
         <div class="confession-icon">
-          <i class="bi bi-chat-square-fill"></i>
-          <p>13</p>
-        </div>
-        <div class="confession-icon">
-          <i class="bi bi-share-fill"></i>
-        </div>
-      </div>
-    </div>
-    <div class="confession gap">
-      <div class="confession-title">
-        <h3 class="display-6 fw-bold lh-1 mb-3">Angel es pato</h3>
-      </div>
-      <div class="confession-body">
-        <p class="lead">
-          En verdad es pato, no se puede negar. Me cae mal por eso.
-        </p>
-      </div>
-      <hr class="hr-blurry" />
-      <div class="confession-icons">
-        <div class="confession-icon">
-          <i class="bi bi-heart-fill"></i>
-          <p>23</p>
-        </div>
-        <div class="confession-icon">
-          <i class="bi bi-chat-square-fill"></i>
+          <i class="bi bi-chat-right-text"></i>
           <p>6</p>
         </div>
         <div class="confession-icon">
@@ -81,6 +60,6 @@
         </div>
       </div>
     </div>
+    {% endfor %} {% endblock %}
   </div>
-  <div>{% endblock %}</div>
 </div>
