@@ -1,7 +1,47 @@
-.nav-link{
+/* TODO: Instead of overwriting bootstrap classes here, download the css and change some variables there */
+.nav-link {
   color: white;
 }
-.login-buttons button{
+.login-buttons button {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
+}
+.btn-primary {
+  background-color: red;
+  border-color: red;
+}
+.btn-primary:hover {
+  background-color: #212529;
+  border-color: #212529;
+}
+.confession {
+  background-color: #212529 !important;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 3rem;
+  color: white;
+}
+.confession-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.confession-icon {
+  display: flex;
+  align-items: flex-start;
+}
+.confession-icon p {
+  margin-left: 0.2rem;
+}
+.bi-heart-fill:hover {
+  color: red;
+}
+.title {
+  color: red;
+}
+.bi-chat-square-fill:hover {
+  color: blue;
+}
+.bi-share-fill:hover {
+  color: yellow;
 }
