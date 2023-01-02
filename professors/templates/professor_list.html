@@ -1,48 +1,39 @@
 {% extends 'base.html' %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/professors.css' %}" />
+{% endblock %}
 {% block content %}
 
-<div>
-
-    <h1 style="margin-left: 10px; margin-top: 10px; float: left;">Lista de Profesores</h1>
-
-    <form style="width: 30%; float: right; margin-right: 5%;">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
-      <button class="btn btn-outline-success" type="submit" style="float: left; display: block;">Search</button>
+<div class="d-flex container">
+    <h1>Lista de Profesores</h1>
+    <form class="d-flex" >
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-
 </div>
 
-<ul>
-  {% for object in object_list %}
-  <a href="{{object.pk}}" style="color: black; text-decoration: none;">
-    <div class="card" style="width: 95%; margin-top: 1rem; margin-bottom: 1rem;">
-      <div class="card-header" style="color: red; font-size: large;">
-        {{ object.first_name }} {{object.last_name}}
-      </div>
-      <div class="card-body">
 
-        <h5>Universidad</h5>
-        <p class="card-text" style="margin-bottom: 1px;">Campus: {{ object.college }}</p>
-        <p class="card-text" style="margin-bottom: 15px;">Facultad: {{ object.faculty }}</p>
-        <hr style="color: red; opacity: 20%; margin-top: 2px; margin-bottom: 2px;"/>
-        <p class="card-text" style="margin-bottom: 1px;">Nota promedio obtenida en sus clases: {{ object.average_grade }}</p>
-        <p class="card-text" style="margin-bottom: 1px;">Dificultad Promedio: {{ object.average_difficulty }}</p>
-        <p class="card-text" style="margin-bottom: 1px;">Considerado/a Pro-estudiante: {{ object.pro_student }}</p>
-        <p class="card-text" style="margin-bottom: 1px;">Considerado/a Organizado/a: {{ object.organized }}</p>
-        <hr style="color: red; opacity: 20%; margin-top: 2px; margin-bottom: 2px;"/>
-        <p class="card-text" style="margin-bottom: 1px;">Consenso de puntaje general: {{ object.score }}</p>
-
+<div class="professors">
+  {% for object in object_list %} 
+  <div class="container professor">
+    <a href="{{object.pk}}" class="card-link">
+      <div class="card">
+        <div class="card-header card-title">
+          {{ object.first_name }} {{object.last_name}}
+        </div>
+        <div class="card-body">
+          <h5>Universidad</h5>
+          <p class="card-text">Campus: {{ object.college }} <br>
+             Facultad: {{ object.faculty }}</p>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
       <!-- If object_list is empty  -->
   {% empty %}
     <li>No objects yet.</li>
   {% endfor %}
-</ul>
-
+</div>
 {% endblock %}
