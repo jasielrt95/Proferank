@@ -13,6 +13,7 @@ class Comment(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
 
 
     class Meta:
@@ -33,12 +34,6 @@ class Confession_Comment(Comment):
 
 class Course_Comment(Comment):
     course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.text
-
-class Reply_Comment(Comment):
-    comment = models.ForeignKey("comments.Confession_Comment", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
