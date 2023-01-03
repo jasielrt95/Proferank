@@ -6,4 +6,9 @@
 *.dylib
 *.dll
 
+# ignore migrations
+**/migrations/**
+!**/migrations
+**/**/migrations/**
+
 
