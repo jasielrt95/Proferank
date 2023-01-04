@@ -11,4 +11,11 @@
 !**/migrations
 **/**/migrations/**
 
+# ignore all Mac OS files
+.DS_Store
+
+
+
+
+
 
