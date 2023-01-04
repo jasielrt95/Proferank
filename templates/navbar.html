@@ -43,10 +43,16 @@
           >Profesores</a
         >
       </li>
-      <div class="login-buttons">
-        <button type="button" class="btn btn-primary">Login</button>
-        <button type="button" class="btn btn-secondary">Sign up</button>
-      </div>
+      <li>
+        <div class="login-buttons">
+          <a href="{% url 'accounts:login' %}">
+            <button class="btn btn-outline-light" type="button">Log In</button>
+          </a>
+          <a href="{% url 'accounts:register' %}">
+            <button class="btn btn-outline-light" type="button">Register</button>
+          </a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

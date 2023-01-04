@@ -16,7 +16,8 @@ class LoginView(View):
             login(request, user)
             return redirect('/')
         else:
-            return render(request, 'accounts/login.html', {'error': 'Invalid username or password'})
+            form = LoginForm()
+            return render(request, 'accounts/login.html', {'error': 'Invalid username or password', 'form': form})
 
     def get(self, request):
         form = LoginForm()
@@ -35,7 +36,8 @@ class RegisterView(View):
         password = request.POST.get('password')
         password_confirm = request.POST.get('password_confirm')
         if password != password_confirm:
-            return render(request, 'accounts/register.html', {'error': 'Passwords do not match'})
+            form = RegisterForm()
+            return render(request, 'accounts/register.html', {'error': 'Passwords do not match', 'form': form})
         else:
             user = User.objects.create_user(username=username, password=password)
             user.save()

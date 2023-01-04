@@ -1,4 +1,12 @@
 /* TODO: Instead of overwriting bootstrap classes here, download the css and change some variables there */
+a {
+  color: red;
+  border: none;
+  text-decoration: none;
+}
+.error{
+  color: red;
+}
 .nav-link {
   color: white;
 }
