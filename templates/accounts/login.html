@@ -2,4 +2,7 @@
 <form method="post">
   {% csrf_token %} {{ form.as_p }}
   <button type="submit">Log In</button>
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
 </form>
