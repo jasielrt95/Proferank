@@ -19,11 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('home.urls'), name='home'),
-    path('admin/', admin.site.urls),
-    path('professors/', include(('professors.urls', 'professors'), namespace='professors')),
-    path('courses/', include(('courses.urls', 'courses'), namespace='courses')),
-    path('accounts/', include("accounts.urls"), name='accounts'),
+    path("", include("home.urls"), name="home"),
+    path("admin/", admin.site.urls),
+    path(
+        "professors/",
+        include(("professors.urls", "professors"), namespace="professors"),
+    ),
+    path("courses/", include(("courses.urls", "courses"), namespace="courses")),
+    path("accounts/", include("accounts.urls"), name="accounts"),
 ]
 
 if settings.DEBUG:

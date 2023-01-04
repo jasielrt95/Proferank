@@ -9,7 +9,6 @@ class Course(models.Model):
     F = "F"
     DIFFICULTIES = ((A, "A"), (B, "B"), (C, "C"), (D, "D"), (F, "F"))
 
-
     professor = models.ForeignKey("professors.Professor", on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     codification = models.CharField(max_length=8)
@@ -23,4 +22,3 @@ class Course(models.Model):
 
     def __str__(self):
         return self.codification
-    

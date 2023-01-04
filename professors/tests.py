@@ -3,9 +3,17 @@ from professors.models import Professor
 
 
 class ProfessorModelTest(TestCase):
-
     def setUp(self) -> None:
-        Professor.objects.create(first_name="John", last_name="Doe", college="UPRRP", faculty="Naturales", pro_student=True, organized=True, score=0, total_reviews=0)
+        Professor.objects.create(
+            first_name="John",
+            last_name="Doe",
+            college="UPRRP",
+            faculty="Naturales",
+            pro_student=True,
+            organized=True,
+            score=0,
+            total_reviews=0,
+        )
 
     def test_getCollege(self):
         professor = Professor.objects.get(id=1)
@@ -46,4 +54,3 @@ class ProfessorModelTest(TestCase):
     def test_getTotalReviews(self):
         professor = Professor.objects.get(id=1)
         self.assertEqual(professor.getTotalReviews(), 0)
-        

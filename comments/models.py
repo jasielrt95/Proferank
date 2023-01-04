@@ -16,8 +16,9 @@ class Comment(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
-
+    parent = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True, blank=True, related_name="replies"
+    )
 
     class Meta:
         abstract = True
@@ -25,15 +26,17 @@ class Comment(models.Model):
     @property
     def score(self):
         return self.upvotes - self.downvotes
-    
+
     def __str__(self):
         return self.text
+
 
 class Confession_Comment(Comment):
     confession = models.ForeignKey("confessions.Confession", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
+
 
 class Course_Comment(Comment):
     course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
