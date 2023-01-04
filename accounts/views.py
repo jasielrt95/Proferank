@@ -2,7 +2,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
+from .forms import LoginForm, RegisterForm
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class LoginView(View):
     def post(self, request):
@@ -16,5 +19,29 @@ class LoginView(View):
             return render(request, 'accounts/login.html', {'error': 'Invalid username or password'})
 
     def get(self, request):
-        form = AuthenticationForm()
+        form = LoginForm()
         return render(request, 'accounts/login.html', {'form': form})
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('/')
+
+
+class RegisterView(View):
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+        if password != password_confirm:
+            return render(request, 'accounts/register.html', {'error': 'Passwords do not match'})
+        else:
+            user = User.objects.create_user(username=username, password=password)
+            user.save()
+            login(request, user)
+            return redirect('/')
+
+    def get(self, request):
+        form = RegisterForm()
+        return render(request, 'accounts/register.html', {'form': form})
