@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime, timezone
 from math import log
 
+
 class Confession(models.Model):
     # Confession information
     title = models.CharField(max_length=100)
@@ -32,14 +33,5 @@ class Confession(models.Model):
         sign = 1 if s > 0 else -1 if s < 0 else 0
         return round(sign * order + ts / 45000, 7)
 
-
-
-
-
-
-
-
     def __str__(self):
         return self.title + " - " + self.created_at.strftime("%m/%d/%Y, %H:%M:%S")
-
-    

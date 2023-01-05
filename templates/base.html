@@ -25,35 +25,7 @@
     <title>Iupi Hub</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Iupi Hub</a>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'home:index'%}"
-              >Home</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'courses:all_courses'%}"
-              >Courses</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'professors:all_professors' %}"
-              >Profesores</a
-            >
-          </li>
-          <div class="login-buttons">
-            <button type="button" class="btn btn-primary">Login</button>
-            <button type="button" class="btn btn-secondary">Sign up</button>
-          </div>
-        </ul>
-      </div>
-    </nav>
+    {% include 'navbar.html' %}
     <div>{% block content %} {% endblock %}</div>
   </body>
 </html>

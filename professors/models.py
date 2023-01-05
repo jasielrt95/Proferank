@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Professor(models.Model):
 
     # Grades
@@ -15,7 +16,7 @@ class Professor(models.Model):
     # Faculties
     Natu = "Naturales"
     Huma = "Humanidades"
-    FACULTIES = ((Natu, "Naturales"), (Huma,"Humanidades"))
+    FACULTIES = ((Natu, "Naturales"), (Huma, "Humanidades"))
 
     # Colleges
     UPRRP = "Universidad de Puerto Rico, Rio Piedras"
@@ -28,7 +29,7 @@ class Professor(models.Model):
     college = models.CharField(max_length=100, choices=COLLEGES)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 
-    # Grading 
+    # Grading
     average_difficulty = models.CharField(choices=DIFFICULTIES, max_length=1)
     average_grade = models.CharField(choices=DIFFICULTIES, max_length=1)
     pro_student = models.BooleanField()
@@ -37,7 +38,7 @@ class Professor(models.Model):
     # Score information
     score = models.IntegerField(default=0)
     total_reviews = models.IntegerField(default=0)
-    
+
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -58,9 +59,8 @@ class Professor(models.Model):
         else:
             return "F"
 
-
     # Getter functions for Professor class
-    def getCollege(self):   
+    def getCollege(self):
         return self.college
 
     def getFaculty(self):
