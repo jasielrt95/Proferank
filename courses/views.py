@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Course
-from comments.models import Comment
+from comments.models import Course_Comment
 
 
 class CourseListView(ListView):
@@ -18,6 +18,6 @@ class CourseDetailView(DetailView):
         course = Course.objects.get(id=self.kwargs["pk"])
         context["course"] = course
         context["professor"] = course.professor
-        comments = list(Comment.objects.filter(course=course))
+        comments = list(Course_Comment.objects.filter(course=course))
         context["comments"] = comments
         return context
