@@ -1,7 +1,7 @@
 {% if user.is_authenticated %}
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Iupi Hub</a>
+    <a class="navbar-brand" href="{% url 'home:index' %}">Iupi Hub</a>
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a
