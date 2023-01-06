@@ -26,7 +26,7 @@ class Professor(models.Model):
     # Professor information
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=80)
-    college = models.CharField(max_length=100, choices=COLLEGES)
+    college = models.CharField(choices=COLLEGES, max_length=100)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 
     # Getter functions for Professor class
