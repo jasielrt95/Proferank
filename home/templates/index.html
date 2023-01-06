@@ -39,10 +39,7 @@
         <h3 class="display-6 fw-bold lh-1 mb-3">{{ confession.title}}</h3>
       </div>
       <div class="confession-body">
-        <p class="lead">
-          {% if confession.body|length > 100 %} {{ confession.body|slice:":100"
-          }}... {% else %} {{ confession.body }} {% endif %}
-        </p>
+        <p class="lead">{{ confession.body|truncatewords:50 }}</p>
       </div>
       <hr class="hr-blurry" />
       <div class="confession-icons">
