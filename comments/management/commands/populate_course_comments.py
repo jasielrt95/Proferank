@@ -6,6 +6,7 @@ from comments.models import Course_Comment
 from courses.models import Course
 from accounts.models import User
 
+
 class Command(BaseCommand):
     help = "Populates the database with course comments"
 

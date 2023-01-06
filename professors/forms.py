@@ -36,6 +36,7 @@ class RateProfessorForm(forms.Form):
         self.helper.form_action = "rate_professor"
         self.helper.add_input(Submit("submit", "Rate Professor"))
 
+
 class CreateProfessorForm(forms.Form):
     first_name = forms.CharField(
         label="First Name", max_length=100, widget=forms.TextInput, required=True
@@ -49,7 +50,8 @@ class CreateProfessorForm(forms.Form):
             ("UPRRP", "UPRRP"),
             ("UPRM", "UPRM"),
             ("UPRA", "UPRA"),
-    ), required=True,
+        ),
+        required=True,
     )
 
     faculty = forms.ChoiceField(
@@ -57,10 +59,9 @@ class CreateProfessorForm(forms.Form):
         choices=(
             ("Humanidades", "Humanidades"),
             ("Ciencias Naturales", "Ciencias Naturales"),
-        ), required=True,
+        ),
+        required=True,
     )
-
-
 
     def __init__(self, *args, **kwargs):
         super(CreateProfessorForm, self).__init__(*args, **kwargs)

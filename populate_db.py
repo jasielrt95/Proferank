@@ -15,5 +15,6 @@ def populate():
     os.system("python manage.py populate_confession_comments")
     print("The database has been populated successfully!")
 
+
 if __name__ == "__main__":
     populate()

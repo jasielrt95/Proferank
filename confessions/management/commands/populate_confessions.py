@@ -3,6 +3,7 @@ from faker import Faker
 
 from confessions.models import Confession
 
+
 class Command(BaseCommand):
     help = "Populates the database with confessions"
 
@@ -23,5 +24,7 @@ class Command(BaseCommand):
                 title=fake.sentence(nb_words=6, variable_nb_words=True),
                 body=fake.text(max_nb_chars=200),
                 author=fake.name(),
+                upvotes=fake.random_int(min=0, max=100),
+                downvotes=fake.random_int(min=0, max=100),
             )
         self.stdout.write(self.style.SUCCESS("Successfully populated database"))

@@ -3,6 +3,7 @@ from faker import Faker
 
 from professors.models import Professor
 
+
 class Command(BaseCommand):
     help = "Populates the database with professors"
 

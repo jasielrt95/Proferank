@@ -7,6 +7,7 @@ from .forms import RateProfessorForm, CreateProfessorForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
+
 class ProfessorListView(ListView):
     model = Professor
     template_name = "professor_list.html"
@@ -28,6 +29,7 @@ class ProfessorDetailView(DetailView):
         context["form"] = RateProfessorForm()
         context["professor"] = profesor
         return context
+
 
 class ProfessorCreateView(LoginRequiredMixin, CreateView):
     model = Professor

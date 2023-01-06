@@ -10,7 +10,6 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     codification = models.CharField(max_length=8)
 
-
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
