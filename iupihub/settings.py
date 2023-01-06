@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "courses",
     "comments",
     "home",
+    "reviews",
     "confessions",
     "accounts",
     "crispy_forms",

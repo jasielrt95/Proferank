@@ -29,36 +29,6 @@ class Professor(models.Model):
     college = models.CharField(max_length=100, choices=COLLEGES)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 
-    # Grading
-    average_difficulty = models.CharField(choices=DIFFICULTIES, max_length=1)
-    average_grade = models.CharField(choices=DIFFICULTIES, max_length=1)
-    pro_student = models.BooleanField()
-    organized = models.BooleanField()
-
-    # Score information
-    score = models.IntegerField(default=0)
-    total_reviews = models.IntegerField(default=0)
-
-    # Timestamps
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    @property
-    def avg_score(self):
-        if self.total_reviews == 0:
-            return 0
-        grade = self.score / self.total_reviews
-        if grade == 4:
-            return "A"
-        elif grade > 3:
-            return "B"
-        elif grade > 2:
-            return "C"
-        elif grade > 1:
-            return "D"
-        else:
-            return "F"
-
     # Getter functions for Professor class
     def getCollege(self):
         return self.college
@@ -71,24 +41,6 @@ class Professor(models.Model):
 
     def getLastName(self):
         return self.last_name
-
-    def getAverageGrade(self):
-        return self.average_grade
-
-    def getAverageDifficulty(self):
-        return self.average_difficulty
-
-    def getIsProfProStudent(self):
-        return self.pro_student
-
-    def getIsProfOrganized(self):
-        return self.organized
-
-    def getScore(self):
-        return self.score
-
-    def getTotalReviews(self):
-        return self.total_reviews
 
     def __str__(self):
         return self.first_name + " " + self.last_name
