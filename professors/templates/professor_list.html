@@ -1,38 +1,72 @@
-{% extends 'base.html' %}
-
-{% block head %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/professors.css' %}" />
+{% extends 'base.html' %} {% block head %} {% load static %} {% block title %}
+<title>Professors</title>
 {% endblock %}
-{% block content %}
-
+<link rel="stylesheet" href="{% static 'css/professors.css' %}" />
+{% endblock %} {% block controls %}
 <div class="d-flex container">
-    <h1>Lista de Profesores</h1>
-    <form class="d-flex" >
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>
-
-<div class="professors">
-  {% for object in object_list %} 
-  <div class="container professor">
-    <a href="{{object.pk}}" class="card-link">
-      <div class="card">
-        <div class="card-header card-title">
-          {{ object.first_name }} {{object.last_name}}
-        </div>
-        <div class="card-body">
-          <h5>Universidad</h5>
-          <p class="card-text">Campus: {{ object.college }} <br>
-             Facultad: {{ object.faculty }}</p>
-        </div>
-      </div>
-    </a>
+  <div class="filters d-flex">
+    <div class="dropdown">
+      <select name="college" id="college_filter" class="btn btn-primary">
+        <option value="" disabled selected hidden>Recinto</option>
+        {% for univesity in universities %}
+        <option value="{{univesity}}">{{univesity}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="dropdown">
+      <select name="department" id="faculty_filter" class="btn btn-primary">
+        <option value="" disabled selected hidden>Facultad</option>
+        {% for department in departments %}
+        <option value="{{department}}">{{department}}</option>
+        {% endfor %}
+      </select>
+    </div>
   </div>
-      <!-- If object_list is empty  -->
-  {% empty %}
-    <li>No objects yet.</li>
-  {% endfor %}
+  <form class="d-flex">
+    <input
+      class="form-control me-2 search-bar"
+      type="search"
+      id="search-bar"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+  <a href="{% url 'professors:create_professor'%}">
+    <button class="btn btn-primary">Add Professor</button>
+  </a>
 </div>
+{% endblock %} {% block content %}
+<div class="container">
+  <h1 class="text-center">Listado de Profesores</h1>
+  <div class="professors">
+    {% for object in object_list %}
+    <div
+      class="container professor"
+      data-college="{{ object.college }}"
+      data-faculty="{{ object.faculty }}"
+      data-name="{{ object.first_name }} {{object.last_name}}"
+    >
+      <a href="{{object.pk}}" class="card-link">
+        <div class="card">
+          <div class="card-header card-title">
+            {{ object.first_name }} {{object.last_name}}
+          </div>
+          <div class="card-body">
+            <h5>Universidad</h5>
+            <p class="card-text">
+              <span class="college">Campus: {{ object.college }}</span>
+              <br />
+              <span class="faculty">Facultad: {{ object.faculty }} </span>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+  </div>
+</div>
+<script src="{% static 'js/filter.js' %}"></script>
 {% endblock %}

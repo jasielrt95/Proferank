@@ -1,118 +1,114 @@
 .logo {
-    width: 70%;
+  width: 70%;
 }
 
 .header {
-    width: 90%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .head-col {
-    width: 50%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
+  width: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .triangle {
-    position: relative;
-    background: #2c3e50;
-    height: 15vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  position: relative;
+  background: #2c3e50;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .triangle::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 100px 100px 0 100px;
-    border-color: #2c3e50 transparent transparent transparent;
-    left: 50%;
-    transform: translateX(-50%) translateY(100%);
-  }
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100px 100px 0 100px;
+  border-color: #2c3e50 transparent transparent transparent;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+}
 
+.divider-text {
+  color: white;
+}
 
-  .divider-text {
-    color: white;
-  }
+.evaluation-body {
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  align-items: center;
+  justify-items: center;
+  height: auto;
+  width: 100%;
+}
 
-  .evaluation-body {
-    display: flex;
-    margin: auto;
-    margin-top: 2rem;
-    align-items: center;
-    justify-items: center;
-    height: auto;
-    width: 100%;
-    
-  }
+.head {
+  max-height: 7rem;
+}
 
-  .head {
-    max-height: 7rem;
-  }
+.score-list {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
 
-  .score-list {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-  }
+.opinion-comments {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
 
-  .opinion-comments {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-  }
+.divider {
+  position: relative;
+  background: #2c3e50;
+  height: 12vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .divider {
-    position: relative;
-    background: #2c3e50;
-    height: 12vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.comments-container {
+  margin-top: 15vh;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding: 1rem 1rem 1rem 1rem;
+  flex-direction: row;
+}
 
-  .comments-container {
-    margin-top: 15vh;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    padding: 1rem 1rem 1rem 1rem;
-    flex-direction: row;
+.comments {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
 
-  }
+.form {
+  display: flex;
+  width: 50%;
+  margin-left: 3rem;
+  margin-right: 0;
+}
 
-  .comments {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .form {
-    display: flex;
-    width: 50%;
-    margin-left: 3rem;
-    margin-right: 0;
-  }
-
-  .comment-section{
-    max-height: 43vh;
-    width: 65%;
-    background-color: #f300009f;
-    overflow-y:scroll;
-    margin-right: 3rem;
-    max-width: 95%;
+.comment-section {
+  max-height: 43vh;
+  width: 65%;
+  background-color: #f300009f;
+  overflow-y: scroll;
+  margin-right: 3rem;
+  max-width: 95%;
 }
 
 .comment-card {
-    margin: 1rem;
-    width: 80%;
-    max-width: 100%;
+  margin: 1rem;
+  width: 80%;
+  max-width: 100%;
 }
