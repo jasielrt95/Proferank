@@ -1,15 +1,9 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 
 class Review(models.Model):
-
-    # Grades
-    A = "A"
-    B = "B"
-    C = "C"
-    D = "D"
-    F = "F"
-    DIFFICULTIES = ((A, "A"), (B, "B"), (C, "C"), (D, "D"), (F, "F"))
 
     # Foreign keys
     professor = models.ForeignKey(
@@ -23,8 +17,8 @@ class Review(models.Model):
     )
 
     # Grading
-    average_difficulty = models.CharField(choices=DIFFICULTIES, max_length=1)
-    average_grade = models.CharField(choices=DIFFICULTIES, max_length=1)
+    difficulty = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)])
+    grade = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)])
     pro_student = models.BooleanField()
     organized = models.BooleanField()
 
