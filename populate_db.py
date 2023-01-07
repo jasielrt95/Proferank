@@ -5,6 +5,7 @@ def populate():
 
     # if db doesn't exist, create it
     if not os.path.exists("db.sqlite3"):
+        os.system("python manage.py make migrations")
         os.system("python manage.py migrate")
 
     os.system("python manage.py createsuperuser")
@@ -13,6 +14,7 @@ def populate():
     os.system("python manage.py populate_course_comments")
     os.system("python manage.py populate_confessions")
     os.system("python manage.py populate_confession_comments")
+    os.system("python manage.py populate_reviews")
     print("The database has been populated successfully!")
 
 
