@@ -43,7 +43,9 @@ class Professor(models.Model):
         reviews = Review.objects.filter(course__in=courses)
         if reviews.count() == 0:
             return 0
-        return self.num_to_letter(sum([review.difficulty for review in reviews]) / reviews.count())
+        return self.num_to_letter(
+            sum([review.difficulty for review in reviews]) / reviews.count()
+        )
 
     @property
     def average_grade(self):
@@ -51,7 +53,9 @@ class Professor(models.Model):
         reviews = Review.objects.filter(course__in=courses)
         if reviews.count() == 0:
             return 0
-        return self.num_to_letter(sum([review.grade for review in reviews]) / reviews.count())
+        return self.num_to_letter(
+            sum([review.grade for review in reviews]) / reviews.count()
+        )
 
     @property
     def average_pro_student(self):
@@ -66,7 +70,6 @@ class Professor(models.Model):
         else:
             return "No"
 
-
     @property
     def average_organized(self):
         courses = Course.objects.filter(professor=self)
@@ -79,6 +82,12 @@ class Professor(models.Model):
             return "Yes"
         else:
             return "No"
+
+    @property
+    def comment_count(self):
+        courses = Course.objects.filter(professor=self)
+        reviews = Review.objects.filter(course__in=courses)
+        return reviews.count()
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -95,7 +104,5 @@ class Professor(models.Model):
         else:
             return "F"
 
-
-            
     class Meta:
         ordering = ["last_name", "first_name"]
