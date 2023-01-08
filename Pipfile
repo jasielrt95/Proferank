@@ -9,6 +9,7 @@ factory-boy = "*"
 django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
 black = "*"
+djlint = "*"
 
 [dev-packages]
 
