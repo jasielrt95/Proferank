@@ -6,6 +6,7 @@ from professors.models import Professor
 from courses.models import Course
 from accounts.models import User
 
+
 class Command(BaseCommand):
     help = "Populates the database with reviews"
 
@@ -34,6 +35,6 @@ class Command(BaseCommand):
                     grade=fake.random_int(min=0, max=4),
                     pro_student=fake.boolean(),
                     organized=fake.boolean(),
-                    score = fake.random_int(min=0, max=4)
+                    score=fake.random_int(min=0, max=4),
                 )
         self.stdout.write(self.style.SUCCESS("Successfully populated database"))

@@ -17,7 +17,9 @@ class ProfessorListView(ListView):
         if "college" in self.kwargs:
             queryset = Professor.objects.filter(college=self.kwargs["college"].upper())
             if "department" in self.kwargs:
-                queryset = queryset.filter(faculty=self.kwargs["department"].capitalize())
+                queryset = queryset.filter(
+                    faculty=self.kwargs["department"].capitalize()
+                )
             return queryset
         return Professor.objects.all()
 
@@ -58,7 +60,7 @@ class ProfessorCreateView(LoginRequiredMixin, CreateView):
     fields = ["first_name", "last_name", "college", "faculty"]
     success_url = reverse_lazy("professors:all_professors")
 
+
 class ProfessorFilterView(ListView):
     model = Professor
     template_name = "professor_list.html"
-

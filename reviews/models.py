@@ -2,7 +2,6 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-
 class Review(models.Model):
 
     # Foreign keys
@@ -17,7 +16,9 @@ class Review(models.Model):
     )
 
     # Grading
-    difficulty = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)])
+    difficulty = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(4)]
+    )
     grade = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)])
     pro_student = models.BooleanField()
     organized = models.BooleanField()
@@ -30,12 +31,4 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return (
-            self.professor.getFirstName()
-            + " "
-            + self.professor.getLastName()
-            + " "
-            + self.course.codification
-            + " "
-            + self.user.username
-        )
+        return f"{self.user} - {self.professor} - {self.course} - {self.difficulty} - {self.grade} - {self.pro_student} - {self.organized}"
