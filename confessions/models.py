@@ -34,7 +34,7 @@ class Confession(models.Model):
     @property
     def hotness(self):
         if self.time_since > 1440:
-            return None
+            return 0
         ts = self.time_since
         s = self.score
         order = log(max(abs(s), 1), 10)
