@@ -3,16 +3,18 @@ from .models import Review
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "professor":
-            kwargs["queryset"] = db_field.related_model.objects.filter(
-                user=request.user
-            )
-        if db_field.name == "course":
-            kwargs["queryset"] = db_field.related_model.objects.filter(
-                user=request.user
-            )
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    list_display = (
+        "professor",
+        "course",
+        "difficulty",
+        "grade",
+        "pro_student",
+        "organized",
+        "grade_num",
+        "difficulty_num",
+    )
+    list_filter = ("professor", "course")
+    search_fields = ("professor", "course")
 
 
 admin.site.register(Review, ReviewAdmin)
