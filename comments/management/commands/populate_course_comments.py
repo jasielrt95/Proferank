@@ -21,4 +21,4 @@ class Command(BaseCommand):
                     text=fake.text(max_nb_chars=200),
                     course=course,
                 )
-        self.stdout.write(self.style.SUCCESS("Successfully populated database"))
+        self.stdout.write(self.style.SUCCESS("Successfully populated course comments!"))

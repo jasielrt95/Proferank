@@ -27,4 +27,4 @@ class Command(BaseCommand):
                 faculty=fake.random_element(elements=("Naturales", "Humanidades")),
             )
 
-        self.stdout.write(self.style.SUCCESS("Successfully populated database"))
+        self.stdout.write(self.style.SUCCESS("Successfully populated professors!"))

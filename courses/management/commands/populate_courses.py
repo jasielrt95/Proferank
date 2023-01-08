@@ -151,11 +151,11 @@ class Command(BaseCommand):
             "AFST",
         ]
         for professor in professors:
-            for i in range(random.randint(1, 5)):
+            for i in range(random.randint(3, 8)):
                 numbers = random.randint(1000, 9999)
                 Course.objects.create(
                     name=fake.sentence(nb_words=6, variable_nb_words=True),
                     codification=random.choice(codifications) + str(numbers),
                     professor=professor,
                 )
-        self.stdout.write(self.style.SUCCESS("Successfully populated database"))
+        self.stdout.write(self.style.SUCCESS("Successfully populated courses!"))

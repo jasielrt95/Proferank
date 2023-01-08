@@ -27,4 +27,4 @@ class Command(BaseCommand):
                 upvotes=fake.random_int(min=0, max=100),
                 downvotes=fake.random_int(min=0, max=100),
             )
-        self.stdout.write(self.style.SUCCESS("Successfully populated database"))
+        self.stdout.write(self.style.SUCCESS("Successfully populated confessions!"))
