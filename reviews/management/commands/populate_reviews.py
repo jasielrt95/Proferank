@@ -20,21 +20,18 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         fake = Faker()
         Professors = Professor.objects.all()
+        user = fake.random_element(elements=User.objects.all())
         for professor in Professors:
             courses = Course.objects.filter(professor=professor)
-            course = fake.random_element(elements=courses)
-
-            user = fake.random_element(elements=User.objects.all())
-
-            for i in range(1, 5):
-                Review.objects.create(
-                    professor=professor,
-                    course=course,
-                    user=user,
-                    difficulty=fake.random_int(min=0, max=4),
-                    grade=fake.random_int(min=0, max=4),
-                    pro_student=fake.boolean(),
-                    organized=fake.boolean(),
-                    score=fake.random_int(min=0, max=4),
-                )
-        self.stdout.write(self.style.SUCCESS("Successfully populated database"))
+            for course in courses:
+                for i in range(1, 5):
+                    Review.objects.create(
+                        professor=professor,
+                        course=course,
+                        user=user,
+                        difficulty=fake.random_int(min=0, max=4),
+                        grade=fake.random_int(min=0, max=4),
+                        pro_student=fake.boolean(),
+                        organized=fake.boolean(),
+                    )
+        self.stdout.write(self.style.SUCCESS("Successfully populated reviews!"))
