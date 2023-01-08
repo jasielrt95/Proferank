@@ -4,6 +4,9 @@ a {
   border: none;
   text-decoration: none;
 }
+a:hover {
+  color: #212529;
+}
 .error {
   color: red;
 }
