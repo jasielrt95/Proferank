@@ -1,13 +1,13 @@
-{% extends 'base.html' %} {% block content %} {% load crispy_forms_filters %}
-{%load crispy_forms_tags %}
-<div class="container">
-  <h2>Log In</h2>
-  <form method="post">
-    {% csrf_token %} {{ form|crispy }}
-    <button class="btn btn-dark" type="submit">Log In</button>
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %}
-  </form>
-</div>
+{% extends 'base.html' %}
+{% block content %}
+    {% load crispy_forms_filters %}
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <h2>Log In</h2>
+        <form method="post">
+            {% csrf_token %} {{ form|crispy }}
+            <button class="btn btn-dark" type="submit">Log In</button>
+            {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        </form>
+    </div>
 {% endblock %}

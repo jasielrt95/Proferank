@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<ul>
-  <li>
-    <p>{{ course.name }}</p>
-  </li>
-  <li>
-    <p>{{ course.professor }}</p>
-  </li>
-  <li>
-    <p>{{ course.average_grade }}</p>
-  </li>
-  <h1>comments</h1>
-  {% for comment in comments %}
-  <li>
-    <p>{{comment.text}}</p>
-    <p>Score: {{comment.score}}</p>
-  </li>
-  {% endfor %}
-</ul>
+    <a href="{% url 'reviews:rate_course' course.pk %}">Rate Review</a>
+    <ul>
+        <li>
+            <p>{{ course.name }}</p>
+        </li>
+        <li>
+            <p>{{ course.professor }}</p>
+        </li>
+        <li>
+            <p>{{ course.average_grade }}</p>
+        </li>
+        <h1>comments</h1>
+        {% for comment in comments %}
+            <li>
+                <p>{{ comment.text }}</p>
+                <p>Score: {{ comment.score }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -1,0 +1,39 @@
+<div class="d-flex container">
+    <div class="filters d-flex">
+        <div class="dropdown">
+            <select name="college" id="college_filter" class="btn btn-primary">
+                <option value="" disabled selected hidden>
+                    Recinto
+                </option>
+                {% for univesity in universities %}
+                    <option value="{{ univesity }}">
+                        {{ univesity }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="dropdown">
+            <select name="department" id="faculty_filter" class="btn btn-primary">
+                <option value="" disabled selected hidden>
+                    Facultad
+                </option>
+                {% for department in departments %}
+                    <option value="{{ department }}">
+                        {{ department }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <form class="d-flex">
+        <input class="form-control me-2 search-bar"
+               type="search"
+               id="search-bar"
+               placeholder="Search"
+               aria-label="Search"/>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <a href="{% url 'professors:create_professor' %}">
+        <button class="btn btn-primary">Add Professor</button>
+    </a>
+</div>

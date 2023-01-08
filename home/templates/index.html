@@ -1,63 +1,59 @@
-{% extends 'base.html' %}{% load static %} {% block content %}
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img
-        src="{% static 'img/logo.png' %}"
-        class="d-block mx-lg-auto img-fluid"
-        alt="Bootstrap Themes"
-        width="700"
-        height="500"
-        loading="lazy"
-      />
-    </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3 title">IUPI Hub</h1>
-      <p class="lead">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam natus
-        fugiat error est, similique ab vitae nesciunt non suscipit tempora
-        accusamus pariatur ut commodi neque voluptate totam? Non, doloribus
-        excepturi!
-      </p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
-          Profesores
-        </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">
-          Confesiones
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="trending-confessions container px-4 py-5">
-  <div class="confessions g-2 py-2 align-items-center container col-xxl-8">
-    <h1 class="display-4 fw-bold lh-1 mb-3">Confesiones Populares</h1>
-    {% for confession in confessions %}
-    <div class="confession gap">
-      <div class="confession-title">
-        <h3 class="display-6 fw-bold lh-1 mb-3">{{ confession.title}}</h3>
-      </div>
-      <div class="confession-body">
-        <p class="lead">{{ confession.body|truncatewords:50 }}</p>
-      </div>
-      <hr class="hr-blurry" />
-      <div class="confession-icons">
-        <div class="confession-icon">
-          <i class="bi bi-arrow-up-circle"></i>
-          <i class="bi bi-arrow-down-circle"></i>
-          <p>{{confession.score}}</p>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% static 'img/logo.png' %}"
+                     class="d-block mx-lg-auto img-fluid"
+                     alt="Bootstrap Themes"
+                     width="700"
+                     height="500"
+                     loading="lazy"/>
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3 title">IUPI Hub</h1>
+                <p class="lead">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam natus
+                    fugiat error est, similique ab vitae nesciunt non suscipit tempora
+                    accusamus pariatur ut commodi neque voluptate totam? Non, doloribus
+                    excepturi!
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Profesores</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Confesiones</button>
+                </div>
+            </div>
         </div>
-        <div class="confession-icon">
-          <i class="bi bi-chat-right-text"></i>
-          <p>{{confession.num_comments}}</p>
-        </div>
-        <div class="confession-icon">
-          <i class="bi bi-share-fill"></i>
-        </div>
-      </div>
     </div>
-    {% endfor %}
-  </div>
-</div>
+    <div class="trending-confessions container px-4 py-5">
+        <div class="confessions g-2 py-2 align-items-center container col-xxl-8">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Confesiones Populares</h1>
+            {% for confession in confessions %}
+                <div class="confession gap">
+                    <div class="confession-title">
+                        <h3 class="display-6 fw-bold lh-1 mb-3">{{ confession.title }}</h3>
+                    </div>
+                    <div class="confession-body">
+                        <p class="lead">{{ confession.body|truncatewords:50 }}</p>
+                    </div>
+                    <hr class="hr-blurry" />
+                    <div class="confession-icons">
+                        <div class="confession-icon">
+                            <i class="bi bi-arrow-up-circle"></i>
+                            <i class="bi bi-arrow-down-circle"></i>
+                            <p>{{ confession.score }}</p>
+                        </div>
+                        <div class="confession-icon">
+                            <i class="bi bi-chat-right-text"></i>
+                            <p>{{ confession.num_comments }}</p>
+                        </div>
+                        <div class="confession-icon">
+                            <i class="bi bi-share-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
