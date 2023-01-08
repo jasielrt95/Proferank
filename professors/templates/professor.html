@@ -15,7 +15,7 @@
                      alt=""
                      class="img-responsive"
                      width="35"
-                     height="35">
+                     height="35"/>
             </div>
             <div class="card-body">
                 <div class="statistics row">
@@ -25,12 +25,12 @@
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Dificultad</p>
                                 <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.average_difficulty }}</p>
+                                <p class="m-0">{{ professor.difficulty }}</p>
                             </div>
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Nota Obtenida</p>
                                 <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.average_grade }}</p>
+                                <p class="m-0">{{ professor.grade }}</p>
                             </div>
                         </div>
                     </div>
@@ -39,12 +39,12 @@
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Pro estudiante</p>
                                 <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.average_pro_student }}</p>
+                                <p class="m-0">{{ professor.pro_student }}</p>
                             </div>
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Organizado</p>
                                 <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.average_organized }}</p>
+                                <p class="m-0">{{ professor.organized }}</p>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
             {% for course in courses %}
                 <a href="{% url 'courses:specific_course' course.pk %}"
                    class="col-4 mt-4">
-                    <div class="">
+                    <div>
                         <div class="card">
                             <div class="card-header">
                                 <h3>{{ course.codification }}</h3>
