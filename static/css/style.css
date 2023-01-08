@@ -1,8 +1,14 @@
 /* TODO: Instead of overwriting bootstrap classes here, download the css and change some variables there */
 a {
-  color: red;
   border: none;
   text-decoration: none;
+}
+.card {
+  color: #212529;
+}
+.card-header{
+  background-color: #212529;
+  color: white;
 }
 a:hover {
   color: #212529;

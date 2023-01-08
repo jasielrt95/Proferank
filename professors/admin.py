@@ -10,13 +10,14 @@ class ProfessorAdmin(admin.ModelAdmin):
         "last_name",
         "college",
         "faculty",
-        "average_score",
-        "average_difficulty",
-        "average_grade",
-        "average_pro_student",
-        "average_organized",
+        "difficulty",
+        "grade",
+        "pro_student",
+        "organized",
+        "comment_count",
     )
     list_filter = ("college", "faculty")
     search_fields = ("first_name", "last_name", "college", "faculty")
+
 
 admin.site.register(Professor, ProfessorAdmin)

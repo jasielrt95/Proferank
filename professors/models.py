@@ -29,59 +29,42 @@ class Professor(models.Model):
     college = models.CharField(choices=COLLEGES, max_length=100)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 
+    # Methods
     @property
-    def average_score(self):
+    def difficulty(self):
         courses = Course.objects.filter(professor=self)
-        reviews = Review.objects.filter(course__in=courses)
-        if reviews.count() == 0:
-            return 0
-        return sum([review.score for review in reviews]) / reviews.count()
+        total = 0
+        for course in courses:
+            total += course.difficulty
+        return self.num_to_letter(total / len(courses))
 
     @property
-    def average_difficulty(self):
+    def grade(self):
         courses = Course.objects.filter(professor=self)
-        reviews = Review.objects.filter(course__in=courses)
-        if reviews.count() == 0:
-            return 0
-        return self.num_to_letter(
-            sum([review.difficulty for review in reviews]) / reviews.count()
-        )
+        total = 0
+        for course in courses:
+            total += course.grade
+        return self.num_to_letter(total / len(courses))
 
-    @property
-    def average_grade(self):
+    def pro_student(self):
         courses = Course.objects.filter(professor=self)
-        reviews = Review.objects.filter(course__in=courses)
-        if reviews.count() == 0:
-            return 0
-        return self.num_to_letter(
-            sum([review.grade for review in reviews]) / reviews.count()
-        )
+        total = 0
+        for course in courses:
+            if course.pro_student:
+                total += 1
+            else:
+                total -= 1
+        return total > 0
 
-    @property
-    def average_pro_student(self):
+    def organized(self):
         courses = Course.objects.filter(professor=self)
-        reviews = Review.objects.filter(course__in=courses)
-        if reviews.count() == 0:
-            return "No"
-        true = reviews.filter(pro_student=True).count()
-        false = reviews.filter(pro_student=False).count()
-        if true > false:
-            return "Yes"
-        else:
-            return "No"
-
-    @property
-    def average_organized(self):
-        courses = Course.objects.filter(professor=self)
-        reviews = Review.objects.filter(course__in=courses)
-        if reviews.count() == 0:
-            return "No"
-        true = reviews.filter(organized=True).count()
-        false = reviews.filter(organized=False).count()
-        if true > false:
-            return "Yes"
-        else:
-            return "No"
+        total = 0
+        for course in courses:
+            if course.organized:
+                total += 1
+            else:
+                total -= 1
+        return total > 0
 
     @property
     def comment_count(self):
@@ -103,6 +86,18 @@ class Professor(models.Model):
             return "D"
         else:
             return "F"
+
+    def letter_to_num(self, letter):
+        if letter == "A":
+            return 4
+        elif letter == "B":
+            return 3
+        elif letter == "C":
+            return 2
+        elif letter == "D":
+            return 1
+        else:
+            return 0
 
     class Meta:
         ordering = ["last_name", "first_name"]
