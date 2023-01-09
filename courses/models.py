@@ -20,6 +20,8 @@ class Course(models.Model):
     def grade(self):
         reviews = Review.objects.filter(course=self)
         total = 0
+        if len(reviews) == 0:
+            return 'N/A'
         for review in reviews:
             total += review.grade_num
         return total / len(reviews)
@@ -27,6 +29,8 @@ class Course(models.Model):
     @property
     def difficulty(self):
         reviews = Review.objects.filter(course=self)
+        if len(reviews) == 0:
+            return 'N/A'
         total = 0
         for review in reviews:
             total += review.difficulty_num
@@ -35,6 +39,8 @@ class Course(models.Model):
     @property
     def pro_student(self):
         reviews = Review.objects.filter(course=self)
+        if len(reviews) == 0:
+            return 'N/A'
         total = 0
         for review in reviews:
             if review.pro_student:
@@ -46,6 +52,8 @@ class Course(models.Model):
     @property
     def organized(self):
         reviews = Review.objects.filter(course=self)
+        if len(reviews) == 0:
+            return 'N/A'
         total = 0
         for review in reviews:
             if review.organized:

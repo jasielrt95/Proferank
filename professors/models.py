@@ -33,23 +33,39 @@ class Professor(models.Model):
     @property
     def difficulty(self):
         courses = Course.objects.filter(professor=self)
+        if len(courses) == 0:
+            return 0
         total = 0
+        course_count = 0
         for course in courses:
+            if course.difficulty == 'N/A':
+                continue
             total += course.difficulty
-        return self.num_to_letter(total / len(courses))
+            course_count += 1
+        return self.num_to_letter(total / course_count)
 
     @property
     def grade(self):
         courses = Course.objects.filter(professor=self)
+        if len(courses) == 0:
+            return 0
         total = 0
+        course_count = 0
         for course in courses:
+            if course.grade == 'N/A':
+                continue
             total += course.grade
-        return self.num_to_letter(total / len(courses))
+            course_count += 1
+        return self.num_to_letter(total / course_count)
 
     def pro_student(self):
         courses = Course.objects.filter(professor=self)
         total = 0
+        if len(courses) == 0:
+            return 0
         for course in courses:
+            if course.pro_student == 'N/A':
+                continue
             if course.pro_student:
                 total += 1
             else:
@@ -59,7 +75,11 @@ class Professor(models.Model):
     def organized(self):
         courses = Course.objects.filter(professor=self)
         total = 0
+        if len(courses) == 0:
+            return 0
         for course in courses:
+            if course.organized == 'N/A':
+                continue
             if course.organized:
                 total += 1
             else:

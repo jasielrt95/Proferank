@@ -9,16 +9,14 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ["difficulty", "grade", "pro_student", "organized"]
 
-    def save(self, user, course, professor, commit=True):
-        review = super(ReviewForm, self).save(commit=False)
-        review.user = user
-        review.course = course
-        review.professor = professor
-        if commit:
-            review.save()
+    def save_form(self, user, course, professor):
+        r = self.save(commit=False)
+        r.user = user
+        r.course = course
+        r.professor = professor
+        r.save()
 
-        return review
-
+    
     def __init__(self, *args, **kwargs):
         super(ReviewForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()

@@ -12,7 +12,7 @@ class Review(models.Model):
         ("B", "Easy"),
         ("C", "Average"),
         ("D", "Hard"),
-        ("E", "Very Hard"),
+        ("F", "Very Hard"),
     )
     GRADES = (
         ("A", "A"),
@@ -65,11 +65,11 @@ class Review(models.Model):
 
     @property
     def grade_num(self):
-        return int(self.grade)
+        return self.letter_to_num(self.grade)
 
     @property
     def difficulty_num(self):
-        return int(self.difficulty)
+        return self.letter_to_num(self.difficulty)
 
     def __str__(self):
         return f"{self.user} - {self.professor} - {self.course}"

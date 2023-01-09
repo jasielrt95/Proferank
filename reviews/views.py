@@ -14,13 +14,16 @@ class ReviewFormView(FormView):
     success_url = "/"
 
     def form_valid(self, form):
+        print("form is valid")
         user = self.request.user
         course = Course.objects.get(pk=self.kwargs["pk"])
-        # get the professor from the course
         professor = Professor.objects.get(pk=course.professor.pk)
+        form.save_form(user, course, professor)
+        return super().form_valid(form) 
 
-        form.save(user=user, course=course, professor=professor)
-        return super().form_valid(form)
+    def form_invalid(self, form):
+        print("form is invalid")
+        return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
