@@ -1,59 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="{% static 'img/logo.png' %}"
-                     class="d-block mx-lg-auto img-fluid"
-                     alt="Bootstrap Themes"
-                     width="700"
-                     height="500"
-                     loading="lazy"/>
-            </div>
-            <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3 title">IUPI Hub</h1>
-                <p class="lead">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam natus
-                    fugiat error est, similique ab vitae nesciunt non suscipit tempora
-                    accusamus pariatur ut commodi neque voluptate totam? Non, doloribus
-                    excepturi!
-                </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Profesores</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Confesiones</button>
+    <!-- Hero section -->
+    <section>
+        <div class="container flex flex-col mx-auto justify-between mt-8 py-20 md:flex-row w-full">
+            <div class="flex flex-col w-1/2 justify-center">
+                <!-- welcome message -->
+                <div class="text-4xl font-bold text-gray-800">
+                    <h1>
+                        <span class="block">Bienvenido a</span>
+                        <span class="block text-indigo-600">University Hub</span>
+                    </h1>
+                </div>
+                <!-- description -->
+                <div class="text-gray-600 mt-4">
+                    <p>
+                        El mejor lugar para eligir a tus cursos con los mejores
+                        profesores!
+                    </p>
+                </div>
+                <!-- call to action buttons -->
+                <div class="flex flex-row mt-8">
+                    <a href="#" class="bg-indigo-600 text-white p-2 rounded-lg">Ver cursos</a>
+                    <a href="#" class="bg-indigo-600 text-white p-2 rounded-lg ml-4">Ver profesores</a>
                 </div>
             </div>
+            <!-- hero image -->
+            <div class="w-full mt-8 lg:w-1/2 lg:mt-0 block">
+                <img src="https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+                     alt="hero"
+                     class="object-cover object-center w-full h-64 rounded-lg shadow-lg lg:h-96"/>
+            </div>
         </div>
-    </div>
-    <div class="trending-confessions container px-4 py-5">
-        <div class="confessions g-2 py-2 align-items-center container col-xxl-8">
-            <h1 class="display-4 fw-bold lh-1 mb-3">Confesiones Populares</h1>
-            {% for confession in confessions %}
-                <div class="confession gap">
-                    <div class="confession-title">
-                        <h3 class="display-6 fw-bold lh-1 mb-3">{{ confession.title }}</h3>
-                    </div>
-                    <div class="confession-body">
-                        <p class="lead">{{ confession.body|truncatewords:50 }}</p>
-                    </div>
-                    <hr class="hr-blurry" />
-                    <div class="confession-icons">
-                        <div class="confession-icon">
-                            <i class="bi bi-arrow-up-circle"></i>
-                            <i class="bi bi-arrow-down-circle"></i>
-                            <p>{{ confession.score }}</p>
-                        </div>
-                        <div class="confession-icon">
-                            <i class="bi bi-chat-right-text"></i>
-                            <p>{{ confession.num_comments }}</p>
-                        </div>
-                        <div class="confession-icon">
-                            <i class="bi bi-share-fill"></i>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    </section>
 {% endblock %}
