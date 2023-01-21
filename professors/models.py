@@ -42,6 +42,8 @@ class Professor(models.Model):
                 continue
             total += course.difficulty
             course_count += 1
+        if course_count == 0:
+            return "N/A"
         return self.num_to_letter(total / course_count)
 
     @property
@@ -56,6 +58,8 @@ class Professor(models.Model):
                 continue
             total += course.grade
             course_count += 1
+        if course_count == 0:
+            return "N/A"
         return self.num_to_letter(total / course_count)
 
     def pro_student(self):
