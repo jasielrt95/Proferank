@@ -11,7 +11,7 @@
             {% block title %}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body class="flex flex-col min-h-screen">
         {% include 'navbar.html' %}
         <div class="controls container">
             {% block controls %}{% endblock %}
@@ -19,7 +19,7 @@
         <div class="content">
             {% block content %}{% endblock %}
         </div>
-        <!-- {% include 'footer.html' %} -->
+        {% include 'footer.html' %}
         <script src="{% static 'js/navbar.js' %}"></script>
     </body>
 </html>
