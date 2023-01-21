@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <!-- Hero section -->
-    <section>
+    <section class="text-2xl">
         <div class="container flex flex-col mx-auto justify-between md:py-20 w-full md:mt-8 md:flex-row">
             <div class="flex flex-col mx-auto justify-center p-3 md:p-0">
                 <!-- welcome message -->
@@ -15,7 +15,7 @@
                 <!-- description -->
                 <div class="text-gray-600 mt-4">
                     <p>
-                        El mejor lugar para eligir a tus cursos con los mejores
+                        El mejor lugar para eligir tus cursos con los mejores
                         profesores!
                     </p>
                 </div>
@@ -41,12 +41,12 @@
     </section>
     <!-- End Hero section -->
     <!-- Que es University Hub? -->
-    <section class="bg-gray-100 mt-4">
+    <section class="bg-gray-100 mt-4 md:text-2xl">
         <div class="container mx-auto py-20">
             <div class="flex flex-col items-center">
                 <h2 class="text-4xl font-bold text-indigo-600">¿Qué es University Hub?</h2>
                 <p class="text-gray-600 text-center mt-4 px-4">
-                    University Hub es una plataforma en la que puedes calificar a tus profesores en base a los cursos que has tomado con ellos. Ademas, puedes hacer y ver confesiones anonimas de otros estudiantes.
+                    University Hub es una plataforma en la que puedes calificar a tus profesores en base a los cursos que has tomado con ellos. Además, puedes hacer y ver confesiones anónimas de otros estudiantes.
                 </p>
             </div>
             <div class="flex flex-col mt-8 space-y-6 md:flex-row">
@@ -58,9 +58,9 @@
                                  alt="teacher"
                                  class="w-12 h-12">
                         </div>
-                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Registrate</h3>
+                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Regístrate 📝</h3>
                         <p class="text-gray-600 text-center mt-4 px-4">
-                            Registrate en la plataforma para poder calificar a tus profesores y ver las calificaciones de otros estudiantes.
+                            Regístrate en la plataforma para poder calificar a tus profesores y ver las calificaciones de otros estudiantes.
                         </p>
                     </div>
                 </div>
@@ -71,9 +71,9 @@
                                  alt="teacher"
                                  class="w-12 h-12">
                         </div>
-                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Cursos y Profesores</h3>
+                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Cursos y Profesores 👨‍🏫</h3>
                         <p class="text-gray-600 text-center mt-4 px-4">
-                            Busca algun profesor o curso que te interese ver sus calificacion o que quieras calificar.
+                            Busca algún profesor o curso que te interese ver su calificación o que quieras calificar.
                         </p>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                                  alt="teacher"
                                  class="w-12 h-12">
                         </div>
-                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Confesiones</h3>
+                        <h3 class="text-2xl font-bold text-indigo-600 mt-4">Confiésate ✝️</h3>
                         <p class="text-gray-600 text-center mt-4 px-4">
-                            Lee las confesiones de otros estudiantes, haz una confesion anonima o comenta en las confesiones de otros estudiantes.
+                            Lee las confesiones de otros estudiantes, haz una confesión anónima o comenta en las confesiones de otros estudiantes.
                         </p>
                     </div>
                 </div>
@@ -95,89 +95,83 @@
     </section>
     <!-- End Que es University Hub? -->
     <!-- Trending Confessions -->
-    <section>
+    <section class="md:text-2xl">
         <div class="container mx-auto py-20">
             <!-- Header of section -->
             <div class="flex flex-col items-center">
                 <h2 class="text-4xl font-bold text-indigo-600">Confesiones</h2>
-                <p class="text-gray-600 text-center mt-4 px-4">Confesiones anonimas más hot del momento.</p>
+                <p class="text-gray-600 text-center mt-4 px-4">
+                    Confesiones más <span class="text-red-600 font-bold">🌶️</span> del momento.
+                </p>
             </div>
             <!-- top 5 confessions -->
-            <div class="flex flex-col mt-8 space-y-6 md:flex-row">
-                <!-- confession card design -->
-                <div class="flex flex-col w-1/2 mx-auto p-3 bg-gray-50 rounded-md">
-                    <!-- header of the card (Title and Date) -->
-                    <div class="flex flex-row justify-between">
-                        <h3 class="text-2xl font-bold text-indigo-600">Angel, me clave a tú pai</h3>
-                        <!-- time -->
-                        <div class="flex flex-row items-center justify-center space-x-1">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20"
-                                 fill="currentColor"
-                                 class="w-5 h-5">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
-                            </svg>
-                            <p class="text-gray-600 text-center">Hace 2 horas</p>
+            {% for confesion in confessions %}
+                <div class="flex flex-col my-12 space-y-6 md:flex-row">
+                    <!-- confession card design -->
+                    <div class="flex flex-col mx-auto p-4 w-11/12 bg-gray-100 rounded-md md:w-1/2 md:p-3 ">
+                        <!-- header of the card (Title and Date) -->
+                        <div class="flex flex-row justify-between">
+                            <div class="flex w-8/12">
+                                <h3 class="text-xl font-bold text-indigo-600 md:text-2xl">{{ confesion.title }}</h3>
+                            </div>
+                            <!-- time -->
+                            <div class="flex flex-row items-center justify-center space-x-1 w-1/3">
+                                <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-600 text-center">{{ confesion.time_since_str }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- body of the card (Confession) -->
-                    <p class="text-gray-600 text-left mt-4 px-4">
-                        Siempre leal, nunca sapo (Nunca sapo)
-                        De preso tú estarías pasando mapo (Pasando mapo)
-                        Yo tengo enemigos como El Chapo (Como El Chapo)
-                        Si Cápsula choteó, ¿por qué dicen que él es un capo? (¡Jaja!)
-                        Muéranse cabrone', a mí nadie me ayudó (A mí nadie me ayudó)
-                        Tengo al diablo en mi hombro
-                        Esta Glock e' mi religión (Esta Glock e' mi religión)
-                        Cucubanos brillan como neón (Como neón)
-                        Te miro a los ojo' y te aprieto el botón (¡Brrr!)
-                        En la selva, yo soy un león (Yo soy un león)
-                    </p>
-                    <!-- footer of the card (Comments and Likes) -->
-                    <div class="flex flex-row justify-around mt-4">
-                        <!-- likes and disklikes -->
-                        <div class="flex flex-row">
+                        <!-- body of the card (Confession) -->
+                        <p class="text-gray-600 text-left mt-4 px-4">{{ confesion.body }}</p>
+                        <!-- footer of the card (Comments and Likes) -->
+                        <div class="flex flex-row justify-around mt-4">
+                            <!-- likes and disklikes -->
+                            <div class="flex flex-row">
+                                <div class="flex flex-row items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20"
+                                         fill="currentColor"
+                                         class="w-5 h-5">
+                                        <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                                    </svg>
+                                    <p class="text-red-600">{{ confesion.upvotes }}</p>
+                                </div>
+                                <div class="flex flex-row items-center ml-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20"
+                                         fill="currentColor"
+                                         class="w-5 h-5">
+                                        <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+                                    </svg>
+                                    <p class="text-indigo-600">{{ confesion.downvotes }}</p>
+                                </div>
+                            </div>
+                            <!-- comments -->
+                            <div class="flex flex-row items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 20 20"
+                                     fill="currentColor"
+                                     class="w-5 h-5 mr-1">
+                                    <path fill-rule="evenodd" d="M3.43 2.524A41.29 41.29 0 0110 2c2.236 0 4.43.18 6.57.524 1.437.231 2.43 1.49 2.43 2.902v5.148c0 1.413-.993 2.67-2.43 2.902a41.102 41.102 0 01-3.55.414c-.28.02-.521.18-.643.413l-1.712 3.293a.75.75 0 01-1.33 0l-1.713-3.293a.783.783 0 00-.642-.413 41.108 41.108 0 01-3.55-.414C1.993 13.245 1 11.986 1 10.574V5.426c0-1.413.993-2.67 2.43-2.902z" clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-600">{{ confesion.num_comments }}</p>
+                            </div>
+                            <!-- share -->
                             <div class="flex flex-row items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 20 20"
                                      fill="currentColor"
                                      class="w-5 h-5">
-                                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                                    <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
                                 </svg>
-                                <p class="text-gray-600">10</p>
                             </div>
-                            <div class="flex flex-row items-center ml-4">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     viewBox="0 0 20 20"
-                                     fill="currentColor"
-                                     class="w-5 h-5">
-                                    <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
-                                </svg>
-                                <p class="text-gray-600">6</p>
-                            </div>
-                        </div>
-                        <!-- comments -->
-                        <div class="flex flex-row items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20"
-                                 fill="currentColor"
-                                 class="w-5 h-5">
-                                <path fill-rule="evenodd" d="M3.43 2.524A41.29 41.29 0 0110 2c2.236 0 4.43.18 6.57.524 1.437.231 2.43 1.49 2.43 2.902v5.148c0 1.413-.993 2.67-2.43 2.902a41.102 41.102 0 01-3.55.414c-.28.02-.521.18-.643.413l-1.712 3.293a.75.75 0 01-1.33 0l-1.713-3.293a.783.783 0 00-.642-.413 41.108 41.108 0 01-3.55-.414C1.993 13.245 1 11.986 1 10.574V5.426c0-1.413.993-2.67 2.43-2.902z" clip-rule="evenodd" />
-                            </svg>
-                            <p class="text-gray-600">23</p>
-                        </div>
-                        <!-- share -->
-                        <div class="flex flex-row items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20"
-                                 fill="currentColor"
-                                 class="w-5 h-5">
-                                <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
-                            </svg>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- End Trending Confessions -->
+</div>
 {% endblock %}

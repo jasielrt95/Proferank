@@ -29,6 +29,22 @@ class Confession(models.Model):
     @property
     def time_since(self):
         return (datetime.now(timezone.utc) - self.created_at).total_seconds() / 60
+    
+    @property
+    def time_since_str(self):
+        ts = self.time_since
+        if ts < 1:
+            return "Just now"
+        elif ts < 60:
+            return str(round(ts)) + " minutes ago"
+        elif ts < 1440:
+            return str(round(ts / 60)) + " hours ago"
+        elif ts < 43200:
+            return str(round(ts / 1440)) + " days ago"
+        elif ts < 525600:
+            return str(round(ts / 43200)) + " months ago"
+        else:
+            return str(round(ts / 525600)) + " years ago"
 
     # TODO: Implement a better hotness alogorithm that scales down the score the older the post is
     @property
