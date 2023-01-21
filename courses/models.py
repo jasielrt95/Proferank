@@ -62,5 +62,13 @@ class Course(models.Model):
                 total -= 1
         return total > 0
 
+    @property
+    def faculty(self):
+        return self.professor.faculty
+
+    @property
+    def college(self):
+        return self.professor.college
+
     def __str__(self):
         return self.codification
