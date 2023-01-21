@@ -47,9 +47,9 @@
                 <a href="#" class="link">Confesiones</a>
             </div>
             <!-- login or signin -->
-            <div class="hidden flex-row justify-center items-center space-x-4 text-xl md:flex">
-                <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Login</a>
-                <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Sign Up</a>
+            <div class="hidden flex-row justify-center items-center space-x-4 text-md md:flex">
+                <a href="" class="bg-indigo-600 text-white p-2 rounded-lg">Login</a>
+                <a href="" class="bg-indigo-600 text-white p-2 rounded-lg">Sign Up</a>
             </div>
             <!-- hamburguer menu -->
             <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
@@ -60,7 +60,7 @@
         </div>
         <!-- mobile menu -->
         <div class="hidden p-3 md:hidden" id="mobile-menu">
-            <div class="flex flex-col items-center space-y-4 text-xl text-gray-700">
+            <div class="flex flex-col items-center space-y-4 text-xl bg-gray-50 bg-blur rounded-lg text-gray-700">
                 <a href="{% url 'home:index' %}" class="link">Home</a>
                 <a href="{% url 'courses:all_courses' %}" class="link">Cursos</a>
                 <a href="{% url 'professors:all_professors' %}" class="link">Profesores</a>
@@ -70,6 +70,8 @@
                     <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
                     <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
+                <!-- a line delimiting the end of the menu -->
+                <div class="w-full h-0.5 bg-gray-700"></div>
             </div>
         </div>
     </nav>
