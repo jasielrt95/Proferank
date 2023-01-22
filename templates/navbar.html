@@ -11,11 +11,11 @@
                 </a>
             </div>
             <div>
-                <h1 class="hidden text-black md:block">University Hub</h1>
+                <h1 class="hidden text-black md:block md:text-2xl">University Hub</h1>
             </div>
         </div>
         <!-- links section -->
-        <div class="hidden flex-row items-center space-x-4 md:flex">
+        <div class="hidden flex-row items-center space-x-4 md:flex md:text-2xl">
             <a href="{% url 'home:index' %}" class="link">Home</a>
             <a href="{% url 'courses:all_courses' %}" class="link">Cursos</a>
             <a href="{% url 'professors:all_professors' %}" class="link">Profesores</a>
@@ -48,8 +48,10 @@
             </div>
             <!-- login or signin -->
             <div class="hidden flex-row justify-center items-center space-x-4 text-md md:flex">
-                <a href="" class="bg-indigo-600 text-white p-2 rounded-lg">Login</a>
-                <a href="" class="bg-indigo-600 text-white p-2 rounded-lg">Sign Up</a>
+                <a href="{% url 'accounts:login' %}"
+                   class="bg-indigo-600 text-white p-2 rounded-lg">Login</a>
+                <a href="{% url 'accounts:register' %}"
+                   class="bg-indigo-600 text-white p-2 rounded-lg">Sign Up</a>
             </div>
             <!-- hamburguer menu -->
             <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
@@ -67,7 +69,8 @@
                 <a href="#" class="link">Confesiones</a>
                 <!-- login buttons -->
                 <div class="flex flex-row justify-center items-center space-x-4 text-xl">
-                    <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
+                    <a href="{% url 'accounts:login' %}"
+                       class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
                     <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
                 <!-- a line delimiting the end of the menu -->
