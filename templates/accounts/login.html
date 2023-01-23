@@ -54,13 +54,10 @@
                            class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xl"/>
                 </div>
                 <!-- Error Message -->
-                {% if form.errors %}
+                {% if error %}
                     <div class="flex flex-col items-center justify-center space-y-2">
-                        <h1 class="text-xl font-bold text-red-600">Error</h1>
                         <ul class="flex flex-col items-center justify-center space-y-2">
-                            {% for field in form %}
-                                {% for error in field.errors %}<li class="text-red-600">{{ error }}</li>{% endfor %}
-                            {% endfor %}
+                            <li class="text-red-600">{{ error }}</li>
                         </ul>
                     </div>
                 {% endif %}
