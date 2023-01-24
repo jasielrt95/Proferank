@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block head %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/professors.css' %}" />
 {% endblock %}
 {% block controls %}
     {% include 'controls/professor_list_controls.html' %}
@@ -11,10 +10,10 @@
     <section>
         <!-- Section title -->
         <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Profesores</h1>
-        <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center">
+        <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center md:justify-center">
             <!-- Section title -->
             {% for professor in professors %}
-                <div class="flex professor flex-col md:w-3/12 rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:hover:animate-bounce"
+                <div class="flex toggle flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-bounce"
                      data-college="{{ professor.college }}"
                      data-faculty="{{ professor.faculty }}"
                      data-name="{{ professor.first_name }} {{ professor.last_name }}">
@@ -41,4 +40,7 @@
             {% endfor %}
         </div>
     </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/filter.js' %}"></script>
 {% endblock %}
