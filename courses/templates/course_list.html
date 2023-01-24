@@ -1,17 +1,50 @@
 {% extends 'base.html' %}
-{% block content %}
-    <ul>
-        <!-- Iterate over object_list -->
-        {% for object in object_list %}
-            <!-- Display Objects -->
-            <li>
-                <a href="{{ object.pk }}">{{ object.name }}</a>
-            </li>
-            <li>{{ object.average_grade }}</li>
-            <hr />
-            <!-- If object_list is empty  -->
-        {% empty %}
-            <li>No objects yet.</li>
-        {% endfor %}
-    </ul>
+{% block head %}
+    {% load static %}
 {% endblock %}
+{% block controls %}
+    {% include 'controls/course_list_controls.html' %}
+{% endblock %}
+{% block content %}
+    <!-- Course List Section -->
+    <section>
+        <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Cursos</h1>
+        <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center md:justify-center">
+            {% for course in courses %}
+                <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-bounce"
+                     data-college="{{ course.college }}"
+                     data-faculty="{{ course.faculty }}"
+                     data-name="{{ course.name }}">
+                    <a href="{{ course.pk }}" class="space-y-2">
+                        <!-- header -->
+                        <div class="flex flex-col space-x-1 items-start md:text-2xl">
+                            <p class="font-bold text-gray-900">{{ course.name }}</p>
+                        </div>
+                        <!-- diving line -->
+                        <!-- body -->
+                        <div class="flex flex-col justify-start items-start md:text-md">
+                            <p class="flex flex-row">
+                                <span class="font-bold text-gray-700">Universidad:</span> <span class="text-gray-600">{{ course.college }}</span>
+                                <img src="{% static 'img/upr_logo.jpg' %}"
+                                     alt=""
+                                     class="ml-1 w-5 h-5 rounded-full">
+
+                            </p>
+                            <p>
+                                <span class="font-bold text-gray-700">Facultad:</span> <span class="text-gray-600">{{ course.faculty }}</span>
+                            </p>
+                            <p>
+                                <span class="font-bold text-gray-700">Profesor:</span> <span class="text-gray-600">{{ course.professor }}</span>
+                            </p>
+                            <p>
+                                <span class="font-bold text-gray-700">Codificación:</span> <span class="text-gray-600">{{ course.codification }}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    {% endblock %}
+    {% block scripts %}
+        <script src="{% static 'js/filter.js' %}"></script>
+    {% endblock %}
