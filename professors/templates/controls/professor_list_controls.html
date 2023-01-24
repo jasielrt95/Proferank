@@ -1,106 +1,55 @@
 <!-- Centered Section with 3 divs, one for two select buttons, one in the middle for a search bar, and another one with a link for adding new professors -->
-<section class="flex flex-col md:flex-row bg-gray-100 rounded-md mx-auto md:justify-center md:items-center md:space-x-4 md:p-6 my-8">
+<section class="container flex  flex-col md:flex-row bg-gray-100 md:rounded-xl mx-auto md:justify-center md:items-center md:space-x-4 md:p-6 my-8">
     <!-- Two selects, for college and faculty -->
-    <div class="flex flex-col md:flex-row md:justify-center md:items-center md:space-x-4">
+    <div class="flex flex-row justify-around space-x-4 p-2 mt-2 md:justify-center items-center">
         <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
             <label for="college" class="text-gray-700 font-bold">Universidad</label>
             <select name="college"
                     id="college_filter"
-                    class="border border-gray-300 rounded-md p-2">
-                <option value="upr">
-                    Universidad de Puerto Rico
+                    class="border border-gray-300 rounded-md p-2 md:px-8">
+                <option value="">
+                    Todas
                 </option>
-                <option value="uprm">
-                    Universidad de Puerto Rico en Mayagüez
-                </option>
-                <option value="uprrp">
-                    Universidad de Puerto Rico en Río Piedras
-                </option>
-                <option value="uprhumacao">
-                    Universidad de Puerto Rico en Humacao
-                </option>
-                <option value="uprcarolina">
-                    Universidad de Puerto Rico en Carolina
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Mayagüez
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Ponce
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Arecibo
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Cayey
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Utuado
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Ponce
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Aguadilla
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Manatí
-                </option>
-                <option value="uprrecinto">
-                    Universidad de Puerto Rico en Recinto de Bayamón
-                </option>
+                {% for college in universities %}
+                    <option value="{{ college }}">
+                        {{ college }}
+                    </option>
+                {% endfor %}
             </select>
         </div>
-        <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
+        <div class="flex flex-col justify-center items-center md:space-x-4">
             <label for="faculty" class="text-gray-700 font-bold">Facultad</label>
             <select name="department"
                     id="faculty_filter"
-                    class="border border-gray-300 rounded-md p-2">
-                <option value="ciencias">
-                    Ciencias
+                    class="border border-gray-300 rounded-md p-2 min-w-0 md:px-8">
+                <option value="">
+                    Todas
                 </option>
-                <option value="Naturales">
-                    Naturales
-                </option>
-                <option value="derecho">
-                    Derecho
-                </option>
-                <option value="educacion">
-                    Educación
-                </option>
-                <option value="humanidades">
-                    Humanidades
-                </option>
-                <option value="ingenieria">
-                    Ingeniería
-                </option>
-                <option value="medicina">
-                    Medicina
-                </option>
-                <option value="nursing">
-                    Nursing
-                </option>
-                <option value="psicologia">
-                    Psicología
-                </option>
-                <option value="salud">
-                    Salud
-                </option>
+                {% for faculty in departments %}
+                    <option value="{{ faculty }}">
+                        {{ faculty }}
+                    </option>
+                {% endfor %}
             </select>
         </div>
+        <div class="flex flex-col md:hidden justify-center items-center md:space-x-4">
+            <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
+            <a href="/professors/add"
+               class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+profesor</a>
+        </div>
     </div>
-    <!-- Search bar -->
-    <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
+    <!-- Centralized search bar with 90% width on mobile -->
+    <div class="flex flex-col justify-center items-center p-2 mt-2 mb-4 md:space-x-4 md:mb-0">
         <label for="search" class="text-gray-700 font-bold">Buscar</label>
-        <div>
+        <div class="w-full flex justify-center items-center">
             <input type="search"
                    name="search"
                    id="search-bar"
-                   class="border border-gray-300 rounded-md p-2">
+                   class="border border-gray-300 rounded-md p-2 mx-auto w-11/12">
         </div>
     </div>
     <!-- Link to add new professors -->
-    <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
+    <div class="hidden md:flex flex-col p-2 mt-2 md:justify-center md:items-center md:space-x-4">
         <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
         <a href="/professors/add"
            class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+ profesor</a>
