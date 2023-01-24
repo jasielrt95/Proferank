@@ -15,7 +15,11 @@
 .DS_Store
 
 
+# ignore sqlite3 database
+*.sqlite3
 
+# ignore static images
+/static/img/**
 
 
 
