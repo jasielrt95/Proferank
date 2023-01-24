@@ -8,6 +8,19 @@ class CourseListView(ListView):
     model = Course
     template_name = "course_list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        universities = set()
+        departments = set()
+        for course in Course.objects.all():
+            universities.add(course.professor.college)
+            departments.add(course.professor.faculty)
+        courses = Course.objects.all()
+        context["courses"] = courses
+        context["universities"] = universities 
+        context["departments"] = departments
+        return context
+
 
 class CourseDetailView(DetailView):
     model = Course
