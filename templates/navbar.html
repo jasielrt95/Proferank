@@ -1,25 +1,44 @@
 {% load static %}
 {% if user.is_authenticated %}
-    <nav class="container flex flex-row mx-auto justify-between my-4">
-        <!-- logo section -->
-        <div class="flex flex-row items-center">
-            <div>
-                <a href="{% url 'home:index' %}">
-                    <img src="{% static 'img/logo.svg' %}"
-                         alt="logo"
-                         class="logo dark:fill-white"/>
-                </a>
+    <nav>
+        <div class="container flex flex-row mx-auto justify-between items-center my-4">
+            <!-- logo section -->
+            <div class="flex flex-row items-center">
+                <div>
+                    <a href="{% url 'home:index' %}">
+                        <img src="{% static 'img/logo.svg' %}"
+                             alt="logo"
+                             class="logo dark:fill-white"/>
+                    </a>
+                </div>
+                <div>
+                    <h1 class="hidden text-black md:block md:text-2xl">University Hub</h1>
+                </div>
             </div>
-            <div>
-                <h1 class="hidden text-black md:block md:text-2xl">University Hub</h1>
+            <!-- links section -->
+            <div class="hidden flex-row items-center space-x-4 md:flex md:text-2xl">
+                <a href="{% url 'home:index' %}" class="link">Home</a>
+                <a href="{% url 'courses:all_courses' %}" class="link">Cursos</a>
+                <a href="{% url 'professors:all_professors' %}" class="link">Profesores</a>
+                <a href="#" class="link">Confesiones</a>
+            </div>
+            <!-- hamburguer menu -->
+            <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
+                <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
+                <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
+                <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
             </div>
         </div>
-        <!-- links section -->
-        <div class="hidden flex-row items-center space-x-4 md:flex md:text-2xl">
-            <a href="{% url 'home:index' %}" class="link">Home</a>
-            <a href="{% url 'courses:all_courses' %}" class="link">Cursos</a>
-            <a href="{% url 'professors:all_professors' %}" class="link">Profesores</a>
-            <a href="#" class="link">Confesiones</a>
+        <!-- mobile menu -->
+        <div class="hidden p-3 md:hidden" id="mobile-menu">
+            <div class="flex flex-col items-center space-y-4 text-xl bg-gray-50 bg-blur rounded-lg text-gray-700">
+                <a href="{% url 'home:index' %}" class="link">Home</a>
+                <a href="{% url 'courses:all_courses' %}" class="link">Cursos</a>
+                <a href="{% url 'professors:all_professors' %}" class="link">Profesores</a>
+                <a href="#" class="link">Confesiones</a>
+                <!-- a line delimiting the end of the menu -->
+                <div class="w-full h-0.5 bg-gray-700"></div>
+            </div>
         </div>
     </nav>
 {% else %}
@@ -74,7 +93,8 @@
                     <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
                 <!-- a line delimiting the end of the menu -->
-                <div class="w-full h-0.5 bg-gray-700"></div>
+                <div class="w-full h-0.5 bg-gray-700">
+                </div>
             </div>
         </div>
     </nav>
