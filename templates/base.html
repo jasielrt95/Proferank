@@ -20,7 +20,7 @@
             {% block content %}{% endblock %}
         </div>
         {% include 'footer.html' %}
+        {% block scripts %}{% endblock %}
         <script src="{% static 'js/navbar.js' %}"></script>
-        <script src="{% static 'js/filter.js' %}"></script>
     </body>
 </html>
