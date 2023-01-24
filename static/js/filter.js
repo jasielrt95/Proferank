@@ -1,3 +1,4 @@
+console.log("Loaded filter.js");
 function filterCollege() {
   var college = document.getElementById("college_filter").value;
   if (college == "") {
@@ -66,9 +67,11 @@ function search() {
     var professor = professors[i];
     var professor_name = professor.getAttribute("data-name");
     if (professor_name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
-      professor.style.display = "block";
+      professor.style.display = "flex";
+      console.log(professor_name);
     } else {
       professor.style.display = "none";
+      console.log(professor_name);
     }
   }
 }
