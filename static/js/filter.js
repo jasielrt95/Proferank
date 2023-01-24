@@ -4,7 +4,7 @@ function filterCollege() {
   if (college == "") {
     return;
   }
-  var professors = document.getElementsByClassName("professor");
+  var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
     var professor_college = professor.getAttribute("data-college");
@@ -21,12 +21,12 @@ function filterFaculty() {
   if (faculty == "") {
     return;
   }
-  var professors = document.getElementsByClassName("professor");
+  var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
     var professor_faculty = professor.getAttribute("data-faculty");
     if (faculty == professor_faculty) {
-      professor.style.display = "block";
+      professor.style.display = "flex";
     } else {
       professor.style.display = "none";
     }
@@ -47,13 +47,13 @@ function filter() {
     filterCollege();
     return;
   }
-  var professors = document.getElementsByClassName("professor");
+  var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
     var professor_college = professor.getAttribute("data-college");
     var professor_faculty = professor.getAttribute("data-faculty");
     if (college == professor_college && faculty == professor_faculty) {
-      professor.style.display = "block";
+      professor.style.display = "flex";
     } else {
       professor.style.display = "none";
     }
@@ -62,7 +62,7 @@ function filter() {
 
 function search() {
   var search = document.getElementById("search-bar").value;
-  var professors = document.getElementsByClassName("professor");
+  var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
     var professor_name = professor.getAttribute("data-name");
