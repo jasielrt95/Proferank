@@ -29,6 +29,7 @@ class ProfessorListView(ListView):
         for professor in Professor.objects.all():
             departments.add(professor.faculty)
             universities.add(professor.college)
+        context["professors"] = Professor.objects.all()
         context["departments"] = departments
         context["universities"] = universities
         return context
