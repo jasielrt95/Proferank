@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth import get_user_model
+from datetime import datetime, timezone
 
 
 User = get_user_model()
@@ -26,6 +26,26 @@ class Comment(models.Model):
     @property
     def score(self):
         return self.upvotes - self.downvotes
+    
+    @property
+    def time_since(self):
+        return (datetime.now(timezone.utc) - self.created_at).total_seconds() / 60
+    
+    @property
+    def time_since_str(self):
+        ts = self.time_since
+        if ts < 1:
+            return "Just now"
+        elif ts < 60:
+            return str(round(ts)) + " minutes ago"
+        elif ts < 1440:
+            return str(round(ts / 60)) + " hours ago"
+        elif ts < 43200:
+            return str(round(ts / 1440)) + " days ago"
+        elif ts < 525600:
+            return str(round(ts / 43200)) + " months ago"
+        else:
+            return str(round(ts / 525600)) + " years ago"
 
     def __str__(self):
         return self.text
