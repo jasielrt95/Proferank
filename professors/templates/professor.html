@@ -15,30 +15,42 @@
                  src="{% static 'img/upr_logo.jpg' %}"
                  alt="University logo">
         </div>
+
         <!-- Average Statistics -->
-        <div class="flex flex-col items-center justify-between w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md md:flex-row">
-            <!-- averages -->
-            <div class="flex flex-row items-center justify-center w-1/3 md:flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Dificultad</h1>
-                <h1 class="text-2xl font-bold text-gray-800">{{professor.difficulty}}</h1>
+        <div class="flex flex-col items-center justify-between w-9/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
+                <hr class=" border-gray-300">
             </div>
-            <!-- difficulty -->
-            <div class="flex flex-row items-center justify-center w-1/3 md:flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Nota</h1>
-                <h1 class="text-2xl font-bold text-gray-800">{{professor.grade}}</h1>
-            </div>
-            <!-- workload -->
-            <div class="flex flex-row items-center justify-center w-1/3 md:flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Oraganizado</h1>
-                <h1 class="text-2xl font-bold text-gray-800">{{professor.organized}}</h1>
-            </div>
-            <!-- pro student -->
-            <div class="flex flex-row items-center justify-center w-1/3 md:flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Pro estudiante</h1>
-                <h1 class="text-2xl font-bold text-gray-800">{{professor.pro_student}}</h1>
+            <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden text-2xl font-bold text-gray-800 md:block">Dificultad</h2>
+                    <h2 class="hidden text-2xl font-bold text-gray-800 md:block">{{professor.difficulty}}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Dificultad: {{professor.difficulty}}</h2>
+                </div>
+                <!-- difficulty -->
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800">Nota</h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800">{{professor.grade}}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Nota: {{professor.grade}}</h2>
+                </div>
+                <!-- workload -->
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Oraganizado</h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">{{professor.organized}}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Organizado: {{professor.organized}}</h2>
+                </div>
+                <!-- pro student -->
+                <div class="flex flex-row items-center justify-center  md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Pro estudiante</h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">{{professor.pro_student}}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Pro estudiante: {{professor.pro_student}}</h2>
+                </div>
             </div>
         </div>
+
     </section>
+
     <!-- Courses by this professor -->
     <section class="flex flex-col justify-center items-center mt-12">
         <!-- header -->
@@ -52,7 +64,7 @@
                      data-college="{{ course.college }}"
                      data-faculty="{{ course.faculty }}"
                      data-name="{{ course.name }}">
-                    <a href="{{ course.pk }}" class="space-y-2">
+                    <a href="{% url 'courses:specific_course' course.pk %}" class="space-y-2">
                         <!-- header -->
                         <div class="flex flex-col space-x-1 items-start md:text-2xl">
                             <p class="font-bold text-gray-900">{{ course.name }}</p>
@@ -77,6 +89,7 @@
             {% endfor %}
         </div>
     </section>
+
     <!-- Comments section -->
     <section class="flex flex-col justify-center items-center mt-12">
         <div>
