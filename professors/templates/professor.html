@@ -1,102 +1,172 @@
 {% extends 'base.html' %}
 {% block head %}
     {% load static %}
-    {% load crispy_forms_filters %}
-    {% load crispy_forms_tags %}
-    <link rel="stylesheet" href="{% static 'css/professor.css' %}" />
     {% block title %}<title>{{ profesor.first_name }}</title>{% endblock %}
 {% endblock %}
 {% block content %}
-    <div class="professor container-lg mb-4 mt-4">
-        <div class="card">
-            <div class="d-flex card-header align-items-center">
-                <h1>{{ professor.first_name }} {{ professor.last_name }}</h1>
-                <img src="https://scontent.fsju1-1.fna.fbcdn.net/v/t1.6435-9/48396515_2081243305286968_6358412517215043584_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=B4_NdJJvmCgAX9tzO7m&_nc_ht=scontent.fsju1-1.fna&oh=00_AfDWOU91TrpsHxrEh4LjVFH9FwW-vbpQsY4bTXOSi5ORjA&oe=63E197EE"
-                     alt=""
-                     class="img-responsive"
-                     width="35"
-                     height="35"/>
+    <!-- Professor details card -->
+    <section class="flex flex-col items-center justify-center mt-12">
+        <!-- Card header -->
+        <div class="flex flex-row items-center">
+            <!-- Professor name -->
+            <h1 class="text-3xl font-bold text-gray-800">{{ professor.first_name }} {{ professor.last_name }}</h1>
+            <!-- University logo -->
+            <img class="w-10 h-10 ml-2 rounded-full"
+                 src="{% static 'img/upr_logo.jpg' %}"
+                 alt="University logo">
+        </div>
+        <!-- Card body (Statistics)-->
+        <div class="flex flex-row items-center justify-center w-1/3 mt-4">
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Courses</h1>
+                <h1 class="text-2xl font-bold text-gray-800">0</h1>
             </div>
-            <div class="card-body">
-                <div class="statistics row">
-                    <h3 class="text-center">Estadisticas Promedio</h3>
-                    <div class="col d-flex justify-content-center">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Dificultad</p>
-                                <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.difficulty }}</p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Nota Obtenida</p>
-                                <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.grade }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Pro estudiante</p>
-                                <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.pro_student }}</p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Organizado</p>
-                                <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ professor.organized }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Reviews</h1>
+                <h1 class="text-2xl font-bold text-gray-800">0</h1>
+            </div>
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Comments</h1>
+                <h1 class="text-2xl font-bold text-gray-800">0</h1>
             </div>
         </div>
-    </div>
-    <div class="courses container mb-4 mt-4 ">
-        <h2 class="text-center m-4">Cursos</h2>
-        <div class="row">
+        <!-- Average Statistics -->
+        <div class="flex flex-row items-center justify-between w-1/2 p-4 mt-8 rounded-xl bg-gray-100 ">
+            <!-- averages -->
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Difficulty</h1>
+                <h1 class="text-2xl font-bold text-gray-800">A</h1>
+            </div>
+            <!-- difficulty -->
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Grade</h1>
+                <h1 class="text-2xl font-bold text-gray-800">B</h1>
+            </div>
+            <!-- workload -->
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Organized</h1>
+                <h1 class="text-2xl font-bold text-gray-800">No</h1>
+            </div>
+            <!-- pro student -->
+            <div class="flex flex-col items-center justify-center w-1/3">
+                <h1 class="text-2xl font-bold text-gray-800">Pro Student</h1>
+                <h1 class="text-2xl font-bold text-gray-800">Sí</h1>
+            </div>
+        </div>
+    </section>
+    <!-- Courses by this professor -->
+    <section class="flex flex-col justify-center items-center mt-12">
+        <!-- header -->
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">Courses</h1>
+        </div>
+        <!-- courses -->
+        <div class="flex flex-row justify-center items-center">
             {% for course in courses %}
-                <a href="{% url 'courses:specific_course' course.pk %}"
-                   class="col-4 mt-4">
-                    <div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>{{ course.codification }}</h3>
-                            </div>
-                            <div class="card-body">
-                                <p>{{ course.name }}</p>
-                            </div>
+                <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-bounce"
+                     data-college="{{ course.college }}"
+                     data-faculty="{{ course.faculty }}"
+                     data-name="{{ course.name }}">
+                    <a href="{{ course.pk }}" class="space-y-2">
+                        <!-- header -->
+                        <div class="flex flex-col space-x-1 items-start md:text-2xl">
+                            <p class="font-bold text-gray-900">{{ course.name }}</p>
                         </div>
-                    </div>
-                </a>
+                        <!-- diving line -->
+                        <!-- body -->
+                        <div class="flex flex-col justify-start items-start md:text-md">
+                            <p class="flex flex-row">
+                                <span class="font-bold text-gray-700">Universidad:</span> <span class="text-gray-600">{{ course.college }}</span>
+                                <img src="{% static 'img/upr_logo.jpg' %}"
+                                     alt=""
+                                     class="ml-1 w-5 h-5 rounded-full">
+                            </p>
+                            <p>
+                                <span class="font-bold text-gray-700">Facultad:</span> <span class="text-gray-600">{{ course.faculty }}</span>
+                            </p>
+                            <p>
+                                <span class="font-bold text-gray-700">Codificación:</span> <span class="text-gray-600">{{ course.codification }}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
             {% endfor %}
         </div>
-    </div>
-    <div class="comments container mb-4 mt-4">
-        <h2 class="text-center m-4">Comentarios</h2>
+    </section>
+    <!-- Comments section -->
+    <section class="flex flex-col justify-center items-center mt-12">
+        <!-- header -->
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">Comments</h1>
+        </div>
+        <!-- comments -->
         {% for comment in comments %}
-            <div class="comment card mb-4"">
-                <div class="card-header">
-                    <h3>{{ comment.course.codification }}</h3>
+            <div class="flex flex-col justify-center items-center w-1/2 p-4 mt-8 rounded-xl bg-gray-100 ">
+                <div class="flex flex-row justify-between items-center w-full">
+                    <div class="flex flex-row items-center">
+                        <h1 class="text-2xl font-bold text-gray-800 ml-2">{{ comment.user }}</h1>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <h1 class="text-2xl font-bold text-gray-800">
+                            {{ comment.updated_at }}
+                        </h1>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p>{{ comment.text }}</p>
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">{{ comment.user.first_name }} {{ comment.user.last_name }}</p>
-                                <i class="bi bi-dot"></i>
-                                <p class="m-0">{{ comment.updated_at }}</p>
-                            </div>
+                <div class="flex flex-row justify-between items-center w-full mt-4">
+                    <div class="flex flex-row items-center">
+                        <h1 class="text-2xl font-bold text-gray-800">
+                            {{ comment.text }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-around">
+                    <!-- likes and disklikes -->
+                    <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-red-600">
+                                {{ comment.upvotes }}
+                            </p>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <p class="m-0">{{ comment.score }}</p>
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <i class="bi bi-hand-thumbs-down"></i>
+                        <div class="flex flex-row items-center ml-4">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-indigo-600">
+                                {{ comment.downvotes }}
+                            </p>
                         </div>
+                    </div>
+                    <!-- comments -->
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor"
+                             class="w-5 h-5 mr-1">
+                            <path fill-rule="evenodd" d="M3.43 2.524A41.29 41.29 0 0110 2c2.236 0 4.43.18 6.57.524 1.437.231 2.43 1.49 2.43 2.902v5.148c0 1.413-.993 2.67-2.43 2.902a41.102 41.102 0 01-3.55.414c-.28.02-.521.18-.643.413l-1.712 3.293a.75.75 0 01-1.33 0l-1.713-3.293a.783.783 0 00-.642-.413 41.108 41.108 0 01-3.55-.414C1.993 13.245 1 11.986 1 10.574V5.426c0-1.413.993-2.67 2.43-2.902z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-600">
+                            {{ comment.num_comments }}
+                        </p>
+                    </div>
+                    <!-- share -->
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             fill="currentColor"
+                             class="w-5 h-5">
+                            <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
+                        </svg>
                     </div>
                 </div>
             </div>
         {% endfor %}
-    </div>
-{% endblock %}
+    {% endblock %}
