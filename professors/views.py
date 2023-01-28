@@ -58,6 +58,17 @@ class ProfessorCreateView(LoginRequiredMixin, CreateView):
     fields = ["first_name", "last_name", "college", "faculty"]
     success_url = reverse_lazy("professors:all_professors")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        departments = set()
+        universities = set()
+        for professor in Professor.objects.all():
+            departments.add(professor.faculty)
+            universities.add(professor.college)
+        context["departments"] = departments
+        context["universities"] = universities
+        return context
+
 
 class ProfessorFilterView(ListView):
     model = Professor
