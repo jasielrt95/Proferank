@@ -1,22 +1,141 @@
 {% extends 'base.html' %}
+{% block head %}
+    {% load static %}
+{% endblock %}
 {% block content %}
-    <a href="{% url 'reviews:rate_course' course.pk %}">Rate Review</a>
-    <ul>
-        <li>
-            <p>{{ course.name }}</p>
-        </li>
-        <li>
-            <p>{{ course.professor }}</p>
-        </li>
-        <li>
-            <p>{{ course.average_grade }}</p>
-        </li>
-        <h1>comments</h1>
-        {% for comment in comments %}
-            <li>
-                <p>{{ comment.text }}</p>
-                <p>Score: {{ comment.score }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    <!-- Professor details card -->
+    <section class="flex flex-col items-center justify-center mt-12">
+        <!-- Card header -->
+        <div class="flex flex-col items-center">
+            <div class="flex flex-row items-center justify-center">
+                <a href="{% url 'professors:specific_professor' professor.pk %}">
+                    <h1 class="text-3xl font-bold text-gray-800">{{ professor.first_name }} {{ professor.last_name }}</h1>
+                </a>
+                <img class="w-10 h-10 ml-2 rounded-full"
+                     src="{% static 'img/upr_logo.jpg' %}"
+                     alt="University logo">
+            </div>
+            <div class="flex flex-row items-center justify-center text-center">
+                <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
+            </div>
+        </div>
+        <!-- Average Statistics -->
+        <div class="flex flex-col items-center justify-between w-10/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
+            <div class="flex flex-row">
+                <div class="flex flex-col">
+                    <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
+                    <hr class=" border-gray-300">
+                </div>
+                {% if user.is_authenticated and not user_rated %}
+                    <div class="flex flex-col ml-4">
+                        <a href="{% url 'reviews:rate_course' pk=course.pk  %}"
+                           class="flex flex-row items-center justify-center px-2 py-1 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white">
+                            <p class="hidden md:block">Calificar 📝</p>
+                            <p class="md:hidden">📝</p>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden text-2xl font-bold text-gray-800 md:block">Dificultad</h2>
+                    <h2 class="hidden text-2xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Dificultad: {{ course.difficulty_letter }}</h2>
+                </div>
+                <!-- difficulty -->
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800">Nota</h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Nota: {{ course.grade_letter }}</h2>
+                </div>
+                <!-- workload -->
+                <div class="flex flex-row items-center justify-center md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Oraganizado
+                    </h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
+                    {{ course.organized_letter }}</h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Organizado: {{ course.organized_letter }}</h2>
+                </div>
+                <!-- pro student -->
+                <div class="flex flex-row items-center justify-center  md:flex-col">
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
+                        Pro estudiante
+                    </h2>
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
+                        {{ course.pro_student_letter }}
+                    </h2>
+                    <h2 class="text-lg font-bold text-gray-800 md:hidden">Pro estudiante: {{ course.pro_student_letter }}</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Comments section -->
+    <section class="flex flex-col justify-center items-center mt-12">
+        <div class="flex flex-row">
+            <h1 class="text-3xl font-bold text-gray-800">Comentarios</h1>
+            {% if not user_commented %}
+                <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                        id="toggle-comment-form">
+                    <p class="">+</p>
+                </button>
+            {% endif %}
+        </div>
+        <form action="{% url 'comments:course_comment' course.pk %}"
+              method="post"
+              class="hidden flex-col justify-center items-center mt-4 md:w-1/3"
+              id="comment-form">
+            {% csrf_token %}
+            <label for="comment" class="sr-only">Comentario</label>
+            <textarea name="comment"
+                      id="comment"
+                      cols="30"
+                      rows="10"
+                      class="md:w-3/4 p-2 rounded-md shadow-md border border-gray-200"></textarea>
+            <button type="submit"
+                    class="flex flex-row items-center justify-center px-2 mt-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500">
+                <p class="text-lg font-bold text-white">Enviar</p>
+            </button>
+        </form>
+        <div class="flex flex-col justify-center items-center">
+            {% for comment in comments %}
+                <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl md:hover:animate-pulse">
+                    <div class="flex justify-between">
+                        <p class="text-2xl font-bold text-gray-900">{{ comment.user }} - {{ comment.course }}</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ comment.time_since_str }}</p>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-800">{{ comment.text }}</p>
+                    </div>
+                    <div class="flex justify-end items-end">
+                        <div class="flex flex-row items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-red-600">{{ comment.upvotes }}</p>
+                        </div>
+                        <div class="flex flex-row items-center ml-4">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-indigo-600">{{ comment.downvotes }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if comments|length == 0 %}
+                <div class="flex flex-col justify-center items-center w-3/4">
+                    <p class="text-gray-400 text-center mt-12">No hay comentarios disponibles</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/toggles.js' %}"></script>
 {% endblock %}
