@@ -1,38 +1,34 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import View
 from django.shortcuts import render, redirect
-from .forms import LoginForm, RegisterForm
-from django.contrib.auth import get_user_model
+
 
 User = get_user_model()
 
 
-class LoginView(View):
-    def post(self, request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            next = request.GET.get("next")
-            return redirect(next or "/")
-        else:
-            form = LoginForm()
-            return render(
-                request,
-                "accounts/login.html",
-                {"error": "Invalid username or password", "form": form},
-            )
-
-    def get(self, request):
-        form = LoginForm()
-        return render(request, "accounts/login.html", {"form": form})
+class LoginView(LoginView):
+    template_name = "accounts/login.html"
+    redirect_authenticated_user = True
+    redirect_field_name = "next"
+    
+    def get_success_url(self):
+        return self.get_redirect_url()
+    
+    def get_redirect_url(self) -> str:
+        next = self.request.GET.get(self.redirect_field_name)
+        if not next:
+            next = self.request.POST.get(self.redirect_field_name)
+        if not next:
+            next = "/"
+        return next
+    
 
 
-class LogoutView(View):
-    def get(self, request):
-        logout(request)
-        return redirect("/")
+class LogoutView(LogoutView):
+    template_name = "accounts/logout.html"
+    redirect_field_name = "next"
+    next_page = "/accounts/login"
 
 
 class RegisterView(View):
@@ -41,11 +37,10 @@ class RegisterView(View):
         password = request.POST.get("password")
         password_confirm = request.POST.get("password_confirm")
         if password != password_confirm:
-            form = RegisterForm()
             return render(
                 request,
                 "accounts/register.html",
-                {"error": "Passwords do not match", "form": form},
+                {"error": "Passwords do not match"},
             )
         else:
             user = User.objects.create_user(username=username, password=password)
@@ -54,5 +49,4 @@ class RegisterView(View):
             return redirect("/")
 
     def get(self, request):
-        form = RegisterForm()
-        return render(request, "accounts/register.html", {"form": form})
+        return render(request, "accounts/register.html")

@@ -64,9 +64,9 @@
             </div>
             <!-- login or signin -->
             <div class="hidden flex-row justify-center items-center space-x-4 text-md md:flex">
-                <a href="{% url 'accounts:login' %}"
+                <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                    class="bg-indigo-600 text-white p-2 rounded-lg">Login</a>
-                <a href="{% url 'accounts:register' %}"
+                <a href="{% url 'accounts:register' %}?next={{ request.path }}"
                    class="bg-indigo-600 text-white p-2 rounded-lg">Sign Up</a>
             </div>
             <!-- hamburguer menu -->
@@ -86,9 +86,9 @@
                 <a href="#" class="hover:text-indigo-300">Confesiones</a>
                 <!-- login buttons -->
                 <div class="flex flex-row justify-center items-center space-x-4 text-xl">
-                    <a href="{% url 'accounts:login' %}"
+                    <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                        class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
-                    <a href="" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
+                    <a href="{% url 'accounts:register' %}?next={{ request.path }}" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
                 <!-- a line delimiting the end of the menu -->
                 <div class="w-full h-0.5 bg-gray-700">
