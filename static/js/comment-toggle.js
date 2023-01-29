@@ -1,5 +1,8 @@
 let comment_toggle = document.getElementById("toggle-comment-form");
-comment_form = document.getElementById("comment-form");
+
+let comment_form = document.getElementById("comment-form");
+
+
 
 comment_toggle.addEventListener("click", function() {
     comment_form.classList.toggle("hidden");

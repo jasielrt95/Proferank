@@ -1,66 +1,63 @@
-from django.shortcuts import redirect, render
-from django.views.generic import ListView, DetailView, View, CreateView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Course
 from comments.models import Course_Comment
-from django.urls import reverse
 from professors.models import Professor
 from reviews.models import Review
+from django.contrib.auth.mixins import LoginRequiredMixin
+from professors.views import ProfessorDetailView
+from django.shortcuts import redirect
 
 
 class CourseListView(ListView):
     model = Course
     template_name = "course_list.html"
+    context_object_name = "courses"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        universities = set()
-        departments = set()
-        for course in Course.objects.all():
-            universities.add(course.professor.college)
-            departments.add(course.professor.faculty)
-        courses = Course.objects.all()
-        context["courses"] = courses
-        context["universities"] = universities 
-        context["departments"] = departments
+        context["universities"] = set(
+            Professor.objects.values_list("college", flat=True)
+        )
+        context["departments"] = set(
+            Professor.objects.values_list("faculty", flat=True)
+        )
         return context
 
 
 class CourseDetailView(DetailView):
     model = Course
     template_name = "course.html"
+    context_object_name = "course"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        course = Course.objects.get(id=self.kwargs["pk"])
-        user_commented = False
-        user_rated  = False
+
         if self.request.user.is_authenticated:
             user_commented = Course_Comment.objects.filter(
-                course=course, user=self.request.user
+                course=self.object, user=self.request.user
             ).exists()
             user_rated = Review.objects.filter(
-                course=course, user=self.request.user
+                course=self.object, user=self.request.user
             ).exists()
-        context["user_rated"] = user_rated
-        context["user_commented"] = user_commented
-        context["course"] = course
-        context["professor"] = course.professor
-        comments = list(Course_Comment.objects.filter(course=course))
-        context["comments"] = comments
+
+        context["user_rated"] = (
+            user_rated if self.request.user.is_authenticated else False
+        )
+        context["user_commented"] = (
+            user_commented if self.request.user.is_authenticated else False
+        )
+        context["comments"] = list(Course_Comment.objects.filter(course=self.object))
         return context
-    
-class CourseCreateView(CreateView):
+
+
+class CourseCreateView(CreateView, LoginRequiredMixin):
     model = Course
-    template_name = "create_course.html"
-    fields = ["name", "codification"]
+    fields = ["name", "codification", "professor"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.professor = Professor.objects.get(id=self.kwargs["pk"])
         form.save()
         return redirect("courses:specific_course", pk=form.instance.pk)
-    
+
     def form_invalid(self, form):
-        return render(self.request, "create_course.html", {"form": form})
-    
-    
+        return redirect("professors:specific_professor", pk=form.instance.professor.pk)

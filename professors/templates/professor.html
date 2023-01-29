@@ -59,10 +59,44 @@
         <!-- header -->
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Cursos</h1>
-            <a href="{% url 'courses:create_course_for_professor' pk=professor.pk %}"
-               class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white">
-                +
-            </a>
+            <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                    id="toggle-course-form">
+                <p>+</p>
+            </button>
+        </div>
+        <div class="hidden flex-col items-center justify-center p-4"
+             id="course-form">
+            <p class="text-xl font-bold text-gray-600">Añade un curso a la plataforma</p>
+            <form action="{% url 'courses:create_course' %}"
+                  method="POST"
+                  class="flex flex-col items-center justify-center space-y-4 mt-4">
+                <p class="text-red-500 text-xl font-bold" id="course-form-error"></p>
+                {% csrf_token %}
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <label for="name" class="text-xl font-bold text-gray-600">Nombre</label>
+                    <input type="name"
+                           name="name"
+                           id="course-name"
+                            placeholder="Ej: Literatura en la era digital"
+                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
+                    <input type="hidden"
+                           name="professor"
+                           value="{{ professor.id }}"/>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <label for="codification" class="text-xl font-bold text-gray-600">Codificación</label>
+                    <input type="codification"
+                           name="codification"
+                           placeholder="Ej: LITE3033"
+                           id="course-code"
+                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <input type="submit" id ="course-form-submit"
+                           value="Ingresar"
+                           class="w-96 cursor-not-allowed h-10 rounded-xl bg-gray-400 text-white font-bold text-xl"/>
+                </div>
+            </form>
         </div>
         <!-- courses -->
         <div class="flex flex-row justify-center items-center w-3/4 flex-wrap">
@@ -97,7 +131,9 @@
             {% endfor %}
             {% if courses|length == 0 %}
                 <div class="flex flex-col justify-center items-center my-8 w-3/4">
-                    <p class="text-gray-400">No hay cursos disponibles</p>
+                    <p class="text-gray-400">
+                        No hay cursos disponibles
+                    </p>
                 </div>
             {% endif %}
         </div>
@@ -105,11 +141,17 @@
     <!-- Comments section -->
     <section class="flex flex-col justify-center items-center mt-12">
         <div class="flex flex-row">
-            <h1 class="text-3xl font-bold text-gray-800">Comentarios</h1>
-            <p class="text-lg font-bold text-gray-800 ml-1">({{ comments|length }})</p>
+            <h1 class="text-3xl font-bold text-gray-800">
+                Comentarios
+            </h1>
+            <p class="text-lg font-bold text-gray-800 ml-1">
+                ({{ comments|length }})
+            </p>
         </div>
         <div class="my-2">
-            <p class="text-sm text-gray-400">Para poder comentar, selececiona un curso en específico.</p>
+            <p class="text-sm text-gray-400">
+                Para poder comentar, selececiona un curso en específico.
+            </p>
         </div>
         <div class="flex flex-col justify-center items-center md:w-9/12">
             {% for comment in comments %}
@@ -164,5 +206,5 @@
     </section>
 {% endblock %}
 {% block scripts %}
-    <script src="{% static 'js/toggles.js' %}"></script>
+    <script src="{% static 'js/professor.js' %}"></script>
 {% endblock %}
