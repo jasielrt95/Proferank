@@ -6,6 +6,8 @@ from professors.models import Professor
 from courses.models import Course
 from accounts.models import User
 
+import random
+
 
 class Command(BaseCommand):
     help = "Populates the database with reviews"
@@ -29,8 +31,8 @@ class Command(BaseCommand):
                         professor=professor,
                         course=course,
                         user=user,
-                        difficulty=fake.random_int(min=0, max=4),
-                        grade=fake.random_int(min=0, max=4),
+                        difficulty=random.choice(["A", "B", "C", "D", "F"]),
+                        grade=random.choice(["A", "B", "C", "D", "F"]),
                         pro_student=fake.boolean(),
                         organized=fake.boolean(),
                     )
