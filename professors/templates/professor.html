@@ -18,9 +18,7 @@
         <!-- Average Statistics -->
         <div class="flex flex-col items-center justify-between w-9/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
             <div>
-                <h1 class="text-2xl font-bold text-gray-800 md:text-3xl">
-                    Estadísticas
-                </h2>
+                <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
                 <hr class=" border-gray-300">
             </div>
             <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
@@ -61,10 +59,10 @@
         <!-- header -->
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Cursos</h1>
-            <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500"
-                    id="toggle-course-form">
-                <p class="text-lg font-bold text-white">+</p>
-            </button>
+            <a href="{% url 'courses:create_course_for_professor' pk=professor.pk %}"
+               class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white">
+                +
+            </a>
         </div>
         <!-- courses -->
         <div class="flex flex-row justify-center items-center w-3/4 flex-wrap">
@@ -98,7 +96,7 @@
                 </div>
             {% endfor %}
             {% if courses|length == 0 %}
-                <div class="flex flex-col justify-center items-center w-3/4">
+                <div class="flex flex-col justify-center items-center my-8 w-3/4">
                     <p class="text-gray-400">No hay cursos disponibles</p>
                 </div>
             {% endif %}
@@ -108,30 +106,17 @@
     <section class="flex flex-col justify-center items-center mt-12">
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Comentarios</h1>
-            <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
-                    id="toggle-comment-form">
-                <p class="">+</p>
-            </button>
+            <p class="text-lg font-bold text-gray-800 ml-1">({{ comments|length }})</p>
         </div>
-        <form action="" method="post" class="hidden flex-col justify-center items-center mt-4 md:w-1/3" id="comment-form">
-            {% csrf_token %}
-            <label for="comment" class="sr-only">Comentario</label>
-            <textarea name="comment"
-                      id="comment"
-                      cols="30"
-                      rows="10"
-                      class="w-3/4 p-2 rounded-md shadow-md border border-gray-200"></textarea>
-            <button type="submit"
-                    class="flex flex-row items-center justify-center px-2 mt-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500">
-                <p class="text-lg font-bold text-white">Enviar</p>
-            </button>
-        </form>
-        <div class="flex flex-col justify-center items-center">
+        <div class="my-2">
+            <p class="text-sm text-gray-400">Para poder comentar, selececiona un curso en específico.</p>
+        </div>
+        <div class="flex flex-col justify-center items-center md:w-9/12">
             {% for comment in comments %}
                 <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl md:hover:animate-pulse">
                     <div class="flex justify-between">
                         <p class="text-2xl font-bold text-gray-900">
-                            {{ comment.user }}
+                            {{ comment.user }} - {{ comment.course }}
                         </p>
                         <p class="text-2xl font-bold text-gray-900">
                             {{ comment.time_since_str }}
@@ -169,7 +154,7 @@
                 </div>
             {% endfor %}
             {% if comments|length == 0 %}
-                <div class="flex flex-col justify-center items-center w-3/4">
+                <div class="flex flex-col justify-center items-center my-8">
                     <p class="text-gray-400 text-center">
                         No hay comentarios disponibles
                     </p>
@@ -179,5 +164,5 @@
     </section>
 {% endblock %}
 {% block scripts %}
-<script src="{% static 'js/toggles.js' %}"></script>
+    <script src="{% static 'js/toggles.js' %}"></script>
 {% endblock %}
