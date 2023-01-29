@@ -74,7 +74,7 @@ class Professor(models.Model):
                 total += 1
             else:
                 total -= 1
-        return total > 0
+        return "Sí" if total > 0 else "No"
 
     def organized(self):
         courses = Course.objects.filter(professor=self)
@@ -88,7 +88,7 @@ class Professor(models.Model):
                 total += 1
             else:
                 total -= 1
-        return total > 0
+        return "Sí" if total > 0 else "No"
 
     @property
     def comment_count(self):
@@ -100,13 +100,13 @@ class Professor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def num_to_letter(self, num):
-        if num >= 3.7:
+        if num >= 3.2:
             return "A"
-        elif num >= 3:
+        elif num >= 2.4:
             return "B"
-        elif num >= 1.7:
+        elif num >= 1.6:
             return "C"
-        elif num >= 1:
+        elif num >= 0.8:
             return "D"
         else:
             return "F"
