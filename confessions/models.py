@@ -5,10 +5,11 @@ from math import log
 
 
 class Confession(models.Model):
+    
     # Confession information
     title = models.CharField(max_length=100)
     body = models.TextField()
-    author = models.CharField(max_length=20)
+
 
     # Score information
     upvotes = models.IntegerField(default=0)
@@ -29,7 +30,7 @@ class Confession(models.Model):
     @property
     def time_since(self):
         return (datetime.now(timezone.utc) - self.created_at).total_seconds() / 60
-    
+
     @property
     def time_since_str(self):
         ts = self.time_since
