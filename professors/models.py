@@ -1,6 +1,7 @@
 from django.db import models
 from courses.models import Course
 from reviews.models import Review
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
 class Professor(models.Model):
@@ -24,8 +25,8 @@ class Professor(models.Model):
     COLLEGES = ((UPRRP, "UPRRP"), (UPRM, "UPRM"))
 
     # Professor information
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=80)
+    first_name = models.CharField(max_length=20, validators=[MinLengthValidator(1), MaxLengthValidator(20)])
+    last_name = models.CharField(max_length=80, validators=[MinLengthValidator(1), MaxLengthValidator(80)])
     college = models.CharField(choices=COLLEGES, max_length=100)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 
@@ -38,7 +39,7 @@ class Professor(models.Model):
         total = 0
         course_count = 0
         for course in courses:
-            if course.difficulty == 'N/A':
+            if course.difficulty == "N/A":
                 continue
             total += course.difficulty
             course_count += 1
@@ -54,7 +55,7 @@ class Professor(models.Model):
         total = 0
         course_count = 0
         for course in courses:
-            if course.grade == 'N/A':
+            if course.grade == "N/A":
                 continue
             total += course.grade
             course_count += 1
@@ -68,7 +69,7 @@ class Professor(models.Model):
         if len(courses) == 0:
             return 0
         for course in courses:
-            if course.pro_student == 'N/A':
+            if course.pro_student == "N/A":
                 continue
             if course.pro_student:
                 total += 1
@@ -82,7 +83,7 @@ class Professor(models.Model):
         if len(courses) == 0:
             return 0
         for course in courses:
-            if course.organized == 'N/A':
+            if course.organized == "N/A":
                 continue
             if course.organized:
                 total += 1
