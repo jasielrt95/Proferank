@@ -9,7 +9,7 @@ class Course(models.Model):
     professor = models.ForeignKey("professors.Professor", on_delete=models.CASCADE)
 
     # Course information
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, validators=[MinLengthValidator(8), MaxLengthValidator(100)])
     codification = models.CharField(max_length=8, validators=[MinLengthValidator(8), MaxLengthValidator(8)])
 
     # Timestamps
