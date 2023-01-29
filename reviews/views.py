@@ -13,10 +13,6 @@ class ReviewFormView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.instance.course = Course.objects.get(id=self.kwargs["pk"])
-        # get the professor from the course
         form.instance.professor = form.instance.course.professor
         form.save()
         return redirect("courses:specific_course", pk=self.kwargs["pk"])
-
-
-
