@@ -29,6 +29,7 @@ urlpatterns = [
     path("courses/", include(("courses.urls", "courses"), namespace="courses")),
     path("accounts/", include("accounts.urls"), name="accounts"),
     path("reviews/", include(("reviews.urls", "reviews"), namespace="reviews")),
+    path("comments/", include(("comments.urls", "comments"), namespace="comments")),
 ]
 
 if settings.DEBUG:
