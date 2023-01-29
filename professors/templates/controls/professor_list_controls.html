@@ -34,7 +34,7 @@
         </div>
         <div class="flex flex-col md:hidden justify-center items-center md:space-x-4">
             <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
-            <a href="/professors/add"
+            <a href="{% url 'professors:create_professor' %}"
                class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+profesor</a>
         </div>
     </div>
@@ -51,7 +51,7 @@
     <!-- Link to add new professors -->
     <div class="hidden md:flex flex-col p-2 mt-2 md:justify-center md:items-center md:space-x-4">
         <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
-        <a href="/professors/add"
+        <a href="{% url 'professors:create_professor' %}"
            class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+ profesor</a>
     </div>
 </section>
