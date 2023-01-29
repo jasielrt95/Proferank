@@ -25,6 +25,11 @@ class Course(models.Model):
         for review in reviews:
             total += review.grade_num
         return total / len(reviews)
+    
+    @property
+    def grade_letter(self):
+        return self.num_to_letter(self.grade)
+
 
     @property
     def difficulty(self):
@@ -35,6 +40,11 @@ class Course(models.Model):
         for review in reviews:
             total += review.difficulty_num
         return total / len(reviews)
+    
+    @property
+    def difficulty_letter(self):
+        return self.num_to_letter(self.difficulty)
+    
 
     @property
     def pro_student(self):
@@ -48,6 +58,10 @@ class Course(models.Model):
             else:
                 total -= 1
         return total > 0
+    
+    @property
+    def pro_student_letter(self):
+        return "Si" if self.pro_student else "No"
 
     @property
     def organized(self):
@@ -61,6 +75,10 @@ class Course(models.Model):
             else:
                 total -= 1
         return total > 0
+    
+    @property
+    def organized_letter(self):
+        return "Si" if self.organized else "No"
 
     @property
     def faculty(self):
@@ -72,3 +90,29 @@ class Course(models.Model):
 
     def __str__(self):
         return self.codification
+    
+    def num_to_letter(self, num):
+        if num == 'N/A':
+            return "N/A"
+        elif num >= 3.2:
+            return "A"
+        elif num >= 2.4:
+            return "B"
+        elif num >= 1.6:
+            return "C"
+        elif num >= 0.8:
+            return "D"
+        else:
+            return "F"
+
+    def letter_to_num(self, letter):
+        if letter == "A":
+            return 4
+        elif letter == "B":
+            return 3
+        elif letter == "C":
+            return 2
+        elif letter == "D":
+            return 1
+        else:
+            return 0
