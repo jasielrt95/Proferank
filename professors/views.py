@@ -2,7 +2,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from .models import Professor
 from courses.models import Course
 from comments.models import Course_Comment
-from .forms import CreateProfessorForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
