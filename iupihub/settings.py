@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-#$h0n$1c5b4tl+0f2-r$1w$)np%rtz&418&hgb-&h9#28@frn9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "tailwind",
     "theme",
-    "django_browser_reload"
+    "django_browser_reload",
 ]
 
 TAILWIND_APP_NAME = "theme"
