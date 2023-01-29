@@ -11,10 +11,10 @@ class LoginView(LoginView):
     template_name = "accounts/login.html"
     redirect_authenticated_user = True
     redirect_field_name = "next"
-    
+
     def get_success_url(self):
         return self.get_redirect_url()
-    
+
     def get_redirect_url(self) -> str:
         next = self.request.GET.get(self.redirect_field_name)
         if not next:
@@ -22,7 +22,6 @@ class LoginView(LoginView):
         if not next:
             next = "/"
         return next
-    
 
 
 class LogoutView(LogoutView):

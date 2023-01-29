@@ -88,7 +88,8 @@
                 <div class="flex flex-row justify-center items-center space-x-4 text-xl">
                     <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                        class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
-                    <a href="{% url 'accounts:register' %}?next={{ request.path }}" class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
+                    <a href="{% url 'accounts:register' %}?next={{ request.path }}"
+                       class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
                 <!-- a line delimiting the end of the menu -->
                 <div class="w-full h-0.5 bg-gray-700">
