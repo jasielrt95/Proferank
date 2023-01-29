@@ -2,13 +2,12 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from datetime import datetime, timezone
 
-
 User = get_user_model()
 
 # Create your models here.
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    text = models.TextField(null=False)
+    text = models.TextField(null=False, blank=False)
 
     # Score
     upvotes = models.IntegerField(default=0)
@@ -26,11 +25,11 @@ class Comment(models.Model):
     @property
     def score(self):
         return self.upvotes - self.downvotes
-    
+
     @property
     def time_since(self):
         return (datetime.now(timezone.utc) - self.created_at).total_seconds() / 60
-    
+
     @property
     def time_since_str(self):
         ts = self.time_since

@@ -86,12 +86,14 @@
               id="comment-form">
             {% csrf_token %}
             <label for="comment" class="sr-only">Comentario</label>
-            <textarea name="comment"
-                      id="comment"
+            <textarea name="text"
+                      id="comment-text"
                       cols="30"
                       rows="10"
                       class="md:w-3/4 p-2 rounded-md shadow-md border border-gray-200"></textarea>
+            <input type="hidden" name="course" value="{{ course.pk }}">
             <button type="submit"
+                    id ="submit-comment"
                     class="flex flex-row items-center justify-center px-2 mt-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500">
                 <p class="text-lg font-bold text-white">Enviar</p>
             </button>
@@ -137,5 +139,5 @@
     </section>
 {% endblock %}
 {% block scripts %}
-    <script src="{% static 'js/comment-toggle.js' %}"></script>
+    <script src="{% static 'js/course.js' %}"></script>
 {% endblock %}
