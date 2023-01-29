@@ -1,5 +1,6 @@
 from django.db import models
 from reviews.models import Review
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
 class Course(models.Model):
@@ -9,7 +10,7 @@ class Course(models.Model):
 
     # Course information
     name = models.CharField(max_length=100)
-    codification = models.CharField(max_length=8)
+    codification = models.CharField(max_length=8, validators=[MinLengthValidator(8), MaxLengthValidator(8)])
 
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,36 +22,34 @@ class Course(models.Model):
         reviews = Review.objects.filter(course=self)
         total = 0
         if len(reviews) == 0:
-            return 'N/A'
+            return "N/A"
         for review in reviews:
             total += review.grade_num
         return total / len(reviews)
-    
+
     @property
     def grade_letter(self):
         return self.num_to_letter(self.grade)
-
 
     @property
     def difficulty(self):
         reviews = Review.objects.filter(course=self)
         if len(reviews) == 0:
-            return 'N/A'
+            return "N/A"
         total = 0
         for review in reviews:
             total += review.difficulty_num
         return total / len(reviews)
-    
+
     @property
     def difficulty_letter(self):
         return self.num_to_letter(self.difficulty)
-    
 
     @property
     def pro_student(self):
         reviews = Review.objects.filter(course=self)
         if len(reviews) == 0:
-            return 'N/A'
+            return "N/A"
         total = 0
         for review in reviews:
             if review.pro_student:
@@ -58,7 +57,7 @@ class Course(models.Model):
             else:
                 total -= 1
         return total > 0
-    
+
     @property
     def pro_student_letter(self):
         return "Si" if self.pro_student else "No"
@@ -67,7 +66,7 @@ class Course(models.Model):
     def organized(self):
         reviews = Review.objects.filter(course=self)
         if len(reviews) == 0:
-            return 'N/A'
+            return "N/A"
         total = 0
         for review in reviews:
             if review.organized:
@@ -75,7 +74,7 @@ class Course(models.Model):
             else:
                 total -= 1
         return total > 0
-    
+
     @property
     def organized_letter(self):
         return "Si" if self.organized else "No"
@@ -89,10 +88,16 @@ class Course(models.Model):
         return self.professor.college
 
     def __str__(self):
-        return self.codification
-    
+        return (
+            self.codification
+            + " - "
+            + self.professor.first_name
+            + " "
+            + self.professor.last_name
+        )
+
     def num_to_letter(self, num):
-        if num == 'N/A':
+        if num == "N/A":
             return "N/A"
         elif num >= 3.2:
             return "A"
