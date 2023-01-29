@@ -5,7 +5,6 @@ from .models import Confession
 class ConfessionAdmin(admin.ModelAdmin):
     list_display = (
         "title",
-        "author",
         "score",
         "upvotes",
         "downvotes",
@@ -14,7 +13,7 @@ class ConfessionAdmin(admin.ModelAdmin):
         "hotness",
         "time_since",
     )
-    list_filter = ("author", "created_at")
+    list_filter = ("created_at", "updated_at")
     search_fields = ("title", "body", "author")
 
 

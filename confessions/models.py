@@ -5,11 +5,10 @@ from math import log
 
 
 class Confession(models.Model):
-    
+
     # Confession information
     title = models.CharField(max_length=100)
     body = models.TextField()
-
 
     # Score information
     upvotes = models.IntegerField(default=0)
