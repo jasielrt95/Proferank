@@ -59,11 +59,14 @@
         <!-- header -->
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Cursos</h1>
+            {% if user.is_authenticated %}
             <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
                     id="toggle-course-form">
                 <p>+</p>
             </button>
+            {% endif %}
         </div>
+        {% if user.is_authenticated %}
         <div class="hidden flex-col items-center justify-center p-4"
              id="course-form">
             <p class="text-xl font-bold text-gray-600">Añade un curso a la plataforma</p>
@@ -98,6 +101,7 @@
                 </div>
             </form>
         </div>
+        {% endif %}
         <!-- courses -->
         <div class="flex flex-row justify-center items-center w-3/4 flex-wrap">
             {% for course in courses %}
