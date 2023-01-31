@@ -23,7 +23,6 @@ class Command(BaseCommand):
             Confession.objects.create(
                 title=fake.sentence(nb_words=6, variable_nb_words=True),
                 body=fake.text(max_nb_chars=200),
-                author=fake.name(),
                 upvotes=fake.random_int(min=0, max=100),
                 downvotes=fake.random_int(min=0, max=100),
             )
