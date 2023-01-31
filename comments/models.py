@@ -4,15 +4,13 @@ from datetime import datetime, timezone
 
 User = get_user_model()
 
-# Create your models here.
+    
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.TextField(null=False, blank=False)
 
-    # Score
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
-
+    # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     parent = models.ForeignKey(
@@ -25,6 +23,14 @@ class Comment(models.Model):
     @property
     def score(self):
         return self.upvotes - self.downvotes
+    
+    @property
+    def upvotes_count(self):
+        return self.upvotes.count()
+    
+    @property
+    def downvotes_count(self):
+        return self.downvotes.count()
 
     @property
     def time_since(self):
@@ -52,6 +58,9 @@ class Comment(models.Model):
 
 class Confession_Comment(Comment):
     confession = models.ForeignKey("confessions.Confession", on_delete=models.CASCADE)
+    # Score
+    upvotes = models.ManyToManyField(User, related_name="confession_comment_upvotes")
+    downvotes = models.ManyToManyField(User, related_name="confession_comment_downvotes")
 
     def __str__(self):
         return self.text
@@ -59,6 +68,10 @@ class Confession_Comment(Comment):
 
 class Course_Comment(Comment):
     course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
+    # Score
+    upvotes = models.ManyToManyField(User, related_name="course_comment_upvotes")
+    downvotes = models.ManyToManyField(User, related_name="course_comment_downvotes")
 
     def __str__(self):
         return self.text
+
