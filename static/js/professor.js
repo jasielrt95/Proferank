@@ -26,10 +26,19 @@ function validate_course_form() {
   course_form_submit.classList.add("cursor-not-allowed");
   course_form_submit.classList.add("bg-gray-400");
   course_form_submit.classList.remove("bg-indigo-600");
+
   // Check if the course name is empty
   if (course_name.value == "") {
     course_form_submit.disabled = true;
     course_form_error.innerHTML = "El nombre del curso no puede estar vacío";
+    return;
+  }
+
+  // Check if the course name has more than 8 characters and less than 100
+  if (course_name.value.length < 8 || course_name.value.length > 100) {
+    course_form_submit.disabled = true;
+    course_form_error.innerHTML =
+      "El nombre del curso debe tener entre 8 y 100 caracteres";
     return;
   }
 
