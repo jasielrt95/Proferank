@@ -159,12 +159,12 @@
         </div>
         <div class="flex flex-col justify-center items-center md:w-9/12">
             {% for comment in comments %}
-                <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl md:hover:animate-pulse">
+                <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl">
                     <div class="flex justify-between">
                         <p class="text-2xl font-bold text-gray-900">
                             {{ comment.user }} - {{ comment.course }}
                         </p>
-                        <p class="text-2xl font-bold text-gray-900">
+                        <p class=" font-bold text-gray-900">
                             {{ comment.time_since_str }}
                         </p>
                     </div>
@@ -174,28 +174,25 @@
                         </p>
                     </div>
                     <div class="flex justify-end items-end">
-                        <div class="flex flex-row items-center">
+                        <p>{{ comment.score }}</p>
+                        <button class="flex flex-row items-center like-button"
+                                data-comment-id="{{ comment.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  viewBox="0 0 20 20"
                                  fill="currentColor"
                                  class="w-5 h-5">
                                 <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
                             </svg>
-                            <p class="text-red-600">
-                                {{ comment.upvotes }}
-                            </p>
-                        </div>
-                        <div class="flex flex-row items-center ml-4">
+                        </button>
+                        <button class="flex flex-row items-center ml-1 dislike-button"
+                                data-comment-id="{{ comment.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  viewBox="0 0 20 20"
                                  fill="currentColor"
                                  class="w-5 h-5">
                                 <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
                             </svg>
-                            <p class="text-indigo-600">
-                                {{ comment.downvotes }}
-                            </p>
-                        </div>
+                        </button>
                     </div>
                 </div>
             {% endfor %}
@@ -210,5 +207,7 @@
     </section>
 {% endblock %}
 {% block scripts %}
+    <script>var csrftoken = '{{ csrf_token }}';</script>
     <script src="{% static 'js/professor.js' %}"></script>
+    <script src="{% static 'js/likedislike.js' %}"></script>
 {% endblock %}
