@@ -64,7 +64,7 @@ class Course(models.Model):
 
     @property
     def pro_student_letter(self):
-        return "Si" if self.pro_student else "No"
+        return "Sí" if self.pro_student else "No"
 
     @property
     def organized(self):
@@ -81,7 +81,7 @@ class Course(models.Model):
 
     @property
     def organized_letter(self):
-        return "Si" if self.organized else "No"
+        return "Sí" if self.organized else "No"
 
     @property
     def faculty(self):
