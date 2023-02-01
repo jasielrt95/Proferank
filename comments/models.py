@@ -40,17 +40,17 @@ class Comment(models.Model):
     def time_since_str(self):
         ts = self.time_since
         if ts < 1:
-            return "Just now"
+            return "Justo ahora"
         elif ts < 60:
-            return str(round(ts)) + " minutes ago"
+            return "Hace " + str(round(ts)) + " minutos"
         elif ts < 1440:
-            return str(round(ts / 60)) + " hours ago"
+            return "Hace " + str(round(ts / 60)) + " horas"
         elif ts < 43200:
-            return str(round(ts / 1440)) + " days ago"
+            return "Hace " + str(round(ts / 1440)) + " días"
         elif ts < 525600:
-            return str(round(ts / 43200)) + " months ago"
+            return "Hace " + str(round(ts / 43200)) + " meses"
         else:
-            return str(round(ts / 525600)) + " years ago"
+            return "Hace " + str(round(ts / 525600)) + " años"
 
     def __str__(self):
         return self.text
