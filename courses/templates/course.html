@@ -50,7 +50,7 @@
                 </div>
                 <!-- workload -->
                 <div class="flex flex-row items-center justify-center md:flex-col">
-                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Oraganizado
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Organizado
                     </h2>
                     <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
                     {{ course.organized_letter }}</h2>
@@ -102,10 +102,10 @@
         {% endif %}
         <div class="flex flex-col justify-center items-center">
             {% for comment in comments %}
-                <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl md:hover:animate-pulse">
+                <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl">
                     <div class="flex justify-between">
                         <p class="text-2xl font-bold text-gray-900">{{ comment.user }} - {{ comment.course }}</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ comment.time_since_str }}</p>
+                        <p class="font-bold text-gray-900">{{ comment.time_since_str }}</p>
                     </div>
                     <div>
                         <p class="text-lg text-gray-800">{{ comment.text }}</p>
