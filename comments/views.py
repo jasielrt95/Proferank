@@ -23,15 +23,25 @@ class CourseCommentCreateView(CreateView, LoginRequiredMixin):
         return redirect(reverse("courses:specific_course", args=[course_id]))
     
 
-# like and dislike views
+
 def CommentLikeView(request, pk):
     comment = Course_Comment.objects.get(id=pk)
-    liked = False
     if comment.upvotes.filter(id=request.user.id).exists():
         comment.upvotes.remove(request.user)
-        liked = False
     else:
+        if comment.downvotes.filter(id=request.user.id).exists():
+            comment.downvotes.remove(request.user)
         comment.upvotes.add(request.user)
-        liked = True
-    like_count = comment.upvotes.count()
-    return JsonResponse({"likecount": like_count})
+    score = comment.score
+    return JsonResponse({"score": score})
+
+def CommentDislikeView(request, pk):
+    comment = Course_Comment.objects.get(id=pk)
+    if comment.downvotes.filter(id=request.user.id).exists():
+        comment.downvotes.remove(request.user)
+    else:
+        if comment.upvotes.filter(id=request.user.id).exists():
+            comment.upvotes.remove(request.user)
+        comment.downvotes.add(request.user)
+    score = comment.score
+    return JsonResponse({"score": score})

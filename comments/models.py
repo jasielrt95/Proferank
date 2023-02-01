@@ -22,7 +22,7 @@ class Comment(models.Model):
 
     @property
     def score(self):
-        return self.upvotes - self.downvotes
+        return self.upvotes_count - self.downvotes_count
     
     @property
     def upvotes_count(self):
