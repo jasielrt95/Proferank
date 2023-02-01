@@ -27,7 +27,7 @@ class LoginView(LoginView):
 class LogoutView(LogoutView):
     template_name = "accounts/logout.html"
     redirect_field_name = "next"
-    next_page = "/accounts/login"
+    next_page = "/accounts/login/"
 
 
 class RegisterView(View):
