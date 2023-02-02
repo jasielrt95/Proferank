@@ -35,7 +35,7 @@
                 </div>
                 <!-- workload -->
                 <div class="flex flex-row items-center justify-center md:flex-col">
-                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Oraganizado
+                    <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Organizado
                     </h2>
                     <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
                     {{ professor.organized }}</h2>
@@ -60,47 +60,46 @@
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Cursos</h1>
             {% if user.is_authenticated %}
-            <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
-                    id="toggle-course-form">
-                <p>+</p>
-            </button>
+                <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                        id="toggle-course-form">
+                    <p>+</p>
+                </button>
             {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <div class="hidden flex-col items-center justify-center p-4"
-             id="course-form">
-            <p class="text-xl font-bold text-gray-600">Añade un curso a la plataforma</p>
-            <form action="{% url 'courses:create_course' %}"
-                  method="POST"
-                  class="flex flex-col items-center justify-center space-y-4 mt-4">
-                <p class="text-red-500 text-xl font-bold" id="course-form-error"></p>
-                {% csrf_token %}
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <label for="name" class="text-xl font-bold text-gray-600">Nombre</label>
-                    <input type="name"
-                           name="name"
-                           id="course-name"
-                            placeholder="Ej: Literatura en la era digital"
-                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
-                    <input type="hidden"
-                           name="professor"
-                           value="{{ professor.id }}"/>
-                </div>
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <label for="codification" class="text-xl font-bold text-gray-600">Codificación</label>
-                    <input type="codification"
-                           name="codification"
-                           placeholder="Ej: LITE3033"
-                           id="course-code"
-                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
-                </div>
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <input type="submit" id ="course-form-submit"
-                           value="Ingresar"
-                           class="w-96 cursor-not-allowed h-10 rounded-xl bg-gray-400 text-white font-bold text-xl"/>
-                </div>
-            </form>
-        </div>
+            <div class="hidden flex-col items-center justify-center p-4"
+                 id="course-form">
+                <p class="text-xl font-bold text-gray-600">Añade un curso a la plataforma</p>
+                <form action="{% url 'courses:create_course' %}"
+                      method="POST"
+                      class="flex flex-col items-center justify-center space-y-4 mt-4">
+                    <p class="text-red-500 text-xl font-bold" id="course-form-error"></p>
+                    {% csrf_token %}
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <label for="name" class="text-xl font-bold text-gray-600">Nombre</label>
+                        <input type="name"
+                               name="name"
+                               id="course-name"
+                               placeholder="Ej: Literatura en la era digital"
+                               class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
+                        <input type="hidden" name="professor" value="{{ professor.id }}"/>
+                    </div>
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <label for="codification" class="text-xl font-bold text-gray-600">Codificación</label>
+                        <input type="codification"
+                               name="codification"
+                               placeholder="Ej: LITE3033"
+                               id="course-code"
+                               class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
+                    </div>
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <input type="submit"
+                               id="course-form-submit"
+                               value="Ingresar"
+                               class="w-96 cursor-not-allowed h-10 rounded-xl bg-gray-400 text-white font-bold text-xl"/>
+                    </div>
+                </form>
+            </div>
         {% endif %}
         <!-- courses -->
         <div class="flex flex-row justify-center items-center w-3/4 flex-wrap">
@@ -174,7 +173,9 @@
                         </p>
                     </div>
                     <div class="flex justify-end items-end">
-                        <p>{{ comment.score }}</p>
+                        <p>
+                            {{ comment.score }}
+                        </p>
                         <button class="flex flex-row items-center like-button"
                                 data-comment-id="{{ comment.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
