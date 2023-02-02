@@ -104,14 +104,23 @@
             {% for comment in comments %}
                 <div class="flex flex-col my-6 w-3/4 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl">
                     <div class="flex justify-between">
-                        <p class="text-2xl font-bold text-gray-900">{{ comment.user }} - {{ comment.course }}</p>
-                        <p class="font-bold text-gray-900">{{ comment.time_since_str }}</p>
-                    </div>
+                        <p class="text-2xl font-bold text-gray-900">{{ comment.course }}</p>
+                        <div class="flex flex-row space-x-1">
+                            {% if comment.user == user %}
+                                <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                                        data-comment-id="{{ comment.pk }}"
+                                        id="toggle-edit-comment-form">
+                                    <p class="">📝</p>
+                                </button>
+                            {% endif %}
+                            <p class="font-bold text-gray-900">{{ comment.time_since_str }}</p>
+                        </div>
+                    </div> 
                     <div>
                         <p class="text-lg text-gray-800">{{ comment.text }}</p>
                     </div>
                     <div class="flex justify-end items-end">
-                        <p>{{ comment.score }}</p>
+                        <p> {{ comment.score }} </p>
                         <button class="flex flex-row items-center like-button"
                                 data-comment-id="{{ comment.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +140,25 @@
                             </svg>
                         </button>
                     </div>
+                    {% if comment.user == user %}
+                        <form action="{% url 'comments:comment_edit' comment.pk %}"
+                              method="post"
+                              class="hidden flex-col justify-center items-center mt-4"
+                              id="edit-comment-form">
+                            {% csrf_token %}
+                            <label for="comment" class="sr-only">Comentario</label>
+                            <textarea name="text"
+                                      id="comment-text"
+                                      cols="30"
+                                      rows="10"
+                                      class="w-full p-2 rounded-md shadow-md border border-gray-200"></textarea>
+                            <button type="submit"
+                                    id="submit-comment"
+                                    class="flex flex-row items-center justify-center px-2 mt-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500">
+                                <p class="text-lg font-bold text-white">editar</p>
+                            </button>
+                        </form>
+                    {% endif %}
                 </div>
             {% endfor %}
             {% if comments|length == 0 %}
