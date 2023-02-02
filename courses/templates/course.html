@@ -148,10 +148,11 @@
                             {% csrf_token %}
                             <label for="comment" class="sr-only">Comentario</label>
                             <textarea name="text"
-                                      id="comment-text"
+                                      id="edit-comment-text"
                                       cols="30"
                                       rows="10"
-                                      class="w-full p-2 rounded-md shadow-md border border-gray-200"></textarea>
+                                      class="w-full p-2 rounded-md shadow-md border border-gray-200"
+                                      value>{{comment.text}}</textarea>
                             <button type="submit"
                                     id="submit-comment"
                                     class="flex flex-row items-center justify-center px-2 mt-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500">
