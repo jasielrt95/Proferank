@@ -33,6 +33,7 @@ class LogoutView(LogoutView):
 class RegisterView(View):
     def post(self, request):
         username = request.POST.get("username")
+        email = request.POST.get("email")
         password = request.POST.get("password")
         password_confirm = request.POST.get("password_confirm")
         if password != password_confirm:
@@ -42,7 +43,7 @@ class RegisterView(View):
                 {"error": "Passwords do not match"},
             )
         else:
-            user = User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password, email=email)
             user.save()
             login(request, user)
             return redirect("/")
