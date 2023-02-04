@@ -39,7 +39,7 @@ class Professor(models.Model):
     def difficulty(self):
         courses = Course.objects.filter(professor=self)
         if len(courses) == 0:
-            return 0
+            return "N/A"
         total = 0
         course_count = 0
         for course in courses:
