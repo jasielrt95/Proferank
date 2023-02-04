@@ -100,9 +100,17 @@ class Professor(models.Model):
         courses = Course.objects.filter(professor=self)
         reviews = Review.objects.filter(course__in=courses)
         return reviews.count()
-
+    
+    @property
+    def review_count(self):
+        courses = Course.objects.filter(professor=self)
+        reviews = Review.objects.filter(course__in=courses)
+        return reviews.count()
+    
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+    
 
     def num_to_letter(self, num):
         if num >= 3.2:
