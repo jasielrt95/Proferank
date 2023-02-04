@@ -18,3 +18,6 @@ class IndexView(TemplateView):
         # bottom 5 confessions
         context["confessions"] = top_confessions
         return context
+    
+class AboutView(TemplateView):
+    template_name = "about.html"

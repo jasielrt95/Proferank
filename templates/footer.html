@@ -2,8 +2,8 @@
 <footer class="flex flex-col justify-center items-center space-y-2 mt-auto mb-1">
     <!-- links -->
     <div class="flex justify-between items-center space-x-2">
-        <a href="#" class="hover:text-indigo-300">About</a>
-        <a href="#" class="text-indigo-600 hover:text-indigo-300">Sugerencias</a>   
+        <a href="{% url 'home:about' %}" class="hover:text-indigo-300">About</a>
+        <a href="{% url 'reviews:suggestions' %}?next={{ request.path }}" class="text-indigo-600 hover:text-indigo-300">Sugerencias</a>   
         <a href="#" class="hover:text-indigo-300">Contact</a>
     </div>
     <!-- social links -->
