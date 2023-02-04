@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import CourseCommentCreateView, CommentLikeView, CommentDislikeView
+from .views import CourseCommentCreateView, CommentLikeView, CommentDislikeView, CourseCommentUpdateView
 
 app_name = "comments"
 
@@ -19,5 +19,10 @@ urlpatterns = [
         "<int:pk>/dislike",
         CommentDislikeView,
         name="comment_dislike",
+    ),
+    path(
+        "<int:pk>/edit",
+        CourseCommentUpdateView.as_view(),
+        name="comment_edit",
     ),
 ]
