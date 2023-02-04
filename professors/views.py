@@ -13,8 +13,12 @@ class ProfessorListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["departments"] = set(Professor.objects.values_list("faculty", flat=True))
-        context["universities"] = set(Professor.objects.values_list("college", flat=True))
+        context["departments"] = set(
+            Professor.objects.values_list("faculty", flat=True)
+        )
+        context["universities"] = set(
+            Professor.objects.values_list("college", flat=True)
+        )
         return context
 
 
@@ -41,6 +45,10 @@ class ProfessorCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["departments"] = set(Professor.objects.values_list("faculty", flat=True))
-        context["universities"] = set(Professor.objects.values_list("college", flat=True))
+        context["departments"] = set(
+            Professor.objects.values_list("faculty", flat=True)
+        )
+        context["universities"] = set(
+            Professor.objects.values_list("college", flat=True)
+        )
         return context

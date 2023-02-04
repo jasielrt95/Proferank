@@ -4,7 +4,6 @@ from datetime import datetime, timezone
 
 User = get_user_model()
 
-    
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -23,11 +22,11 @@ class Comment(models.Model):
     @property
     def score(self):
         return self.upvotes_count - self.downvotes_count
-    
+
     @property
     def upvotes_count(self):
         return self.upvotes.count()
-    
+
     @property
     def downvotes_count(self):
         return self.downvotes.count()
@@ -60,7 +59,9 @@ class Confession_Comment(Comment):
     confession = models.ForeignKey("confessions.Confession", on_delete=models.CASCADE)
     # Score
     upvotes = models.ManyToManyField(User, related_name="confession_comment_upvotes")
-    downvotes = models.ManyToManyField(User, related_name="confession_comment_downvotes")
+    downvotes = models.ManyToManyField(
+        User, related_name="confession_comment_downvotes"
+    )
 
     def __str__(self):
         return self.text
@@ -74,4 +75,3 @@ class Course_Comment(Comment):
 
     def __str__(self):
         return self.text
-

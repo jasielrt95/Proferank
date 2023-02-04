@@ -47,34 +47,34 @@
                            name="email"
                            id="email"
                            class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <label for="password" class="text-xl font-bold text-gray-600">Contraseña</label>
-                    <input type="password"
-                           name="password"
-                           id="password"
-                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
-                </div>
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <label for="password" class="text-xl font-bold text-gray-600">Confirmar contraseña</label>
-                    <input type="password"
-                           name="password_confirm"
-                           id="password_confirm"
-                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
-                </div>
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <input type="submit"
-                           value="Registrarse"
-                           class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xl"/>
-                </div>
-                <!-- Error Message -->
-                {% if error %}
                     <div class="flex flex-col items-center justify-center space-y-2">
-                        <ul class="flex flex-col items-center justify-center space-y-2">
-                            <li class="text-red-600">{{ error }}</li>
-                        </ul>
+                        <label for="password" class="text-xl font-bold text-gray-600">Contraseña</label>
+                        <input type="password"
+                               name="password"
+                               id="password"
+                               class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
                     </div>
-                {% endif %}
-            </form>
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <label for="password" class="text-xl font-bold text-gray-600">Confirmar contraseña</label>
+                        <input type="password"
+                               name="password_confirm"
+                               id="password_confirm"
+                               class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
+                    </div>
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <input type="submit"
+                               value="Registrarse"
+                               class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xl"/>
+                    </div>
+                    <!-- Error Message -->
+                    {% if error %}
+                        <div class="flex flex-col items-center justify-center space-y-2">
+                            <ul class="flex flex-col items-center justify-center space-y-2">
+                                <li class="text-red-600">{{ error }}</li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}

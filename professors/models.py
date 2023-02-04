@@ -25,8 +25,12 @@ class Professor(models.Model):
     COLLEGES = ((UPRRP, "UPRRP"), (UPRM, "UPRM"))
 
     # Professor information
-    first_name = models.CharField(max_length=20, validators=[MinLengthValidator(1), MaxLengthValidator(20)])
-    last_name = models.CharField(max_length=80, validators=[MinLengthValidator(1), MaxLengthValidator(80)])
+    first_name = models.CharField(
+        max_length=20, validators=[MinLengthValidator(1), MaxLengthValidator(20)]
+    )
+    last_name = models.CharField(
+        max_length=80, validators=[MinLengthValidator(1), MaxLengthValidator(80)]
+    )
     college = models.CharField(choices=COLLEGES, max_length=100)
     faculty = models.CharField(choices=FACULTIES, max_length=30)
 

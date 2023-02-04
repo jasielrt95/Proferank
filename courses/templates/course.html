@@ -115,12 +115,12 @@
                             {% endif %}
                             <p class="font-bold text-gray-900">{{ comment.time_since_str }}</p>
                         </div>
-                    </div> 
+                    </div>
                     <div>
                         <p class="text-lg text-gray-800">{{ comment.text|linebreaksbr }}</p>
                     </div>
                     <div class="flex justify-end items-end">
-                        <p> {{ comment.score }} </p>
+                        <p>{{ comment.score }}</p>
                         <button class="flex flex-row items-center like-button"
                                 data-comment-id="{{ comment.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +164,9 @@
             {% endfor %}
             {% if comments|length == 0 %}
                 <div class="flex flex-col justify-center items-center w-3/4">
-                    <p class="text-gray-400 text-center mt-12">No hay comentarios disponibles</p>
+                    <p class="text-gray-400 text-center mt-12">
+                        No hay comentarios disponibles
+                    </p>
                 </div>
             {% endif %}
         </div>

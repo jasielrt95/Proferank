@@ -43,7 +43,9 @@ class RegisterView(View):
                 {"error": "Passwords do not match"},
             )
         else:
-            user = User.objects.create_user(username=username, password=password, email=email)
+            user = User.objects.create_user(
+                username=username, password=password, email=email
+            )
             user.save()
             login(request, user)
             return redirect("/")

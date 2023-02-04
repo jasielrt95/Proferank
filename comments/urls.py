@@ -1,6 +1,11 @@
 from django.urls import path
 
-from .views import CourseCommentCreateView, CommentLikeView, CommentDislikeView, CourseCommentUpdateView
+from .views import (
+    CourseCommentCreateView,
+    CommentLikeView,
+    CommentDislikeView,
+    CourseCommentUpdateView,
+)
 
 app_name = "comments"
 

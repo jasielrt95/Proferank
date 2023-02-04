@@ -17,23 +17,24 @@ class CourseCommentCreateView(CreateView, LoginRequiredMixin):
         form.instance.course = Course.objects.get(pk=course_id)
         form.save()
         return redirect(reverse("courses:specific_course", args=[course_id]))
-    
+
     def form_invalid(self, form):
         course_id = self.kwargs["pk"]
         return redirect(reverse("courses:specific_course", args=[course_id]))
-    
+
+
 class CourseCommentUpdateView(UpdateView, LoginRequiredMixin):
     model = Course_Comment
     fields = ["text"]
-    
+
     def form_valid(self, form):
         course_id = self.object.course.id
         form.save()
         return redirect(reverse("courses:specific_course", args=[course_id]))
-    
+
     def form_invalid(self, form):
         course_id = self.object.course.id
-        return redirect(reverse("courses:specific_course", args=[course_id]))    
+        return redirect(reverse("courses:specific_course", args=[course_id]))
 
 
 def CommentLikeView(request, pk):
@@ -46,6 +47,7 @@ def CommentLikeView(request, pk):
         comment.upvotes.add(request.user)
     score = comment.score
     return JsonResponse({"score": score})
+
 
 def CommentDislikeView(request, pk):
     comment = Course_Comment.objects.get(id=pk)
