@@ -9,15 +9,15 @@ class ProfessorAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "college",
-        "faculty",
+        "department",
         "difficulty",
         "grade",
         "pro_student",
         "organized",
         "comment_count",
     )
-    list_filter = ("college", "faculty")
-    search_fields = ("first_name", "last_name", "college", "faculty")
+    list_filter = ("college", "department")
+    search_fields = ("first_name", "last_name", "college", "department")
 
 
 admin.site.register(Professor, ProfessorAdmin)

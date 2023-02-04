@@ -84,8 +84,8 @@ class Course(models.Model):
         return "Sí" if self.organized else "No"
 
     @property
-    def faculty(self):
-        return self.professor.faculty
+    def department(self):
+        return self.professor.department
 
     @property
     def college(self):

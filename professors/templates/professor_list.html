@@ -15,7 +15,7 @@
             {% for professor in professors %}
                 <div class="flex toggle flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:w-3/12 md:hover:animate-pulse md:hover:bg-gray-200"
                      data-college="{{ professor.college }}"
-                     data-faculty="{{ professor.faculty }}"
+                     data-department="{{ professor.department }}"
                      data-name="{{ professor.first_name }} {{ professor.last_name }}">
                     <a href="{{ professor.pk }}" class="space-y-2">
                         <!-- header -->
@@ -32,7 +32,7 @@
                                 <span class="font-bold text-gray-700">Universidad:</span> <span class="text-gray-600">{{ professor.college }}</span>
                             </p>
                             <p>
-                                <span class="font-bold text-gray-700">Facultad:</span> <span class="text-gray-600">{{ professor.faculty }}</span>
+                                <span class="font-bold text-gray-700">Departamento:</span> <span class="text-gray-600">{{ professor.department }}</span>
                             </p>
                             <p>
                                 <span class="font-bold text-gray-700">Dificultad:</span> <span class="text-gray-600">{{ professor.difficulty }}</span>

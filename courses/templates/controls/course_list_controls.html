@@ -1,6 +1,6 @@
 <!-- Centered Section with 3 divs, one for two select buttons, one in the middle for a search bar, and another one with a link for adding new professors -->
 <section class="container flex  flex-col md:flex-row bg-gray-100 md:rounded-xl mx-auto md:justify-center md:items-center md:space-x-4 md:p-6 my-8">
-    <!-- Two selects, for college and faculty -->
+    <!-- Two selects, for college and department -->
     <div class="flex flex-row justify-around space-x-4 p-2 mt-2 md:justify-center items-center">
         <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
             <label for="college" class="text-gray-700 font-bold">Universidad</label>
@@ -18,16 +18,16 @@
             </select>
         </div>
         <div class="flex flex-col justify-center items-center md:space-x-4">
-            <label for="faculty" class="text-gray-700 font-bold">Facultad</label>
+            <label for="department" class="text-gray-700 font-bold">Departamento</label>
             <select name="department"
-                    id="faculty_filter"
+                    id="department_filter"
                     class="border border-gray-300 rounded-md p-2 min-w-0 md:px-8">
                 <option value="">
                     Todas
                 </option>
-                {% for faculty in departments %}
-                    <option value="{{ faculty }}">
-                        {{ faculty }}
+                {% for department in departments %}
+                    <option value="{{ department }}">
+                        {{ department }}
                     </option>
                 {% endfor %}
             </select>

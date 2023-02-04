@@ -16,16 +16,16 @@ function filterCollege() {
   }
 }
 
-function filterFaculty() {
-  var faculty = document.getElementById("faculty_filter").value;
-  if (faculty == "") {
+function filterdepartment() {
+  var department = document.getElementById("department_filter").value;
+  if (department == "") {
     return;
   }
   var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
-    var professor_faculty = professor.getAttribute("data-faculty");
-    if (faculty == professor_faculty) {
+    var professor_department = professor.getAttribute("data-department");
+    if (department == professor_department) {
       professor.style.display = "flex";
     } else {
       professor.style.display = "none";
@@ -35,15 +35,15 @@ function filterFaculty() {
 
 function filter() {
   var college = document.getElementById("college_filter").value;
-  var faculty = document.getElementById("faculty_filter").value;
-  if (college == "" && faculty == "") {
+  var department = document.getElementById("department_filter").value;
+  if (college == "" && department == "") {
     return;
   }
   if (college == "") {
-    filterFaculty();
+    filterdepartment();
     return;
   }
-  if (faculty == "") {
+  if (department == "") {
     filterCollege();
     return;
   }
@@ -51,8 +51,8 @@ function filter() {
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
     var professor_college = professor.getAttribute("data-college");
-    var professor_faculty = professor.getAttribute("data-faculty");
-    if (college == professor_college && faculty == professor_faculty) {
+    var professor_department = professor.getAttribute("data-department");
+    if (college == professor_college && department == professor_department) {
       professor.style.display = "flex";
     } else {
       professor.style.display = "none";
@@ -77,5 +77,5 @@ function search() {
 }
 
 document.getElementById("college_filter").addEventListener("change", filter);
-document.getElementById("faculty_filter").addEventListener("change", filter);
+document.getElementById("department_filter").addEventListener("change", filter);
 document.getElementById("search-bar").addEventListener("keyup", search);

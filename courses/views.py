@@ -19,7 +19,7 @@ class CourseListView(ListView):
             Professor.objects.values_list("college", flat=True)
         )
         context["departments"] = set(
-            Professor.objects.values_list("faculty", flat=True)
+            Professor.objects.values_list("department", flat=True)
         )
         return context
 

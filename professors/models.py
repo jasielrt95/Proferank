@@ -14,15 +14,8 @@ class Professor(models.Model):
     F = "F"
     DIFFICULTIES = ((A, "A"), (B, "B"), (C, "C"), (D, "D"), (F, "F"))
 
-    # Faculties
-    Natu = "Naturales"
-    Huma = "Humanidades"
-    FACULTIES = ((Natu, "Naturales"), (Huma, "Humanidades"))
 
-    # Colleges
-    UPRRP = "UPRRP"
-    UPRM = "UPRM"
-    COLLEGES = ((UPRRP, "UPRRP"), (UPRM, "UPRM"))
+
 
     # Professor information
     first_name = models.CharField(
@@ -31,8 +24,8 @@ class Professor(models.Model):
     last_name = models.CharField(
         max_length=80, validators=[MinLengthValidator(1), MaxLengthValidator(80)]
     )
-    college = models.CharField(choices=COLLEGES, max_length=100)
-    faculty = models.CharField(choices=FACULTIES, max_length=30)
+    college = models.CharField(max_length=100)
+    department = models.CharField(max_length=30)
 
     # Methods
     @property

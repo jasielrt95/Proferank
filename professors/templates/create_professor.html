@@ -41,13 +41,13 @@
                     </select>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-2">
-                    <label for="faculty" class="text-xl font-bold text-gray-600">Facultad</label>
-                    <select name="faculty"
-                            id="faculty"
+                    <label for="department" class="text-xl font-bold text-gray-600">Departamento</label>
+                    <select name="department"
+                            id="department"
                             class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4">
-                        {% for faculty in departments %}
-                            <option value="{{ faculty }}">
-                                {{ faculty }}
+                        {% for department in departments %}
+                            <option value="{{ department }}">
+                                {{ department }}
                             </option>
                         {% endfor %}
                     </select>

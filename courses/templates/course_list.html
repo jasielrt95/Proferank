@@ -13,7 +13,7 @@
             {% for course in courses %}
                 <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-pulse"
                      data-college="{{ course.college }}"
-                     data-faculty="{{ course.faculty }}"
+                     data-department="{{ course.department }}"
                      data-name="{{ course.name }}">
                     <a href="{{ course.pk }}" class="space-y-2">
                         <!-- header -->
@@ -30,7 +30,7 @@
                                      class="ml-1 w-5 h-5 rounded-full">
                             </p>
                             <p>
-                                <span class="font-bold text-gray-700">Facultad:</span> <span class="text-gray-600">{{ course.faculty }}</span>
+                                <span class="font-bold text-gray-700">Departamento:</span> <span class="text-gray-600">{{ course.department }}</span>
                             </p>
                             <p>
                                 <span class="font-bold text-gray-700">Profesor:</span> <span class="text-gray-600">{{ course.professor }}</span>

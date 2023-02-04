@@ -24,7 +24,7 @@ class Command(BaseCommand):
                 first_name=fake.first_name(),
                 last_name=fake.last_name(),
                 college=fake.random_element(elements=("UPRRP", "UPRM")),
-                faculty=fake.random_element(elements=("Naturales", "Humanidades")),
+                department=fake.random_element(elements=("Naturales", "Humanidades")),
             )
 
         self.stdout.write(self.style.SUCCESS("Successfully populated professors!"))

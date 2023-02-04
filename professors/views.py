@@ -14,7 +14,7 @@ class ProfessorListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["departments"] = set(
-            Professor.objects.values_list("faculty", flat=True)
+            Professor.objects.values_list("department", flat=True)
         )
         context["universities"] = set(
             Professor.objects.values_list("college", flat=True)
@@ -40,15 +40,13 @@ class ProfessorDetailView(DetailView):
 class ProfessorCreateView(LoginRequiredMixin, CreateView):
     model = Professor
     template_name = "create_professor.html"
-    fields = ["first_name", "last_name", "college", "faculty"]
+    fields = ["first_name", "last_name", "college", "department"]
     success_url = reverse_lazy("professors:all_professors")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["departments"] = set(
-            Professor.objects.values_list("faculty", flat=True)
-        )
-        context["universities"] = set(
-            Professor.objects.values_list("college", flat=True)
-        )
+
+        context["departments"] = ["Arte", "Arquitectura", "Ciencias Agrícolas", "Ciencias Ambientales", "Ciencias Físicas", "Ciencias Computadoras","Ciencias Sociales", "Ciencias Veterinarias", "Comunicación", "Derecho", "Educación", "Enfermería", "Ingeniería", "Medicina", "Música", "Odontología", "Humanidades", "Biologia", "Química", "Física", "Matemáticas", "Otro"]
+
+        context["universities"] = ["UPR Río Piedras", "UPR Mayagüez", "UPR Arecibo", "UPR Ponce", "UPR Ciencias Medicas", "UPR Carolina", "UPR Cayey", "UPR Humacao", "UPR Aguadilla", "UPR Utuado", "UPR Bayamón"]
         return context

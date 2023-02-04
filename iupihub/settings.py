@@ -100,12 +100,19 @@ WSGI_APPLICATION = "iupihub.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "universityhub",
+#         "USER": "universityhub",
+#         "PASSWORD": "jasiel95",
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "universityhub",
-        "USER": "universityhub",
-        "PASSWORD": "jasiel95",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
