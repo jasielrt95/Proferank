@@ -11,7 +11,7 @@
         <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Cursos</h1>
         <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center md:justify-center">
             {% for course in courses %}
-                <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-bounce"
+                <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-pulse"
                      data-college="{{ course.college }}"
                      data-faculty="{{ course.faculty }}"
                      data-name="{{ course.name }}">
