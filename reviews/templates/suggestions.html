@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- centralized container -->
+    <div class="container mt-8 py-12 mx-auto md:w-1/3 md:bg-gray-100 rounded-xl">
+        <!-- Social Logins Section -->
+        <div class="flex flex-col items-center justify-cente p-4">
+            <h1 class="text-3xl font-bold text-gray-600 mt-4">Sugerencía</h1>
+        </div>
+        <div class="flex flex-col items-center justify-center  p-4">
+            <form action="{% url 'reviews:suggestions' %}?next={{ next }}"
+                  method="POST"
+                  class="flex flex-col items-center justify-center space-y-4 mt-4">
+                {% csrf_token %}
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <label for="suggestion" class="text-xl font-bold text-gray-600">Sugerencia</label>
+                    <textarea name="suggestion"
+                              id="suggestion"
+                              cols="30"
+                              rows="10"
+                              class="w-96 h-40 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"></textarea>
+                    <input type="submit"
+                           value="Enviar"
+                           class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xl"/>
+                </div>
+
+                <!-- Error Message -->
+                {% if error %}
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <ul class="flex flex-col items-center justify-center space-y-2">
+                            <li class="text-red-600">{{ error }}</li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

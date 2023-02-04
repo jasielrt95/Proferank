@@ -73,3 +73,19 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.professor} - {self.course}"
+
+class Suggestions(models.Model):
+    user = models.ForeignKey(
+        "accounts.User", on_delete=models.CASCADE, related_name="suggestions"
+    )
+
+    suggestion = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.created_at}"
+    
+    @property
+    def email(self):
+        return self.user.email
