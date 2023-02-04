@@ -21,6 +21,16 @@
                    class="hover:text-indigo-300">Profesores</a>
                 <a href="#" class="hover:text-indigo-300">Confesiones</a>
             </div>
+
+            <!-- user section -->
+            <div class="hidden md:flex">
+                <a class="bg-indigo-600 text-white p-2 rounded-xl"
+                   href="{% url 'accounts:logout' %}">
+                    Logout
+                </a>
+            </div>
+
+
             <!-- hamburguer menu -->
             <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
@@ -38,6 +48,10 @@
                 <a href="#" class="hover:text-indigo-300">Confesiones</a>
                 <!-- a line delimiting the end of the menu -->
                 <div class="w-full h-0.5 bg-gray-700"></div>
+                <a class="bg-indigo-600 text-white p-2 rounded-xl"
+                   href="{% url 'accounts:logout' %}">
+                    Logout
+                </a>
             </div>
         </div>
     </nav>

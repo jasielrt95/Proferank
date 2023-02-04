@@ -1079,16 +1079,6 @@ select {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}
-
-.bg-gray-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
-}
-
 .bg-gray-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
@@ -1248,14 +1238,14 @@ select {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.text-indigo-600 {
-  --tw-text-opacity: 1;
-  color: rgb(79 70 229 / var(--tw-text-opacity));
-}
-
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
 .text-red-500 {
@@ -1344,12 +1334,12 @@ select {
     width: 75%;
   }
 
-  .md\:w-3\/12 {
-    width: 25%;
-  }
-
   .md\:w-9\/12 {
     width: 75%;
+  }
+
+  .md\:w-3\/12 {
+    width: 25%;
   }
 
   .md\:flex-row {
@@ -1448,16 +1438,6 @@ select {
     line-height: 2.5rem;
   }
 
-  @keyframes pulse {
-    50% {
-      opacity: .5;
-    }
-  }
-
-  .md\:hover\:animate-pulse:hover {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
   @keyframes bounce {
     0%, 100% {
       transform: translateY(-25%);
@@ -1472,6 +1452,16 @@ select {
 
   .md\:hover\:animate-bounce:hover {
     animation: bounce 1s infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: .5;
+    }
+  }
+
+  .md\:hover\:animate-pulse:hover {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .md\:hover\:bg-gray-200:hover {
