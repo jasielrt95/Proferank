@@ -12,6 +12,7 @@ black = "*"
 djlint = "*"
 django-tailwind = "*"
 psycopg2-binary = "*"
+social-auth-app-django = "*"
 
 [dev-packages]
 

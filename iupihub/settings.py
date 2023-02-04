@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "tailwind",
     "theme",
     "django_browser_reload",
+    "social_django",
 ]
 
 TAILWIND_APP_NAME = "theme"
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
 
 ROOT_URLCONF = "iupihub.urls"
@@ -85,6 +87,7 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "social_django.context_processors.backends",
                 "django.contrib.messages.context_processors.messages",
             ],
         },
@@ -129,6 +132,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.google.GoogleOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+# GOOGLE KEY
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "732520486714-06vi6k4k6g24gd9pof5j55171k66dcga.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
