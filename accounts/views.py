@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class LoginView(LoginView):
-    template_name = "accounts/login.html"
+    template_name = "login.html"
     redirect_authenticated_user = True
     redirect_field_name = "next"
 
@@ -25,7 +25,7 @@ class LoginView(LoginView):
 
 
 class LogoutView(LogoutView):
-    template_name = "accounts/logout.html"
+    template_name = "logout.html"
     redirect_field_name = "next"
     next_page = "/accounts/login/"
 
@@ -51,4 +51,4 @@ class RegisterView(View):
             return redirect("/")
 
     def get(self, request):
-        return render(request, "accounts/register.html")
+        return render(request, "register.html")
