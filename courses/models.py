@@ -4,7 +4,6 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
 class Course(models.Model):
-
     # Foreign keys
     professor = models.ForeignKey("professors.Professor", on_delete=models.CASCADE)
 
@@ -82,6 +81,10 @@ class Course(models.Model):
     @property
     def organized_letter(self):
         return "Sí" if self.organized else "No"
+    
+    @property
+    def review_count(self):
+        return len(Review.objects.filter(course=self))
 
     @property
     def department(self):
