@@ -13,13 +13,13 @@
             <!-- University logo -->
             <img class="w-10 h-10 ml-2 rounded-full"
                  src="{% static 'img/upr_logo.jpg' %}"
-                 alt="University logo">
+                 alt="University logo"/>
         </div>
         <!-- Average Statistics -->
         <div class="flex flex-col items-center justify-between w-9/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
-                <hr class=" border-gray-300">
+                <hr class=" border-gray-300"/>
             </div>
             {% if professor.review_count > 0 %}
             <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
@@ -78,7 +78,7 @@
                  id="course-form">
                 <p class="text-xl font-bold text-gray-600">Añade un curso a la plataforma</p>
                 <form action="{% url 'courses:create_course' %}"
-                      method="POST"
+                      method="post"
                       class="flex flex-col items-center justify-center space-y-4 mt-4">
                     <p class="text-red-500 text-xl font-bold" id="course-form-error"></p>
                     {% csrf_token %}

@@ -10,7 +10,7 @@
         <div class="flex flex-col items-center justify-center  p-4">
             <p class="text-xl font-bold text-gray-600">Califica este curso</p>
             <form action=""
-                  method="POST"
+                  method="post"
                   class="flex flex-col items-center justify-center space-y-4 mt-4">
                 {% csrf_token %}
                 <div class="flex flex-col items-center justify-center space-y-2">
@@ -64,7 +64,7 @@
                                id="organized"
                                name="organized"
                                value="organized"
-                               class="rounded-md">
+                               class="rounded-md"/>
                     </div>
                     <div class="flex flex-row items-center justify-center space-x-1">
                         <label for="pro_student" class="text-xl font-bold text-gray-600">Pro estudiante</label>
@@ -72,13 +72,13 @@
                                id="pro_student"
                                name="pro_student"
                                value="pro_student"
-                               class="rounded-md">
+                               class="rounded-md"/>
                     </div>
                 </div>
                 <div class="flex flex-row items-center justify-between ">
                     <input type="submit"
                            value="Calificar"
-                           class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold">
+                           class="w-96 h-10 rounded-xl bg-indigo-600 text-white font-bold"/>
                 </div>
                 <!-- Error Message -->
                 {% if error %}
