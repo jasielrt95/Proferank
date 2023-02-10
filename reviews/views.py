@@ -3,9 +3,10 @@ from courses.models import Course
 from professors.models import Professor
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ReviewFormView(CreateView):
+class ReviewFormView(LoginRequiredMixin, CreateView):
     model = Review
     template_name = "course_review.html"
     fields = ["difficulty", "grade", "pro_student", "organized"]
@@ -16,8 +17,9 @@ class ReviewFormView(CreateView):
         form.instance.professor = form.instance.course.professor
         form.save()
         return redirect("courses:specific_course", pk=self.kwargs["pk"])
-    
-class UpdateReviewFormView(UpdateView):
+
+
+class UpdateReviewFormView(LoginRequiredMixin, UpdateView):
     model = Review
     template_name = "course_review.html"
     fields = ["difficulty", "grade", "pro_student", "organized"]
@@ -28,20 +30,19 @@ class UpdateReviewFormView(UpdateView):
         form.instance.professor = form.instance.course.professor
         form.save()
         return redirect("courses:specific_course", pk=self.kwargs["pk"])
-    
 
-class SuggestionsFormView(CreateView):
+
+class SuggestionsFormView(LoginRequiredMixin, CreateView):
     model = Suggestions
     template_name = "suggestions.html"
     fields = ["suggestion"]
-    redirect_field_name = "next"    
-
+    redirect_field_name = "next"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        next = self.request.GET.get('next')
+        next = self.request.GET.get("next")
         if not next:
-            next = self.request.POST.get('next')
+            next = self.request.POST.get("next")
         if not next:
             next = "/"
         form.save()
