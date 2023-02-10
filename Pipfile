@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 social-auth-app-django = "*"
 
 [dev-packages]
+pre-commit = "*"
 
 [requires]
 python_version = "3.10"
