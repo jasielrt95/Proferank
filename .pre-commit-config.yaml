@@ -1,0 +1,13 @@
+repos:
+  - repo: 'https://github.com/psf/black'
+    rev: 23.1.0
+    hooks:
+      - id: black
+  - repo: 'https://github.com/asottile/pyupgrade'
+    rev: v2.7.4
+    hooks:
+      - id: pyupgrade
+  - repo: 'https://github.com/Riverside-Healthcare/djLint'
+    rev: v1.19.14
+    hooks:
+      - id: djlint-django
