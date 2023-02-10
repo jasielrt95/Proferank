@@ -9,7 +9,7 @@
         <p class="text-xl text-gray-600 mt-4">University Hub es un proyecto desarollado por Jasiel Rivera y Eliam Ruiz, creado con el objetivo de mejorar nuestras habilidades en el desarrollo web y aprender en el camino. La plataforma busca construir y mejorar sobre las ideas de otras páginas similares, con la innovación de calificar a los profesores basándose en los cursos que imparten en lugar de hacer una calificación general.</p>
         <br/>
         <p class="text-xl text-gray-600">
-            ¿Tienes sugerencias o quieres agregar alguna universidad a la plataforma? Visita el siguiente enlace:  <a href="#" class="text-indigo-600">Sugerencias</a>
+            ¿Tienes sugerencias o quieres agregar alguna universidad a la plataforma? Visita el siguiente enlace:  <a href="{% url 'reviews:suggestions' %}?next={{ request.path }}" class="text-indigo-600">Sugerencias</a>
         </p>
     </div>
 </div>
