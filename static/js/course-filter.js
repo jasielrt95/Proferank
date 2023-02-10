@@ -1,6 +1,4 @@
-console.log("Loaded filter.js");
-
-function displayall(){
+function displayall() {
   var professors = document.getElementsByClassName("toggle");
   for (var i = 0; i < professors.length; i++) {
     var professor = professors[i];
@@ -67,19 +65,22 @@ function filter() {
     }
   }
 }
-
 function search() {
   var search = document.getElementById("search-bar").value;
-  var professors = document.getElementsByClassName("toggle");
-  for (var i = 0; i < professors.length; i++) {
-    var professor = professors[i];
-    var professor_name = professor.getAttribute("data-name");
-    if (professor_name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
-      professor.style.display = "flex";
-      console.log(professor_name);
+  var courses = document.getElementsByClassName("toggle");
+  for (var i = 0; i < courses.length; i++) {
+    var course = courses[i];
+    var course_name = course.getAttribute("data-name");
+    var course_codification = course.getAttribute("data-codification");
+    if (
+      course_name.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+      course_codification.toLowerCase().indexOf(search.toLowerCase()) > -1
+    ) {
+      course.style.display = "flex";
+      console.log(course_name);
     } else {
-      professor.style.display = "none";
-      console.log(professor_name);
+      course.style.display = "none";
+      console.log(course_name);
     }
   }
 }
