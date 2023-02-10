@@ -39,7 +39,7 @@ class RegisterView(View):
         if password != password_confirm:
             return render(
                 request,
-                "accounts/register.html",
+                "register.html",
                 {"error": "Passwords do not match"},
             )
         else:
