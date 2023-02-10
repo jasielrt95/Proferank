@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block head %}
     {% load static %}
-{% endblock %}
+{% endblock head %}
 {% block controls %}
-    {% include 'controls/course_list_controls.html' %}
-{% endblock %}
+    {% include "controls/course_list_controls.html" %}
+{% endblock controls %}
 {% block content %}
     <!-- Course List Section -->
     <section>
@@ -14,7 +14,8 @@
                 <div class="flex toggle course flex-col rounded-lg p-6 m-4 shadow-md border border-gray-200 md:hover:bg-gray-200 md:w-3/12 md:hover:animate-pulse"
                      data-college="{{ course.college }}"
                      data-department="{{ course.department }}"
-                     data-name="{{ course.name }}">
+                     data-name="{{ course.name }}"
+                     data-codification="{{ course.codification }}">
                     <a href="{{ course.pk }}" class="space-y-2">
                         <!-- header -->
                         <div class="flex flex-col space-x-1 items-start md:text-2xl">
@@ -44,7 +45,7 @@
             {% endfor %}
         </div>
         </section>
-    {% endblock %}
+    {% endblock content %}
     {% block scripts %}
-        <script src="{% static 'js/filter.js' %}"></script>
-    {% endblock %}
+        <script src="{% static 'js/course-filter.js' %}"></script>
+    {% endblock scripts %}
