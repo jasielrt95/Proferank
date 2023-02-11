@@ -81,7 +81,7 @@ class Course(models.Model):
     @property
     def organized_letter(self):
         return "Sí" if self.organized else "No"
-    
+
     @property
     def review_count(self):
         return len(Review.objects.filter(course=self))
@@ -95,13 +95,7 @@ class Course(models.Model):
         return self.professor.college
 
     def __str__(self):
-        return (
-            self.codification
-            + " - "
-            + self.professor.first_name
-            + " "
-            + self.professor.last_name
-        )
+        return self.codification
 
     def num_to_letter(self, num):
         if num == "N/A":
