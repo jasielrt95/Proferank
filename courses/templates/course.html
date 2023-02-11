@@ -11,9 +11,6 @@
                 <a href="{% url 'professors:specific_professor' course.professor.pk %}">
                     <h1 class="text-3xl font-bold text-gray-800">{{ course.professor.first_name }} {{ course.professor.last_name }}</h1>
                 </a>
-                <img class="w-10 h-10 ml-2 rounded-full"
-                     src="{% static 'img/upr_logo.jpg' %}"
-                     alt="University logo" width="40px" height="40px"/>
             </div>
             <div class="flex flex-row items-center justify-center text-center">
                 <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
