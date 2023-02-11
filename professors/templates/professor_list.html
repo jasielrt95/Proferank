@@ -1,15 +1,22 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block head %}
     {% load static %}
-{% endblock %}
+{% endblock head %}
 {% block controls %}
-    {% include 'controls/professor_list_controls.html' %}
-{% endblock %}
+    {% include "controls/professor_list_controls.html" %}
+{% endblock controls %}
 {% block content %}
     <!-- Professor List Section -->
     <section>
         <!-- Section title -->
-        <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Profesores</h1>
+        <div class="flex flex-col">
+            <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Profesores</h1>
+            <div class="flex flex-col md:hidden justify-center items-center md:space-x-4">
+                <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
+                <a href="{% url 'professors:create_professor' %}"
+                class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+profesor</a>
+            </div>
+        </div>
         <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center md:justify-center">
             <!-- Section title -->
             {% for professor in professors %}
@@ -43,7 +50,7 @@
                 {% endfor %}
             </div>
         </section>
-    {% endblock %}
+    {% endblock content %}
     {% block scripts %}
         <script src="{% static 'js/filter.js' %}"></script>
-    {% endblock %}
+    {% endblock scripts %}

@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Course
 from comments.models import Course_Comment
-from professors.models import Professor
+from professors.models import Professor, Department, College
 from reviews.models import Review
 from django.contrib.auth.mixins import LoginRequiredMixin
 from professors.views import ProfessorDetailView
@@ -15,12 +15,8 @@ class CourseListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["universities"] = set(
-            Professor.objects.values_list("college", flat=True)
-        )
-        context["departments"] = set(
-            Professor.objects.values_list("department", flat=True)
-        )
+        context["universities"] = set(College.objects.values_list("name", flat=True))
+        context["departments"] = set(Department.objects.values_list("name", flat=True))
         return context
 
 

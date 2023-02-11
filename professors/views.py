@@ -13,12 +13,8 @@ class ProfessorListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["departments"] = set(
-            Professor.objects.values_list("department", flat=True)
-        )
-        context["universities"] = set(
-            Professor.objects.values_list("college", flat=True)
-        )
+        context["departments"] = set(Department.objects.values_list("name", flat=True))
+        context["universities"] = set(College.objects.values_list("name", flat=True))
         return context
 
 

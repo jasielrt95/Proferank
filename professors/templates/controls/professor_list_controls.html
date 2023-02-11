@@ -12,7 +12,7 @@
                 </option>
                 {% for college in universities %}
                     <option value="{{ college }}">
-                        {{ college }}
+                        {{ college|truncatechars:20 }}
                     </option>
                 {% endfor %}
             </select>
@@ -21,21 +21,16 @@
             <label for="department" class="text-gray-700 font-bold">Departamento</label>
             <select name="department"
                     id="department_filter"
-                    class="border border-gray-300 rounded-md p-2 min-w-0 md:px-8">
+                    class="border border-gray-300 rounded-md p-2 md:px-8">
                 <option value="">
                     Todas
                 </option>
                 {% for department in departments %}
                     <option value="{{ department }}">
-                        {{ department }}
+                        {{ department|truncatechars:20 }}
                     </option>
                 {% endfor %}
             </select>
-        </div>
-        <div class="flex flex-col md:hidden justify-center items-center md:space-x-4">
-            <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
-            <a href="{% url 'professors:create_professor' %}"
-               class="bg-indigo-600 py-2 px-4 rounded-md text-white font-bold">+profesor</a>
         </div>
     </div>
     <!-- Centralized search bar with 90% width on mobile -->
