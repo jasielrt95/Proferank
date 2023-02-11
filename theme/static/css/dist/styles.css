@@ -901,6 +901,10 @@ select {
   width: 75%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -929,20 +933,12 @@ select {
   align-items: flex-start;
 }
 
-.items-end {
-  align-items: flex-end;
-}
-
 .items-center {
   align-items: center;
 }
 
 .justify-start {
   justify-content: flex-start;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="flex flex-col justify-center items-center mt-12">
+    <h1 class="text-4xl font-bold text-gray-800">Perfil</h1>
+    <div class="flex flex-row">
+        <p class="text-lg text-gray-800">Upvote count: {{ total_upvotes }}</p>
+        <p class="text-lg text-gray-800 ml-4">Downvote count: {{ total_downvotes }}</p>
+    </div>
+</div>
+<div class="flex flex-col justify-center items-center mt-12">
+    <h1 class="text-4xl font-bold text-gray-800">Comentarios</h1>
+    {% for comment in comments %}
+                <div class="flex flex-col my-6 space-y-4 p-4 border border-gray-200 shadow-md rounded-xl w-11/12 md:w-1/3">
+                    <div class="flex justify-between">
+                        <a href="{% url 'courses:specific_course' comment.course.pk %}">
+                            <p class="text-md font-bold text-gray-800">{{ comment.course }}</p>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-800">{{ comment.text|linebreaksbr }}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-md text-gray-800">{{ comment.time_since_str }}</p>
+                        </div>
+                        <div class="flex flex-row items-center space-x-2">
+                            <p class="text-lg font-bold text-gray-900">{{ comment.score }}</p>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if comments|length == 0 %}
+                <div class="flex flex-col justify-center items-center w-3/4">
+                    <p class="text-gray-400 text-center mt-12">
+                        No hay comentarios disponibles
+                    </p>
+                </div>
+            {% endif %}
+
+</div>
+{% endblock content %}
