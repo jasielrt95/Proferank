@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
     <!-- centralized container -->
@@ -34,11 +34,21 @@
                             id="college"
                             class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4">
                         {% for college in universities %}
-                            <option value="{{ college }}">
+                            <option value="{{ college.pk }}">
                                 {{ college }}
                             </option>
                         {% endfor %}
+                            <option value="Other">
+                                Otra
+                            </option>
                     </select>
+                </div>
+                <div class="hidden flex-col items-center justify-center space-y-2" id="other_college_cont">
+                    <label for="other_college" class="text-xl font-bold text-gray-600">Anadir Universidad</label>
+                    <input type="text"
+                           name="other_college"
+                           id="other_college"
+                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-2">
                     <label for="department" class="text-xl font-bold text-gray-600">Departamento</label>
@@ -46,11 +56,21 @@
                             id="department"
                             class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4">
                         {% for department in departments %}
-                            <option value="{{ department }}">
+                            <option value="{{ department.pk }}">
                                 {{ department }}
                             </option>
                         {% endfor %}
+                            <option value="Other">
+                                Otro
+                            </option>
                     </select>
+                </div>
+                <div class="hidden flex-col items-center justify-center space-y-2" id="other_department_cont">
+                    <label for="other_department" class="text-xl font-bold text-gray-600">Anadir Departamento</label>
+                    <input type="text"
+                           name="other_department"
+                           id="other_department"
+                           class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4"/>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-2">
                     <input type="submit"
@@ -68,4 +88,7 @@
             </form>
         </div>
     </div>
-{% endblock %}
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'js/create_professor.js' %}"></script>
+{% endblock scripts %}

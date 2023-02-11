@@ -4,8 +4,27 @@ from reviews.models import Review
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
-class Professor(models.Model):
+class College(models.Model):
+    name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name"]
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=30, validators=[MaxLengthValidator(30)])
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        ordering = ["name"]
+
+
+class Professor(models.Model):
     # Grades
     A = "A"
     B = "B"
@@ -14,9 +33,6 @@ class Professor(models.Model):
     F = "F"
     DIFFICULTIES = ((A, "A"), (B, "B"), (C, "C"), (D, "D"), (F, "F"))
 
-
-
-
     # Professor information
     first_name = models.CharField(
         max_length=20, validators=[MinLengthValidator(1), MaxLengthValidator(20)]
@@ -24,8 +40,8 @@ class Professor(models.Model):
     last_name = models.CharField(
         max_length=80, validators=[MinLengthValidator(1), MaxLengthValidator(80)]
     )
-    college = models.CharField(max_length=100)
-    department = models.CharField(max_length=30)
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     # Methods
     @property
@@ -93,17 +109,15 @@ class Professor(models.Model):
         courses = Course.objects.filter(professor=self)
         reviews = Review.objects.filter(course__in=courses)
         return reviews.count()
-    
+
     @property
     def review_count(self):
         courses = Course.objects.filter(professor=self)
         reviews = Review.objects.filter(course__in=courses)
         return reviews.count()
-    
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-    
-    
 
     def num_to_letter(self, num):
         if num >= 3.2:
