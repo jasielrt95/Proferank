@@ -1,5 +1,8 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base.html" %}
+{% block head %}
+    {% load static %}
+    {% block title %}<title>University Hub</title>{% endblock title %}
+{% endblock head %}
 {% block content %}
     <!-- Hero section -->
     <section class="text-xl md:text-2xl">
@@ -168,4 +171,4 @@
         </div>
     </section>
     <!-- End Trending Confessions -->
-{% endblock %}
+{% endblock content %}

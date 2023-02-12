@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         {% load static %}
         {% load static tailwind_tags %}
-        <title>{% block title %}{% endblock %}</title>
-        <meta name="description" content="{% block description %}{% endblock %}" />
-        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+        {% block title %} {% endblock title %}
+        <!-- <title></> -->
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="title" content="University Hub"/>
+        <meta name="description" content="El mejor lugar para eligir tus cursos con los mejores profesores!"/>
+        <meta name="keywords" content="UPR, Inter, UAGM"/>
+        <meta name="robots" content="index, follow"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="language" content="Spanish"/>
+        <meta name="revisit-after" content="2 days"/>
+
         {% tailwind_css %}
         {% block head %}
-        {% endblock %}
+        {% endblock head %}
     </head>
     <body class="flex flex-col min-h-screen">
-        {% include 'navbar.html' %}
+        {% include "navbar.html" %}
         <div class="controls">
-            {% block controls %}{% endblock %}
+            {% block controls %}{% endblock controls %}
         </div>
         <div class="content">
-            {% block content %}{% endblock %}
+            {% block content %}{% endblock content %}
         </div>
-        {% include 'footer.html' %}
-        {% block scripts %}{% endblock %}
+        {% include "footer.html" %}
+        {% block scripts %}{% endblock scripts %}
         <script src="{% static 'js/navbar.js' %}"></script>
     </body>
 </html>

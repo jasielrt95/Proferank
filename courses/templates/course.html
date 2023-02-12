@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
     {% load static %}
+{% block title %}<title>{{ course.name }} - {{ course.codification }}</title>{% endblock title %}
 {% endblock head %}
 {% block content %}
     <!-- Professor details card -->
