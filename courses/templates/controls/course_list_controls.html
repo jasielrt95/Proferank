@@ -12,7 +12,7 @@
                 </option>
                 {% for college in universities %}
                     <option value="{{ college }}">
-                        {{ college }}
+                        {{ college|truncatechars:20 }}
                     </option>
                 {% endfor %}
             </select>
@@ -27,7 +27,7 @@
                 </option>
                 {% for department in departments %}
                     <option value="{{ department }}">
-                        {{ department }}
+                        {{ department|truncatechars:20 }}
                     </option>
                 {% endfor %}
             </select>
