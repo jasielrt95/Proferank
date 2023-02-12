@@ -73,14 +73,12 @@ function search() {
     var course_name = course.getAttribute("data-name");
     var course_codification = course.getAttribute("data-codification");
     if (
-      course_name.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
-      course_codification.toLowerCase().indexOf(search.toLowerCase()) > -1
+      course_name.toLowerCase().indexOf(search.toLowerCase().trim()) > -1 ||
+      course_codification.toLowerCase().indexOf(search.toLowerCase().trim()) > -1
     ) {
       course.style.display = "flex";
-      console.log(course_name);
     } else {
       course.style.display = "none";
-      console.log(course_name);
     }
   }
 }
