@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     "reviews",
     "confessions",
     "accounts",
-    "crispy_forms",
-    "crispy_bootstrap5",
     "tailwind",
     "theme",
     "django_browser_reload",
@@ -165,6 +163,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 STATIC_URL = "theme/static/css/dist/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
