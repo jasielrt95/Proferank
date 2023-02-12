@@ -6,7 +6,7 @@
             <div class="flex flex-row justify-center items-center">
                 <div>
                     <a href="{% url 'home:index' %}">
-                        <img src="{% static 'img/logo.png' %}" alt="logo" class="mx-4 md:mx-0" height="40px" width="40px"/>
+                        <img src="{% static 'img/logo.png' %}" alt="logo" class="mx-4 md:mx-0" height="50px" width="50px"/>
                     </a>
                 </div>
             </div>
@@ -61,11 +61,11 @@
                     </a>
                 </div>
                 <div>
-                    <h1 class="hidden title text-xl text-black md:block">University Hub</h1>
+                    <h1 class="hidden title text-xl text-black md:block">ProfeRank</h1>
                 </div>
             </div>
             <!-- links section -->
-            <div class="hidden flex-row justify-center items-center space-x-4 text-xl text-gray-700 md:flex">
+            <div class="hidden flex-row justify-center items-center space-x-4 text-xl md:flex md:text-2xl">
                 <a href="{% url 'home:index' %}" class="hover:text-indigo-300">Home</a>
                 <a href="{% url 'courses:all_courses' %}" class="hover:text-indigo-300">Cursos</a>
                 <a href="{% url 'professors:all_professors' %}"

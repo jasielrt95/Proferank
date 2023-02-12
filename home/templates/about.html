@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block head %}
 {% load static %}
-{% block title %}<title>Sobre University Hub</title>{% endblock title %}
+{% block title %}<title>Sobre ProfeRank Hub</title>{% endblock title %}
 {% endblock head %}
 {% block content %}
 <div class="flex flex-col justify-center items-center mt-12">
-    <h1 class="text-4xl font-bold text-gray-800">¿University Hub?</h1>
+    <h1 class="text-4xl font-bold text-gray-800">¿ProfeRank?</h1>
 
     <!-- Why? -->
     <div class="flex flex-col justify-center items-center w-11/12 md:w-1/3">
-        <p class="text-xl text-gray-600 mt-4">University Hub es un proyecto desarollado con el objetivo de mejorar  en el desarrollo web y aprender en el camino. La plataforma busca construir y mejorar sobre las ideas de otras páginas similares, con la innovación de calificar a los profesores en los cursos que imparten en lugar de hacer una calificación general.</p>
+        <p class="text-xl text-gray-600 mt-4">ProfeRank es un proyecto desarollado con el objetivo de mejorar  en el desarrollo web y aprender en el camino. La plataforma busca construir y mejorar sobre las ideas de otras páginas similares, con la innovación de calificar a los profesores en los cursos que imparten en lugar de hacer una calificación general.</p>
         <br/>
         <p class="text-xl text-gray-600">
             ¿Tienes sugerencias o quieres agregar alguna universidad a la plataforma? Visita el siguiente enlace:  <a href="{% url 'reviews:suggestions' %}?next={{ request.path }}" class="text-indigo-600">Sugerencias</a>
