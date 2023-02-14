@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import json
 
+with open("/etc/iupihub-config.json") as config_file:
+    config = json.load(config_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -22,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-#$h0n$1c5b4tl+0f2-r$1w$)np%rtz&418&hgb-&h9#28@frn9"
+SECRET_KEY = config["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["66.228.58.196"]
+ALLOWED_HOSTS = ["localhost", "66.228.58.196"]
 
 
 # Application definition
@@ -106,8 +109,11 @@ WSGI_APPLICATION = "iupihub.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "proferank",
+        "USER": "proferankadmin",
+        "PASSWORD": "LinkinPark95$",
+        "HOST": "localhost",
     }
 }
 
@@ -165,7 +171,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
-STATIC_URL = "theme/static/css/dist/"
+STATIC_URL = "static_root/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Default primary key field type
