@@ -18,6 +18,7 @@
                 {% csrf_token %}
                 <div class="flex flex-col items-center justify-center space-y-2">
                     <label for="difficulty" class="text-xl font-bold text-gray-600">Dificultad</label>
+                    <p class="text-sm text-gray-600">A: Facil, B: Medio, C: Dificil, D: Muy dificil, F: Imposible</p>
                     <select name="difficulty"
                             id="difficulty"
                             class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4">
@@ -40,6 +41,7 @@
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-2">
                     <label for="grade" class="text-xl font-bold text-gray-600">Nota</label>
+                    <p class="text-sm text-gray-600"> Nota final o parcial de la clase. </p>
                     <select name="grade"
                             id="grade"
                             class="w-96 h-10 rounded-xl border-2 border-gray-300 focus:border-indigo-600 focus:outline-none px-4">
