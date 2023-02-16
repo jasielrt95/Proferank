@@ -20,7 +20,7 @@
                     <a href="{{ course.pk }}" class="space-y-2">
                         <!-- header -->
                         <div class="flex flex-col space-x-1 items-start md:text-2xl">
-                            <p class="font-bold text-gray-900">{{ course.name }}</p>
+                            <p class="font-bold text-gray-900">{{ course.name|truncatechars:33 }}</p>
                         </div>
                         <!-- diving line -->
                         <!-- body -->
