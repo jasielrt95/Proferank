@@ -32,6 +32,7 @@ urlpatterns = [
     path("reviews/", include(("reviews.urls", "reviews"), namespace="reviews")),
     path("comments/", include(("comments.urls", "comments"), namespace="comments")),
     path("social-auth/", include("social_django.urls", namespace="social")),
+    path("confessions/", include(("confessions.urls", "confessions"), namespace="confessions")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

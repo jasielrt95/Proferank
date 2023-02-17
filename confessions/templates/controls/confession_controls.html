@@ -1,0 +1,44 @@
+<section class="container flex  flex-col md:flex-row bg-gray-100 md:rounded-xl mx-auto md:justify-around md:items-center md:space-x-4 md:p-6 my-8">
+        <!-- College Dropdown Filter -->
+        <div class="flex flex-col justify-center items-center space-x-4">
+            <label for="college" class="text-gray-700 font-bold">Universidad</label>
+            <select name="college"
+                    id="college_filter"
+                    class="border border-gray-300 rounded-md p-2 md:px-8">
+                <option value="">
+                    Todas
+                </option>
+                {% for college in universities %}
+                    <option value="{{ college }}">
+                        {{ college|truncatechars:20 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- create new confession -->
+        <div class="flex flex-col justify-center items-center space-x-4">
+            <p class="text-gray-700 font-bold">¿Quieres compartir una confesión?</p>
+            <a href="#" class="text-gray-700 font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+
+            </a>
+        </div>
+        <!-- Filter Container -->
+        <div class="flex flex-col justify-center items-center space-x-4">
+            <p class="text-gray-700 font-bold">Filtrar confesiones por </p>
+            <div class="flex flex-row space-x-4">
+                <a href="#" class="text-gray-700 font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                    <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+</section>

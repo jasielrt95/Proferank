@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block head %}
+    {% load static %}
+    {% block title %}<title>ProfeRank - Confesiones</title>{% endblock title %}
+{% endblock head %}
+{% block controls %}
+    {% include "controls/confession_controls.html" %}
+{% endblock controls %}
+{% block content %}
+    <!-- Confessions Section -->
+<section class="flex flex-col mx-auto w-11/12">
+    <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Confesiones</h1>
+    {% for confesion in confessions %}
+        <div class="flex flex-col my-8 space-y-6 md:flex-row">
+            <!-- confession card design -->
+            <div class="flex flex-col mx-auto p-4 w-11/12 bg-gray-100 rounded-md md:w-1/2 md:p-3 ">
+                <!-- header of the card (Title and Date) -->
+                <div class="flex flex-row justify-between">
+                    <div class="flex w-8/12">
+                        <h3 class="text-xl font-bold text-indigo-600 md:text-2xl">{{ confesion.title }}</h3>
+                    </div>
+                    <!-- time -->
+                    <div class="flex flex-row items-center justify-center space-x-1 w-1/3">
+                        <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-600 text-center">{{ confesion.time_since_str }}</p>
+                    </div>
+                </div>
+                <!-- body of the card (Confession) -->
+                <p class="text-gray-600 text-left mt-4 px-4">{{ confesion.body }}</p>
+                <!-- footer of the card (Comments and Likes) -->
+                <div class="flex flex-row justify-around mt-4">
+                    <!-- likes and disklikes -->
+                    <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-red-600">{{ confesion.upvotes }}</p>
+                        </div>
+                        <div class="flex flex-row items-center ml-4">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-indigo-600">{{ confesion.downvotes }}</p>
+                        </div>
+                    </div>
+                    <!-- comments -->
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="w-5 h-5 mr-1">
+                            <path fill-rule="evenodd" d="M3.43 2.524A41.29 41.29 0 0110 2c2.236 0 4.43.18 6.57.524 1.437.231 2.43 1.49 2.43 2.902v5.148c0 1.413-.993 2.67-2.43 2.902a41.102 41.102 0 01-3.55.414c-.28.02-.521.18-.643.413l-1.712 3.293a.75.75 0 01-1.33 0l-1.713-3.293a.783.783 0 00-.642-.413 41.108 41.108 0 01-3.55-.414C1.993 13.245 1 11.986 1 10.574V5.426c0-1.413.993-2.67 2.43-2.902z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-600">{{ confesion.num_comments }}</p>
+                    </div>
+                    <!-- share -->
+                    <div class="flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="w-5 h-5">
+                            <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+<!-- Paginator -->
+<div class="flex flex-row justify-center">
+    <div class="flex flex-row justify-center space-x-2">
+        {% if confessions.has_previous %}
+            <a href="?page={{ confessions.previous_page_number }}" class="flex flex-row items-center justify-center space-x-1 text-indigo-600 hover:text-indigo-800">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
+                </svg>
+                <p>Anterior</p>
+            </a>
+        {% endif %}
+        {% if confessions.has_next %}
+            <a href="?page={{ confessions.next_page_number }}" class="flex flex-row items-center justify-center space-x-1 text-indigo-600 hover:text-indigo-800">
+                <p>Siguiente</p>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
