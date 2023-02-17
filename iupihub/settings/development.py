@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 ]
 
 TAILWIND_APP_NAME = "theme"
+TAILWIND_DIR = os.path.join(BASE_DIR, "tailwind")
 
 INTERNAL_IPS = ["127.0.0.1", "localhost"]
 
