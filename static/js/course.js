@@ -128,6 +128,12 @@ function validate_codification_form() {
         "El código del curso no debe contener espacios";
       return;
     }
+    // if the course code contains more than 8 characters
+    if (course_code.value.length > 8) {
+      codification_error.innerHTML =
+        "El código del curso no debe contener más de ocho caracteres";
+      return;
+    }
   }
   codification_submit.disabled = false;
   codification_submit.classList.remove("cursor-not-allowed");
