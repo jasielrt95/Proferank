@@ -1,7 +1,7 @@
 {% load static %}
 <footer class="flex flex-col justify-center items-center space-y-2 mt-auto mb-4 p-4">
     <!-- links -->
-    <div class="flex justify-between items-center space-x-2 text-xl">
+    <div class="flex justify-between items-center space-x-2 text-2xl">
         <a href="{% url 'home:about' %}" class="hover:text-indigo-300">About</a>
         <a href="{% url 'reviews:suggestions' %}?next={{ request.path }}" class="text-indigo-600 hover:text-indigo-300">Sugerencias</a>   
         <a href="#" class="hover:text-indigo-300">Contact</a>
@@ -10,15 +10,15 @@
     <div class="flex justify-center items-start">
         <!-- twitter -->
         <a href="https://twitter.com/jasiel_rt95" class="mx-2">
-            <img src="{% static 'img/twitter.png' %}" alt="twitter" class="w-6 h-6" width="24px" height="24px"/>   
+            <img src="{% static 'img/twitter.png' %}" alt="twitter" class="w-9 h-9" width="36px" height="36px"/>   
         </a>
         <!-- instagram -->
         <a href="https://www.instagram.com/jasiel_rt95/" class="mx-2">
-            <img src="{% static 'img/instagram.png' %}" alt="instagram" class="w-6 h-6" width="24px" height="24px"/>
+            <img src="{% static 'img/instagram.png' %}" alt="instagram" class="w-9 h-9" width="36px" height="36px"/>
         </a>
         <!-- linkedin -->
         <a href="https://www.linkedin.com/in/jasielrivera/" class="mx-2">
-            <img src="{% static 'img/linkedin.png' %}" alt="linkedin" class="w-6 h-6" width="24px" height="24px"/>
+            <img src="{% static 'img/linkedin.png' %}" alt="linkedin" class="w-9 h-9" width="36px" height="36px"/>
         </a>
     </div>
 </footer>
