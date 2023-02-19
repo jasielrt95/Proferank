@@ -9,10 +9,16 @@ class Course(models.Model):
 
     # Course information
     name = models.CharField(
-        max_length=100, validators=[MinLengthValidator(8), MaxLengthValidator(100)]
+        max_length=100,
+        validators=[MinLengthValidator(8), MaxLengthValidator(100)],
+        blank=False,
+        null=False,
     )
     codification = models.CharField(
-        max_length=8, validators=[MinLengthValidator(8), MaxLengthValidator(8)]
+        max_length=8,
+        validators=[MinLengthValidator(8), MaxLengthValidator(8)],
+        blank=True,
+        null=True,
     )
 
     # Timestamps

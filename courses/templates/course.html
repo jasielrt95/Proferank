@@ -14,7 +14,27 @@
                 </a>
             </div>
             <div class="flex flex-row items-center justify-center text-center">
-                <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
+                {% if course.codification %}
+                    <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
+                {% else %}
+                <div class="flex flex-col">
+                    <h2 class="text-lg font-bold text-gray-600">{{ course.name }}</h2>
+                    <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                            id="toggle-course-codification-form">
+                        <p>añadir codificación</p>
+                    </button>
+                    <p id="course-codification-error" class="text-red-500 text-center"></p>
+                    <form action="{% url 'courses:add_course_codification' pk=course.pk %}" method="post" class="hidden py-4 justify-center items-center" id="course-codification-form">
+                        {% csrf_token %}
+                        <div class="flex flex-row items-center justify-center">
+                            <input type="text" id="course-code" name="codification" class="flex flex-row items-center justify-center w-1/2 p-2 rounded-md shadow-md border border-gray-200 bg-gray-100 text-lg font-bold text-gray-800" placeholder="Codificación"/>
+                            <button type="submit" id="submit-course-codification" class="flex flex-row items-center justify-center ml-1 p-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white">
+                                <p>añadir</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
         <!-- Average Statistics -->
