@@ -179,19 +179,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# security.W016
-CSRF_COOKIE_SECURE = True
 
-# security.W012
-SESSION_COOKIE_SECURE = True
-
-# security.W008
 SECURE_SSL_REDIRECT = True
-
-# security.W004
-SECURE_HSTS_SECONDS = 31536000  # One year in seconds
-
-# Another security settings
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 60
