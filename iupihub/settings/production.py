@@ -30,7 +30,7 @@ SECRET_KEY = config["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "66.228.58.196", "www.proferank.com"]
+ALLOWED_HOSTS = ["localhost", "66.228.58.196", "www.proferank.com", "proferank.com"]
 
 
 # Application definition
