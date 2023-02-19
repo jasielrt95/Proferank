@@ -65,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.cache.CacheMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -74,6 +75,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "iupihub.urls"
+
+CACHE_MIDDLEWARE_SECONDS = 86400  # One day
+
 
 TEMPLATES = [
     {
