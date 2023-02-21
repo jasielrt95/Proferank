@@ -63,15 +63,12 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
-    "django.middleware.cache.CacheMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
-
-CACHE_MIDDLEWARE_SECONDS = 86400  # One day
 
 ROOT_URLCONF = "iupihub.urls"
 
