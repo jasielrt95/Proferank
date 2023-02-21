@@ -12,7 +12,7 @@ class ProfessorAdmin(admin.ModelAdmin):
         "department",
         "difficulty",
         "grade",
-        "pro_student",
+        "recommended",
         "organized",
         "comment_count",
     )

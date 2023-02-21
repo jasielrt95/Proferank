@@ -8,13 +8,14 @@ class ReviewAdmin(admin.ModelAdmin):
         "course",
         "difficulty",
         "grade",
-        "pro_student",
+        "recommended",
         "organized",
         "grade_num",
         "difficulty_num",
     )
     list_filter = ("professor", "course")
     search_fields = ("professor", "course")
+
 
 class SuggestionsAdmin(admin.ModelAdmin):
     list_display = ("user", "suggestion", "created_at", "email")

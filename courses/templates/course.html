@@ -41,7 +41,7 @@
         <div class="flex flex-col items-center justify-between w-10/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
             <div class="flex flex-row">
                 <div class="flex flex-col">
-                    <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 md:text-2xl">Estadísticas</h2>
                     <hr class=" border-gray-300"/>
                 </div>
                 {% if user.is_authenticated and not user_rated %}
@@ -57,33 +57,33 @@
             {% if course.review_count > 0 %}
                 <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden text-2xl font-bold text-gray-800 md:block">Dificultad</h2>
-                        <h2 class="hidden text-2xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
+                        <h2 class="hidden text-xl font-bold text-gray-800 md:block">Dificultad</h2>
+                        <h2 class="hidden text-xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Dificultad: {{ course.difficulty_letter }}</h2>
                     </div>
                     <!-- difficulty -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800">Nota</h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800">Nota</h2>
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Nota: {{ course.grade_letter }}</h2>
                     </div>
                     <!-- workload -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Organizado
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">Organizado
                         </h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
                         {{ course.organized_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Organizado: {{ course.organized_letter }}</h2>
                     </div>
                     <!-- pro student -->
                     <div class="flex flex-row items-center justify-center  md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
-                            Pro estudiante
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
+                            Recomendado
                         </h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
-                            {{ course.pro_student_letter }}
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
+                            {{ course.recommended_letter }}
                         </h2>
-                        <h2 class="text-lg font-bold text-gray-800 md:hidden">Pro estudiante: {{ course.pro_student_letter }}</h2>
+                        <h2 class="text-lg font-bold text-gray-800 md:hidden">Recomendado: {{ course.recommended_letter }}</h2>
                     </div>
                 </div>
             {% else %}

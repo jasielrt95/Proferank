@@ -5,7 +5,6 @@ User = get_user_model()
 
 
 class Review(models.Model):
-
     # Constants
     DIFFICULTIES = (
         ("A", "Very Easy"),
@@ -43,7 +42,7 @@ class Review(models.Model):
         choices=GRADES,
     )
 
-    pro_student = models.BooleanField()
+    recommended = models.BooleanField()
     organized = models.BooleanField()
 
     # Timestamps
@@ -74,6 +73,7 @@ class Review(models.Model):
     def __str__(self):
         return f"{self.user} - {self.professor} - {self.course}"
 
+
 class Suggestions(models.Model):
     user = models.ForeignKey(
         "accounts.User", on_delete=models.CASCADE, related_name="suggestions"
@@ -85,7 +85,7 @@ class Suggestions(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.created_at}"
-    
+
     @property
     def email(self):
         return self.user.email

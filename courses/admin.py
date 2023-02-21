@@ -11,7 +11,7 @@ class courseAdmin(admin.ModelAdmin):
         "professor",
         "difficulty",
         "grade",
-        "pro_student",
+        "recommended",
         "organized",
     )
     list_filter = ("professor",)
