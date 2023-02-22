@@ -76,7 +76,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "iupihub.urls"
 
-CACHE_MIDDLEWARE_SECONDS = 86400  # One day
+CACHE_MIDDLEWARE_SECONDS = 0  # TODO: Change to one day later, for now it is affecting the navbar and other templates that check if the user is logged in.
 
 
 TEMPLATES = [
