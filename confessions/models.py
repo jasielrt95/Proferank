@@ -58,5 +58,9 @@ class Confession(models.Model):
         sign = 1 if s > 0 else -1 if s < 0 else 0
         return round(sign * order + ts / 45000, 7)
 
+    @property
+    def comment_count(self):
+        return Confession_Comment.objects.filter(confession=self).count()
+
     def __str__(self):
         return self.title + " - " + self.created_at.strftime("%m/%d/%Y, %H:%M:%S")
