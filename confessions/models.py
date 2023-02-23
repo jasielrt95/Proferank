@@ -2,13 +2,14 @@ from django.db import models
 from datetime import datetime, timezone
 from comments.models import Confession_Comment
 from math import log
+from professors.models import College
 
 
 class Confession(models.Model):
-
     # Confession information
     title = models.CharField(max_length=100)
     body = models.TextField()
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
 
     # Score information
     upvotes = models.IntegerField(default=0)
@@ -34,17 +35,17 @@ class Confession(models.Model):
     def time_since_str(self):
         ts = self.time_since
         if ts < 1:
-            return "Just now"
+            return "Justo ahora"
         elif ts < 60:
-            return str(round(ts)) + " minutes ago"
+            return str(round(ts)) + " minutos atras"
         elif ts < 1440:
-            return str(round(ts / 60)) + " hours ago"
+            return str(round(ts / 60)) + " horas atras"
         elif ts < 43200:
-            return str(round(ts / 1440)) + " days ago"
+            return str(round(ts / 1440)) + " días atras"
         elif ts < 525600:
-            return str(round(ts / 43200)) + " months ago"
+            return str(round(ts / 43200)) + " meses atras"
         else:
-            return str(round(ts / 525600)) + " years ago"
+            return str(round(ts / 525600)) + " años atras"
 
     # TODO: Implement a better hotness alogorithm that scales down the score the older the post is
     @property
