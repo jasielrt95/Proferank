@@ -3,6 +3,10 @@ from datetime import datetime, timezone
 from comments.models import Confession_Comment
 from math import log
 from professors.models import College
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Confession(models.Model):
@@ -12,8 +16,8 @@ class Confession(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
 
     # Score information
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
+    upvotes = models.ManyToManyField(User, related_name="confession_upvotes")
+    downvotes = models.ManyToManyField(User, related_name="confession_downvotes")
 
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,7 +25,15 @@ class Confession(models.Model):
 
     @property
     def score(self):
-        return self.upvotes - self.downvotes
+        return self.upvotes_count - self.downvotes_count
+
+    @property
+    def upvotes_count(self):
+        return self.upvotes.count()
+
+    @property
+    def downvotes_count(self):
+        return self.downvotes.count()
 
     @property
     def num_comments(self):
@@ -50,13 +62,8 @@ class Confession(models.Model):
     # TODO: Implement a better hotness alogorithm that scales down the score the older the post is
     @property
     def hotness(self):
-        if self.time_since > 1440:
-            return 0
-        ts = self.time_since
-        s = self.score
-        order = log(max(abs(s), 1), 10)
-        sign = 1 if s > 0 else -1 if s < 0 else 0
-        return round(sign * order + ts / 45000, 7)
+        sign = 1 if self.score > 0 else -1
+        return sign * log(abs(self.score) + 1, 10) + self.time_since / 45000
 
     @property
     def comment_count(self):
