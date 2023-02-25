@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Confession
 from comments.models import Confession_Comment
 from professors.models import College
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 class ConfessionFeedView(TemplateView):
@@ -27,7 +27,7 @@ class ConfessionFeedView(TemplateView):
             now = datetime.now(timezone.utc)
             if college is None:
                 confessions = Confession.objects.filter(
-                    created_at__gte=now - timezone.timedelta(days=5)
+                    created_at__gte=now - timedelta(days=1)
                 )
             else:
                 confessions = Confession.objects.filter(
@@ -42,7 +42,7 @@ class ConfessionFeedView(TemplateView):
                     "-created_at"
                 )
 
-        paginator = Paginator(confessions, 50)
+        paginator = Paginator(confessions, 8)
         page = self.request.GET.get("page")
 
         try:

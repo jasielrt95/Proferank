@@ -8,8 +8,14 @@
 {% endblock controls %}
 {% block content %}
     <!-- Confessions Section -->
-<section class="flex flex-col mx-auto w-11/12">
+<div class="flex flex-row justify-center items-center">
     <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Confesiones</h1>
+    <a href="#" class="font-bold text-indigo-600">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd"/>
+        </svg>
+    </a>
+</div>
     {% for confesion in confessions %}
         <div class="flex flex-col my-8 space-y-6 md:flex-row">
             <!-- confession card design -->
@@ -32,25 +38,26 @@
                 <!-- footer of the card (Comments and Likes) -->
                 <div class="flex flex-row justify-around mt-4">
                     <!-- likes and disklikes -->
-                    <div class="flex flex-row">
-                        <div class="flex flex-row items-center">
+                    <div class="flex flex-row items-center space-x-2">
+                        <p class="text-lg font-bold text-gray-900">{{ confesion.score }}</p>
+                        <button class="flex flex-row items-center like-button"
+                                data-comment-id="{{ confesion.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    class="w-5 h-5">
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="w-5 h-5">
                                 <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
                             </svg>
-                            <p class="text-red-600">{{ confesion.upvotes }}</p>
-                        </div>
-                        <div class="flex flex-row items-center ml-4">
+                        </button>
+                        <button class="flex flex-row items-center ml-1 dislike-button"
+                                data-comment-id="{{ confesion.pk }}">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    class="w-5 h-5">
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="w-5 h-5">
                                 <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z" clip-rule="evenodd" />
                             </svg>
-                            <p class="text-indigo-600">{{ confesion.downvotes }}</p>
-                        </div>
+                        </button>
                     </div>
                     <!-- comments -->
                     <div class="flex flex-row items-center">
@@ -64,18 +71,21 @@
                     </div>
                     <!-- share -->
                     <div class="flex flex-row items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                class="w-5 h-5">
-                            <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
-                        </svg>
+                        <button class="flex flex-row items-center share-button"
+                                confesion-id="https://www.proferank.com/confessions/{{ confesion.pk }}" onclick="copyToClipboard(this)"
+                                >
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="w-5 h-5">
+                                <path d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
-</section>
 <!-- Paginator -->
 <div class="flex flex-row justify-center items-center">
     {% for page in paginator.adjusted_elided_pages %}
@@ -91,3 +101,5 @@
 </div>
 {% endblock content %}
 {% block scripts %}
+<script src="{% static 'js/copy-to-clipboard.js' %}"></script>
+{% endblock scripts %}

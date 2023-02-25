@@ -1,10 +1,10 @@
-<section class="container flex flex-row bg-gray-100 md:rounded-xl mx-auto justify-around md:items-center md:space-x-4 md:p-6 my-8">
+<section class="container flex flex-row md:flex-row bg-gray-100 md:rounded-xl mx-auto justify-around md:items-center py-8 md:space-x-4 p-6 my-8">
         <!-- College Dropdown Filter -->
-        <div class="flex flex-col justify-center items-center space-x-4">
-            <label for="college" class="text-gray-700 font-bold">Universidad</label>
+        <div class="flex flex-col md:justify-center md:items-center space-x-4">
+            <label for="college" class="hidden text-gray-700 font-bold md:block">Universidad</label>
             <select name="college"
                     id="college_filter"
-                    class="border border-gray-300 rounded-md p-2 md:px-8">
+                    class="border border-gray-300 rounded-md">
                 <option value="all">
                     Todas
                 </option>
@@ -16,14 +16,6 @@
             </select>
         </div>
         <!-- create new confession -->
-        <div class="flex flex-col justify-center items-center space-x-4">
-            <p class="hidden text-gray-700 font-bold md:block">¿Quieres compartir una confesión?</p>
-            <a href="#" class="text-gray-700 font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </div>
         <!-- Filter Container -->
         <div class="flex flex-col justify-center items-center space-x-4">
             <p class="hidden text-gray-700 font-bold md:block">¿Ver las confesiones mas hot?</p>
