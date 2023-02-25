@@ -2,6 +2,11 @@ function tempAlert(msg, duration, button) {
   var alert = document.createElement("div");
   alert.className = "alert";
   alert.textContent = msg;
+  // give the alert a bg and rounded corners
+  alert.style.background = "white";
+  alert.style.borderRadius = "5px";
+  alert.style.color = "#5046e5";
+  alert.style.padding = "10px";
 
   /* Add the alert element just before the button */
     button.parentNode.insertBefore(alert, button);
