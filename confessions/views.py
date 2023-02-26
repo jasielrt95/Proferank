@@ -14,39 +14,20 @@ class ConfessionFeedView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        order = self.request.GET.get("order")
-        # TODO: This whole function code is very messy, I need to clean it up, divide it into functions, etc.
+
         try:
-            college = self.request.GET.get("college")
+            college = self.kwargs["college"]
+            college = College.objects.get(name=college)
         except:
             college = None
-        if college == "all":
-            college = None
 
-        if order == "hot":
-            # TODO: This method is not efficient, but it works for now, if theres a lot of posts in the last 5 days it will have to order all of them, which is not ideal.
-
-            # get all confessions from the last 5 days
-            now = datetime.now(timezone.utc)
-            if college is None:
-                confessions = Confession.objects.filter(
-                    created_at__gte=now - timedelta(days=1)
-                )
-            else:
-                confessions = Confession.objects.filter(
-                    created_at__gte=now - timezone.timedelta(days=5), college=college
-                )
-            print("hot")
-            confessions = sorted(confessions, key=lambda x: x.hotness, reverse=True)
+        if college is None:
+            confessions = Confession.objects.all()
         else:
-            if college is None:
-                confessions = Confession.objects.all().order_by("-created_at")
-            else:
-                confessions = Confession.objects.filter(college=college).order_by(
-                    "-created_at"
-                )
+            confessions = Confession.objects.filter(college=college)
+            context["selected"] = college
 
-        paginator = Paginator(confessions, 8)
+        paginator = Paginator(confessions, 4)
         page = self.request.GET.get("page")
 
         try:

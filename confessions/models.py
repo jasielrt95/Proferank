@@ -4,7 +4,9 @@ from comments.models import Confession_Comment
 from math import log
 from professors.models import College
 from django.contrib.auth import get_user_model
-
+from django.db.models import F, Func
+from django.db.models.functions import TruncDate
+from django.db.models import Count
 
 User = get_user_model()
 
@@ -22,6 +24,9 @@ class Confession(models.Model):
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     @property
     def score(self):
