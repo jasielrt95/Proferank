@@ -188,3 +188,5 @@ SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # include subdomains in HSTS policy
+SECURE_HSTS_PRELOAD = True  # enable HSTS preload list submission
