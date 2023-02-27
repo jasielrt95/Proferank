@@ -10,30 +10,26 @@ for (let i = 0; i < likeButtons.length; i++) {
 function likeRequest() {
   console.log("like button clicked");
   let likeButton = this;
-  let comment_id = likeButton.getAttribute("data-comment-id");
-  console.log(comment_id);
-  if (comment_id) {
-    sendLikeRequest(likeButton, comment_id);
+  let confession_id = likeButton.getAttribute("data-confession-id");
+  console.log(confession_id);
+  if (confession_id) {
+    sendLikeRequest(likeButton, confession_id);
   }
 }
 
 function dislikeRequest() {
   console.log("dislike button clicked");
   let dislikeButton = this;
-  let comment_id = dislikeButton.getAttribute("data-comment-id");
-  console.log(comment_id);
-  if (comment_id) {
-    sendDislikeRequest(dislikeButton, comment_id);
+  let confession_id = dislikeButton.getAttribute("data-confession-id");
+  console.log(confession_id);
+  if (confession_id) {
+    sendDislikeRequest(dislikeButton, confession_id);
   }
 }
 
-function sendLikeRequest(likeButton, comment_id) {
-  let type = "courses";
-  if (window.location.href.includes("confessions")) {
-    type = "confessions";
-  }
+function sendLikeRequest(likeButton, confession_id) {
   let request = new XMLHttpRequest();
-  request.open("POST", "/comments/" + type + "/" + comment_id + "/like");
+  request.open("POST", "/confessions/" + confession_id + "/like");
   request.setRequestHeader("X-CSRFToken", csrftoken);
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function () {
@@ -46,14 +42,9 @@ function sendLikeRequest(likeButton, comment_id) {
   request.send();
 }
 
-function sendDislikeRequest(dislikeButton, comment_id) {
-  // check if we are in the confession url or the course url
-  let type = "courses";
-  if (window.location.href.includes("confessions")) {
-    type = "confessions";
-  }
+function sendDislikeRequest(dislikeButton, confession_id) {
   let request = new XMLHttpRequest();
-  request.open("POST", "/comments/" + type + "/" + comment_id + "/dislike");
+  request.open("POST", "/confessions/" + confession_id + "/dislike");
   request.setRequestHeader("X-CSRFToken", csrftoken);
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function () {
@@ -70,9 +61,7 @@ function updateScore(Button, score, Type) {
   if (Type == "like") {
     let scoreParagraph = Button.previousElementSibling;
     scoreParagraph.innerHTML = score;
-  }
-  if (Type == "dislike") {
-    console.log("dislike");
+  } else {
     let scoreParagraph = Button.previousElementSibling.previousElementSibling;
     scoreParagraph.innerHTML = score;
   }

@@ -2,9 +2,13 @@ from django.urls import path
 
 from .views import (
     CourseCommentCreateView,
-    CommentLikeView,
-    CommentDislikeView,
+    CourseCommentLikeView,
+    CourseCommentDislikeView,
+    ConfessionCommentLikeView,
+    ConfessionCommentDislikeView,
     CourseCommentUpdateView,
+    ConfessionCommentCreateView,
+    ConfessionCommentUpdateView,
 )
 
 app_name = "comments"
@@ -16,18 +20,38 @@ urlpatterns = [
         name="course_comment",
     ),
     path(
-        "<int:pk>/like",
-        CommentLikeView,
+        "courses/<int:pk>/like",
+        CourseCommentLikeView,
         name="comment_like",
     ),
     path(
-        "<int:pk>/dislike",
-        CommentDislikeView,
+        "courses/<int:pk>/dislike",
+        CourseCommentDislikeView,
         name="comment_dislike",
     ),
     path(
-        "<int:pk>/edit",
+        "confessions/<int:pk>/like",
+        ConfessionCommentLikeView,
+        name="confession_comment_like",
+    ),
+    path(
+        "confessions/<int:pk>/dislike",
+        ConfessionCommentDislikeView,
+        name="confession_comment_dislike",
+    ),
+    path(
+        "course/<int:pk>/edit",
         CourseCommentUpdateView.as_view(),
         name="comment_edit",
+    ),
+    path(
+        "confession/<int:pk>/edit",
+        ConfessionCommentUpdateView.as_view(),
+        name="confession_comment_edit",
+    ),
+    path(
+        "confession/<int:pk>/comment",
+        ConfessionCommentCreateView.as_view(),
+        name="confession_comment",
     ),
 ]

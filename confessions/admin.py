@@ -6,8 +6,8 @@ class ConfessionAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "score",
-        "upvotes",
-        "downvotes",
+        "upvotes_count",
+        "downvotes_count",
         "created_at",
         "updated_at",
         "hotness",
