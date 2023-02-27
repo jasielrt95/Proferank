@@ -15,7 +15,7 @@ class Confession(models.Model):
     # Confession information
     title = models.CharField(max_length=100)
     body = models.TextField()
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.ForeignKey(College, on_delete=models.CASCADE, null=True)
 
     # Score information
     upvotes = models.ManyToManyField(User, related_name="confession_upvotes")
