@@ -64,12 +64,14 @@ class ConfessionDetailView(DetailView):
 
 class ConfessionCreateView(LoginRequiredMixin, CreateView):
     model = Confession
-    fields = ["title", "body"]
-    template_name = "confession_create.html"
+    fields = ["title", "college", "body"]
 
     def form_valid(self, form):
-        form.instance.college = College.objects.get(id=1)
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
 
     def get_success_url(self):
         return "/confessions/" + str(self.object.id) + "/"

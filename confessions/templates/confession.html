@@ -179,7 +179,7 @@
                         {% endif %}
                     </div>
                     {% if comment.user == user %}
-                        <form action="{% url 'comments:comment_edit' comment.pk %}"
+                        <form action="{% url 'comments:confession_comment_edit' comment.pk %}"
                               method="post"
                               class="hidden flex-col justify-center items-center mt-4"
                               id="edit-comment-form">
@@ -212,6 +212,9 @@
 {% endblock content %}
 {% block scripts %}
     <script>var csrftoken = '{{ csrf_token }}';</script>
+    <script src="{% static 'js/copy-to-clipboard.js' %}"></script>
+    <script src="{% static 'js/likedislike-confessions.js' %}"></script>
     <script src="{% static 'js/course.js' %}"></script>
     <script src="{% static 'js/likedislike.js' %}"></script>
+    <!-- <script src="{% static 'js/edit-comment.js' %}"></script> -->
 {% endblock scripts %}

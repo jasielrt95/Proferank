@@ -47,7 +47,7 @@
         <label for="college" class="text-xl font-bold text-gray-900">Universidad</label>
         <select name="college" id="college" class="border border-gray-300 rounded-md" required>
             {% for college in universities %}
-                <option value="{{ college }}">{{ college }}</option>
+                <option value="{{ college.pk }}">{{ college }}</option>
             {% endfor %}
         </select>
     </div>

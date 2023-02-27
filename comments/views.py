@@ -55,6 +55,20 @@ class ConfessionCommentCreateView(LoginRequiredMixin, CreateView):
         return redirect(reverse("confessions:confession_detail", args=[confession_id]))
 
 
+class ConfessionCommentUpdateView(LoginRequiredMixin, UpdateView):
+    model = Confession_Comment
+    fields = ["text"]
+
+    def form_valid(self, form):
+        confession_id = self.object.confession.id
+        form.save()
+        return redirect(reverse("confessions:confession_detail", args=[confession_id]))
+
+    def form_invalid(self, form):
+        confession_id = self.object.confession.id
+        return redirect(reverse("confessions:confession_detail", args=[confession_id]))
+
+
 @login_required
 def CourseCommentLikeView(request, pk):
     comment = Course_Comment.objects.get(id=pk)

@@ -8,6 +8,7 @@ from .views import (
     ConfessionCommentDislikeView,
     CourseCommentUpdateView,
     ConfessionCommentCreateView,
+    ConfessionCommentUpdateView,
 )
 
 app_name = "comments"
@@ -39,9 +40,14 @@ urlpatterns = [
         name="confession_comment_dislike",
     ),
     path(
-        "<int:pk>/edit",
+        "course/<int:pk>/edit",
         CourseCommentUpdateView.as_view(),
         name="comment_edit",
+    ),
+    path(
+        "confession/<int:pk>/edit",
+        ConfessionCommentUpdateView.as_view(),
+        name="confession_comment_edit",
     ),
     path(
         "confession/<int:pk>/comment",

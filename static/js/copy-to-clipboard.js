@@ -2,30 +2,22 @@ function tempAlert(msg, duration, button) {
   var alert = document.createElement("div");
   alert.className = "alert";
   alert.textContent = msg;
-  // give the alert a bg and rounded corners
   alert.style.background = "white";
   alert.style.borderRadius = "5px";
   alert.style.color = "#5046e5";
   alert.style.padding = "10px";
+  button.parentNode.insertBefore(alert, button);
 
-  /* Add the alert element just before the button */
-    button.parentNode.insertBefore(alert, button);
-
-    /* Remove the alert element after the specified duration */
-    setTimeout(function () {
-        alert.parentNode.removeChild(alert);
-        }
-    , duration);
+  setTimeout(function () {
+    alert.parentNode.removeChild(alert);
+  }, duration);
 }
 function copyToClipboard(button) {
-  /* Get the confesion-id property value of the button that was clicked */
   const url = button.getAttribute("confesion-id");
   if (!url) {
     console.error("No confesion-id attribute found on the button");
     return;
   }
-
-  /* Write the text to the clipboard */
   navigator.clipboard
     .writeText(url)
     .then(() => {

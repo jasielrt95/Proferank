@@ -5,6 +5,7 @@ function displayall() {
     professor.style.display = "flex";
   }
 }
+
 function filterCollege() {
   var college = document.getElementById("college_filter").value;
   if (college == "") {
