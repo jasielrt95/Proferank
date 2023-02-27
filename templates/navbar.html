@@ -12,7 +12,7 @@
             </div>
             <!-- links section -->
             <div class="hidden flex-row items-center space-x-4 md:flex md:text-2xl">
-                <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Home</a>
+                <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Perfil</a>
                 <a href="{% url 'courses:all_courses' %}" class="hover:text-indigo-300">Cursos</a>
                 <a href="{% url 'professors:all_professors' %}"
                    class="hover:text-indigo-300">Profesores</a>
@@ -37,7 +37,7 @@
         <!-- mobile menu -->
         <div class="hidden p-3 md:hidden" id="mobile-menu">
             <div class="flex flex-col items-center space-y-4 text-xl bg-gray-50 bg-blur rounded-lg text-gray-700">
-                <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Home</a>
+                <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Perfil</a>
                 <a href="{% url 'courses:all_courses' %}" class="hover:text-indigo-300">Cursos</a>
                 <a href="{% url 'professors:all_professors' %}"
                    class="hover:text-indigo-300">Profesores</a>
@@ -59,9 +59,6 @@
                     <a href="{% url 'home:index' %}">
                         <img src="{% static 'img/logo.png' %}" alt="logo" class="mx-4 md:mx-0" width="50px" height="50px"/>
                     </a>
-                </div>
-                <div>
-                    <h1 class="hidden title text-xl text-black md:block">ProfeRank</h1>
                 </div>
             </div>
             <!-- links section -->

@@ -17,22 +17,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path("", include("home.urls"), name="home"),
     path("__reload__/", include("django_browser_reload.urls")),
     path("admin/", admin.site.urls),
-    path(
-        "professors/",
-        include(("professors.urls", "professors"), namespace="professors"),
-    ),
+    path("professors/", include(("professors.urls", "professors"), namespace="professors"),),
     path("courses/", include(("courses.urls", "courses"), namespace="courses")),
     path("accounts/", include("accounts.urls"), name="accounts"),
     path("reviews/", include(("reviews.urls", "reviews"), namespace="reviews")),
     path("comments/", include(("comments.urls", "comments"), namespace="comments")),
     path("social-auth/", include("social_django.urls", namespace="social")),
     path("confessions/", include(("confessions.urls", "confessions"), namespace="confessions")),
+    path("robots.txt",TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

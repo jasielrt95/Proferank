@@ -7,9 +7,6 @@
 *.dll
 
 # ignore migrations
-**/migrations/**
-!**/migrations
-**/**/migrations/**
 
 # ignore all Mac OS files
 .DS_Store
@@ -17,9 +14,6 @@
 
 # ignore sqlite3 database
 *.sqlite3
-
-# ignore static images
-/static/img/**
 
 
 

@@ -23,6 +23,14 @@ class LoginView(LoginView):
             next = "/"
         return next
 
+    # if login is not successful, return error message
+    def form_invalid(self, form):
+        return render(
+            self.request,
+            "login.html",
+            {"error": "Usuario o contraseña incorrectos"},
+        )
+
 
 class LogoutView(LogoutView):
     template_name = "logout.html"
@@ -40,7 +48,7 @@ class RegisterView(View):
             return render(
                 request,
                 "register.html",
-                {"error": "Passwords do not match"},
+                {"error": "Las contraseñas no coinciden"},
             )
         else:
             user = User.objects.create_user(

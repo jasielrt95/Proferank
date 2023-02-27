@@ -9,10 +9,16 @@ class Course(models.Model):
 
     # Course information
     name = models.CharField(
-        max_length=100, validators=[MinLengthValidator(8), MaxLengthValidator(100)]
+        max_length=100,
+        validators=[MinLengthValidator(8), MaxLengthValidator(100)],
+        blank=False,
+        null=False,
     )
     codification = models.CharField(
-        max_length=8, validators=[MinLengthValidator(8), MaxLengthValidator(8)]
+        max_length=8,
+        validators=[MinLengthValidator(8), MaxLengthValidator(8)],
+        blank=True,
+        null=True,
     )
 
     # Timestamps
@@ -49,21 +55,21 @@ class Course(models.Model):
         return self.num_to_letter(self.difficulty)
 
     @property
-    def pro_student(self):
+    def recommended(self):
         reviews = Review.objects.filter(course=self)
         if len(reviews) == 0:
             return "N/A"
         total = 0
         for review in reviews:
-            if review.pro_student:
+            if review.recommended:
                 total += 1
             else:
                 total -= 1
         return total > 0
 
     @property
-    def pro_student_letter(self):
-        return "Sí" if self.pro_student else "No"
+    def recommended_letter(self):
+        return "Sí" if self.recommended else "No"
 
     @property
     def organized(self):

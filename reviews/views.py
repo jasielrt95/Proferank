@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ReviewFormView(LoginRequiredMixin, CreateView):
     model = Review
     template_name = "course_review.html"
-    fields = ["difficulty", "grade", "pro_student", "organized"]
+    fields = ["difficulty", "grade", "recommended", "organized"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -22,7 +22,7 @@ class ReviewFormView(LoginRequiredMixin, CreateView):
 class UpdateReviewFormView(LoginRequiredMixin, UpdateView):
     model = Review
     template_name = "course_review.html"
-    fields = ["difficulty", "grade", "pro_student", "organized"]
+    fields = ["difficulty", "grade", "recommended", "organized"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user

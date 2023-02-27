@@ -76,15 +76,15 @@ class Professor(models.Model):
             return "N/A"
         return self.num_to_letter(total / course_count)
 
-    def pro_student(self):
+    def recommended(self):
         courses = Course.objects.filter(professor=self)
         total = 0
         if len(courses) == 0:
             return 0
         for course in courses:
-            if course.pro_student == "N/A":
+            if course.recommended == "N/A":
                 continue
-            if course.pro_student:
+            if course.recommended:
                 total += 1
             else:
                 total -= 1

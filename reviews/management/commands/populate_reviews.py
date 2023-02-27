@@ -33,7 +33,7 @@ class Command(BaseCommand):
                         user=user,
                         difficulty=random.choice(["A", "B", "C", "D", "F"]),
                         grade=random.choice(["A", "B", "C", "D", "F"]),
-                        pro_student=fake.boolean(),
+                        recommended=fake.boolean(),
                         organized=fake.boolean(),
                     )
         self.stdout.write(self.style.SUCCESS("Successfully populated reviews!"))

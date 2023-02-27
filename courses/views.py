@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Course
 from comments.models import Course_Comment
 from professors.models import Professor, Department, College
@@ -49,6 +49,19 @@ class CourseDetailView(DetailView):
 class CourseCreateView(CreateView, LoginRequiredMixin):
     model = Course
     fields = ["name", "codification", "professor"]
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return redirect("courses:specific_course", pk=form.instance.pk)
+
+    def form_invalid(self, form):
+        return redirect("professors:specific_professor", pk=form.instance.professor.pk)
+
+
+class CourseCodificationUpdateView(UpdateView, LoginRequiredMixin):
+    model = Course
+    fields = ["codification"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user

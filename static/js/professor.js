@@ -43,17 +43,41 @@ function validate_course_form() {
   }
 
   // Check if the course code is empty
-  if (course_code.value == "") {
-    course_form_submit.disabled = true;
-    course_form_error.innerHTML = "El código del curso no puede estar vacío";
+  // if (course_code.value == "") {
+  //   course_form_submit.disabled = true;
+  //   course_form_error.innerHTML = "El código del curso no puede estar vacío";
+  //   return;
+  // }
+
+  if (
+    course_code.value == "" ||
+    course_code.value == null ||
+    course_code.value == undefined ||
+    course_code.length == 0
+  ) {
+    course_form_submit.disabled = false;
+    course_form_error.innerHTML = "";
+    course_form_submit.classList.remove("cursor-not-allowed");
+    course_form_submit.classList.add("bg-indigo-600");
+    course_form_submit.classList.remove("bg-gray-400");
     return;
   }
 
-  // Check if the course code is valid
+  // Check if the course code is valid or if it is empty
   if (!course_code.value.match(/^[A-Z]{4}[0-9]{4}$/)) {
     course_form_submit.disabled = true;
-    course_form_error.innerHTML = "El código del curso no es válido";
-    return;
+    // if the first four characters are not uppercase letters
+    if (!course_code.value.match(/^[A-Z]{4}/)) {
+      course_form_error.innerHTML =
+        "El código del curso debe comenzar con cuatro letras mayúsculas";
+      return;
+    }
+    // if the last four characters are not numbers
+    if (!course_code.value.match(/[0-9]{4}$/)) {
+      course_form_error.innerHTML =
+        "El código del curso debe terminar con cuatro números";
+      return;
+    }
   }
 
   // If all the checks pass, enable the submit button

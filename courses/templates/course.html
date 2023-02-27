@@ -14,14 +14,34 @@
                 </a>
             </div>
             <div class="flex flex-row items-center justify-center text-center">
-                <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
+                {% if course.codification %}
+                    <h2 class="text-lg font-bold text-gray-600">{{ course.name }} - {{ course.codification }}</h2>
+                {% else %}
+                <div class="flex flex-col">
+                    <h2 class="text-lg font-bold text-gray-600">{{ course.name }}</h2>
+                    <button class="flex flex-row items-center justify-center ml-1 px-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white"
+                            id="toggle-course-codification-form">
+                        <p>añadir codificación</p>
+                    </button>
+                    <p id="course-codification-error" class="text-red-500 text-center"></p>
+                    <form action="{% url 'courses:add_course_codification' pk=course.pk %}" method="post" class="hidden py-4 justify-center items-center" id="course-codification-form">
+                        {% csrf_token %}
+                        <div class="flex flex-row items-center justify-center">
+                            <input type="text" id="course-code" name="codification" class="flex flex-row items-center justify-center w-1/2 p-2 rounded-md shadow-md border border-gray-200 bg-gray-100 text-lg font-bold text-gray-800" placeholder="Codificación"/>
+                            <button type="submit" id="submit-course-codification" class="flex flex-row items-center justify-center ml-1 p-2 rounded-md shadow-md border border-gray-200 bg-indigo-600 hover:bg-indigo-500 text-lg font-bold text-white">
+                                <p>añadir</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
         <!-- Average Statistics -->
         <div class="flex flex-col items-center justify-between w-10/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
             <div class="flex flex-row">
                 <div class="flex flex-col">
-                    <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Estadísticas</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 md:text-2xl">Estadísticas</h2>
                     <hr class=" border-gray-300"/>
                 </div>
                 {% if user.is_authenticated and not user_rated %}
@@ -37,33 +57,33 @@
             {% if course.review_count > 0 %}
                 <div class="flex flex-col mt-4 justify-start items-start space-y-2 md:space-y-0 md:justify-between md:items-center md:flex-row md:w-3/4">
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden text-2xl font-bold text-gray-800 md:block">Dificultad</h2>
-                        <h2 class="hidden text-2xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
+                        <h2 class="hidden text-xl font-bold text-gray-800 md:block">Dificultad</h2>
+                        <h2 class="hidden text-xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Dificultad: {{ course.difficulty_letter }}</h2>
                     </div>
                     <!-- difficulty -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800">Nota</h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800">Nota</h2>
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Nota: {{ course.grade_letter }}</h2>
                     </div>
                     <!-- workload -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">Organizado
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">Organizado
                         </h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
                         {{ course.organized_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Organizado: {{ course.organized_letter }}</h2>
                     </div>
                     <!-- pro student -->
                     <div class="flex flex-row items-center justify-center  md:flex-col">
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
-                            Pro estudiante
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
+                            Recomendado
                         </h2>
-                        <h2 class="hidden md:block text-2xl font-bold text-gray-800"">
-                            {{ course.pro_student_letter }}
+                        <h2 class="hidden md:block text-xl font-bold text-gray-800"">
+                            {{ course.recommended_letter }}
                         </h2>
-                        <h2 class="text-lg font-bold text-gray-800 md:hidden">Pro estudiante: {{ course.pro_student_letter }}</h2>
+                        <h2 class="text-lg font-bold text-gray-800 md:hidden">Recomendado: {{ course.recommended_letter }}</h2>
                     </div>
                 </div>
             {% else %}

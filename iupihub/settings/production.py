@@ -30,7 +30,7 @@ SECRET_KEY = config["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "66.228.58.196"]
+ALLOWED_HOSTS = ["localhost", "66.228.58.196", "www.proferank.com", "proferank.com"]
 
 
 # Application definition
@@ -65,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.cache.CacheMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -74,6 +75,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "iupihub.urls"
+
+CACHE_MIDDLEWARE_SECONDS = 0  # TODO: Change to one day later, for now it is affecting the navbar and other templates that check if the user is logged in.
+
 
 TEMPLATES = [
     {
@@ -178,3 +182,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 60
