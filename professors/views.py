@@ -69,3 +69,7 @@ class ProfessorCreateView(LoginRequiredMixin, CreateView):
                 pk=self.request.POST["department"]
             )
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        # re-render the page with the form errors
+        return self.render_to_response(self.get_context_data(error=form.errors))
