@@ -101,7 +101,9 @@ class Course(models.Model):
         return self.professor.college
 
     def __str__(self):
-        return self.codification
+        if self.codification is not None:
+            return self.codification
+        return self.name
 
     def num_to_letter(self, num):
         if num == "N/A":
