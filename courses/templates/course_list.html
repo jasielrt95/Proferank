@@ -7,7 +7,6 @@
     {% include "controls/course_list_controls.html" %}
 {% endblock controls %}
 {% block content %}
-    <!-- Course List Section -->
     <section>
         <h1 class="text-3xl font-bold text-gray-900 text-center my-2">Lista de Cursos</h1>
         <div class="container flex flex-col md:flex-row md:flex-wrap md:mx-auto md:items-center md:justify-center">
@@ -18,12 +17,9 @@
                      data-name="{{ course.name }}"
                      data-codification="{{ course.codification }}">
                     <a href="{{ course.pk }}" class="space-y-2">
-                        <!-- header -->
                         <div class="flex flex-col space-x-1 items-start md:text-2xl">
                             <p class="font-bold text-gray-900">{{ course.name|truncatechars:33 }}</p>
                         </div>
-                        <!-- diving line -->
-                        <!-- body -->
                         <div class="flex flex-col justify-start items-start md:text-md">
                             <p>
                                 <span class="font-bold text-gray-700">Universidad:</span> <span class="text-gray-600">{{ course.college }}</span>

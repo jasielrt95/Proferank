@@ -4,9 +4,7 @@
 {% block title %}<title>{{ course.name }} - {{ course.codification }}</title>{% endblock title %}
 {% endblock head %}
 {% block content %}
-    <!-- Professor details card -->
     <section class="flex flex-col items-center justify-center mt-12">
-        <!-- Card header -->
         <div class="flex flex-col items-center">
             <div class="flex flex-row items-center justify-center">
                 <a href="{% url 'professors:specific_professor' course.professor.pk %}">
@@ -37,7 +35,6 @@
                 {% endif %}
             </div>
         </div>
-        <!-- Average Statistics -->
         <div class="flex flex-col items-center justify-between w-10/12 md:w-1/2 p-4 mt-8 rounded-xl border border-gray-200 shadow-md">
             <div class="flex flex-row">
                 <div class="flex flex-col">
@@ -61,13 +58,11 @@
                         <h2 class="hidden text-xl font-bold text-gray-800 md:block">{{ course.difficulty_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Dificultad: {{ course.difficulty_letter }}</h2>
                     </div>
-                    <!-- difficulty -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
                         <h2 class="hidden md:block text-xl font-bold text-gray-800">Nota</h2>
                         <h2 class="hidden md:block text-xl font-bold text-gray-800">{{ course.grade_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Nota: {{ course.grade_letter }}</h2>
                     </div>
-                    <!-- workload -->
                     <div class="flex flex-row items-center justify-center md:flex-col">
                         <h2 class="hidden md:block text-xl font-bold text-gray-800"">Organizado
                         </h2>
@@ -75,7 +70,6 @@
                         {{ course.organized_letter }}</h2>
                         <h2 class="text-lg font-bold text-gray-800 md:hidden">Organizado: {{ course.organized_letter }}</h2>
                     </div>
-                    <!-- pro student -->
                     <div class="flex flex-row items-center justify-center  md:flex-col">
                         <h2 class="hidden md:block text-xl font-bold text-gray-800"">
                             Recomendado
@@ -93,7 +87,6 @@
             {% endif %}
         </div>
     </section>
-    <!-- Comments section -->
     <section class="flex flex-col justify-center items-center mt-12">
         <div class="flex flex-row">
             <h1 class="text-3xl font-bold text-gray-800">Comentarios</h1>

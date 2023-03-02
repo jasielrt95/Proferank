@@ -1,6 +1,4 @@
-<!-- Centered Section with 3 divs, one for two select buttons, one in the middle for a search bar, and another one with a link for adding new professors -->
 <section class="container flex  flex-col md:flex-row bg-gray-100 md:rounded-xl mx-auto md:justify-center md:items-center md:space-x-4 md:p-6 my-8">
-    <!-- Two selects, for college and department -->
     <div class="flex flex-row justify-around space-x-4 p-2 mt-2 md:justify-center items-center">
         <div class="flex flex-col md:justify-center md:items-center md:space-x-4">
             <label for="college" class="text-gray-700 font-bold">Universidad</label>
@@ -33,7 +31,6 @@
             </select>
         </div>
     </div>
-    <!-- Centralized search bar with 90% width on mobile -->
     <div class="flex flex-col justify-center items-center p-2 mt-2 mb-4 md:space-x-4 md:mb-0">
         <label for="search" class="text-gray-700 font-bold">Buscar</label>
         <div class="w-full flex justify-center items-center">
@@ -43,7 +40,6 @@
                    class="border border-gray-300 rounded-md p-2 mx-auto w-11/12"/>
         </div>
     </div>
-    <!-- Link to add new professors -->
     <div class="hidden md:flex flex-col p-2 mt-2 md:justify-center md:items-center md:space-x-4">
         <label for="add" class="text-gray-700 font-bold">👨‍🏫</label>
         <a href="{% url 'professors:create_professor' %}"

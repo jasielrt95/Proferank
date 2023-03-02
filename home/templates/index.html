@@ -4,30 +4,25 @@
     {% block title %}<title>ProfeRank</title>{% endblock title %}
 {% endblock head %}
 {% block content %}
-    <!-- Hero section -->
     <section class="text-xl md:text-2xl">
         <div class="container flex flex-col mx-auto justify-between md:py-20 w-full md:mt-8 md:flex-row">
             <div class="flex flex-col mx-auto justify-center p-3 md:p-1">
-                <!-- welcome message -->
                 <div class="text-4xl font-bold text-gray-800">
                     <h1>
                         <span class="hidden md:block">Bienvenid@ a</span>
                         <span class="block text-indigo-600 text">ProfeRank</span>
                     </h1>
                 </div>
-                <!-- description -->
                 <div class="text-gray-600 mt-4 md:w-3/4">
                     <p>
                         ¡El lugar ideal para elegir tus cursos con los mejores profesores y descubrir los secretos más interesantes de tu universidad!
                     </p>
                 </div>
-                <!-- image for mobile devices -->
                 <div class="block w-full mt-8 md:hidden">
                     <img src="{% static 'img/hero.jpeg' %}"
                          alt="hero"
                          class="object-cover object-center w-full h-64 rounded-lg shadow-lg lg:h-96"/>
                 </div>
-                <!-- call to action buttons -->
                 <div class="flex flex-row  items-center justify-center md:justify-start md:items-start mt-8">
                     <a href="{% url 'professors:all_professors' %}"
                        class="bg-indigo-600 text-white p-2 rounded-lg">Ver profesores</a>
@@ -35,7 +30,6 @@
                        class="bg-indigo-600 text-white p-2 rounded-lg ml-4">Ver cursos</a>
                 </div>
             </div>
-            <!-- hero image -->
             <div class="hidden w-full lg:mt-0 md:block">
                 <img src="{% static 'img/hero.jpeg' %}"
                      alt="hero"
@@ -43,8 +37,6 @@
             </div>
         </div>
     </section>
-    <!-- End Hero section -->
-    <!-- Que es ProfeRank? -->
     {% if not user.is_authenticated %}
         <section class="bg-gray-100 mt-4 md:text-2xl">
             <div class="container mx-auto py-20">
@@ -92,8 +84,6 @@
             </div>
         </section>
     {% endif %}
-    <!-- End Que es University Hub? -->
-    <!-- Trending Confessions -->
     <section class="hidden md:text-2xl">
         <div class="container mx-auto py-20">
             <!-- Header of section -->
@@ -171,5 +161,4 @@
             {% endfor %}
         </div>
     </section>
-    <!-- End Trending Confessions -->
 {% endblock content %}

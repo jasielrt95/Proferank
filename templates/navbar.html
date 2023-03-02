@@ -2,7 +2,6 @@
 {% if user.is_authenticated %}
     <nav>
         <div class="container flex flex-row mx-auto justify-between items-center my-4">
-            <!-- logo section -->
             <div class="flex flex-row justify-center items-center">
                 <div>
                     <a href="{% url 'home:index' %}">
@@ -10,7 +9,6 @@
                     </a>
                 </div>
             </div>
-            <!-- links section -->
             <div class="hidden flex-row items-center space-x-4 md:flex md:text-2xl">
                 <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Perfil</a>
                 <a href="{% url 'courses:all_courses' %}" class="hover:text-indigo-300">Cursos</a>
@@ -19,7 +17,6 @@
                 <a href="{% url 'confessions:confession_feed' %}" class="hover:text-indigo-300">Confesiones</a>
             </div>
 
-            <!-- user section -->
             <div class="hidden md:flex">
                 <a class="bg-indigo-600 text-white p-2 rounded-xl"
                    href="{% url 'accounts:logout' %}">
@@ -27,14 +24,12 @@
                 </a>
             </div>
             
-            <!-- hamburguer menu -->
             <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
             </div>
         </div>
-        <!-- mobile menu -->
         <div class="hidden p-3 md:hidden" id="mobile-menu">
             <div class="flex flex-col items-center space-y-4 text-xl bg-gray-50 bg-blur rounded-lg text-gray-700">
                 <a href="{% url 'home:profile' %}" class="hover:text-indigo-300">Perfil</a>
@@ -42,7 +37,6 @@
                 <a href="{% url 'professors:all_professors' %}"
                    class="hover:text-indigo-300">Profesores</a>
                 <a href="{% url 'confessions:confession_feed' %}" class="hover:text-indigo-300">Confesiones</a>
-                <!-- a line delimiting the end of the menu -->
                 <div class="w-full h-0.5 bg-gray-700"></div>
                 <a class="bg-indigo-600 text-white p-2 rounded-xl"
                    href="{% url 'accounts:logout' %}">
@@ -61,7 +55,6 @@
                     </a>
                 </div>
             </div>
-            <!-- links section -->
             <div class="hidden flex-row justify-center items-center space-x-4 text-xl md:flex md:text-2xl">
                 <a href="{% url 'home:index' %}" class="hover:text-indigo-300">Home</a>
                 <a href="{% url 'courses:all_courses' %}" class="hover:text-indigo-300">Cursos</a>
@@ -69,21 +62,18 @@
                    class="hover:text-indigo-300">Profesores</a>
                 <a href="{% url 'confessions:confession_feed' %}" class="hover:text-indigo-300">Confesiones</a>
             </div>
-            <!-- login or signin -->
             <div class="hidden flex-row justify-center items-center space-x-4 text-md md:flex">
                 <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                    class="bg-indigo-600 text-white p-2 rounded-lg">Login</a>
                 <a href="{% url 'accounts:register' %}?next={{ request.path }}"
                    class="bg-indigo-600 text-white p-2 rounded-lg">Sign Up</a>
             </div>
-            <!-- hamburguer menu -->
             <div class="p-4 space-y-2 mr-2 md:hidden" id="mobile-hamburger">
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
                 <span class="hamburger-line block w-8 h-0.5 bg-gray-700"></span>
             </div>
         </div>
-        <!-- mobile menu -->
         <div class="hidden p-3 md:hidden" id="mobile-menu">
             <div class="flex flex-col items-center space-y-4 text-xl bg-gray-50 bg-blur rounded-lg text-gray-700">
                 <a href="{% url 'home:index' %}" class="hover:text-indigo-300">Home</a>
@@ -91,14 +81,12 @@
                 <a href="{% url 'professors:all_professors' %}"
                    class="hover:text-indigo-300">Profesores</a>
                 <a href="{% url 'confessions:confession_feed' %}" class="hover:text-indigo-300">Confesiones</a>
-                <!-- login buttons -->
                 <div class="flex flex-row justify-center items-center space-x-4 text-xl">
                     <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                        class="bg-indigo-600 text-white p-2 rounded-xl">Logueate'</a>
                     <a href="{% url 'accounts:register' %}?next={{ request.path }}"
                        class="bg-indigo-600 text-white p-2 rounded-xl">Registrate</a>
                 </div>
-                <!-- a line delimiting the end of the menu -->
                 <div class="w-full h-0.5 bg-gray-700">
                 </div>
             </div>
