@@ -56,6 +56,7 @@ class Comment(models.Model):
 
 
 class Confession_Comment(Comment):
+    anonymous = models.BooleanField(default=False)
     confession = models.ForeignKey("confessions.Confession", on_delete=models.CASCADE)
     # Score
     upvotes = models.ManyToManyField(User, related_name="confession_comment_upvotes")

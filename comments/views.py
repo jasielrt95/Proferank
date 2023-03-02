@@ -41,7 +41,7 @@ class CourseCommentUpdateView(LoginRequiredMixin, UpdateView):
 
 class ConfessionCommentCreateView(LoginRequiredMixin, CreateView):
     model = Confession_Comment
-    fields = ["text", "confession"]
+    fields = ["text", "confession", "anonymous"]
 
     def form_valid(self, form):
         confession_id = self.kwargs["pk"]
