@@ -5,11 +5,6 @@ name = "pypi"
 
 [packages]
 django = "*"
-factory-boy = "*"
-django-crispy-forms = "*"
-crispy-bootstrap5 = "*"
-black = "*"
-djlint = "*"
 django-tailwind = "*"
 psycopg2-binary = "*"
 social-auth-app-django = "*"
