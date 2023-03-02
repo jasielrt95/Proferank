@@ -46,7 +46,7 @@ class CourseDetailView(DetailView):
         return context
 
 
-class CourseCreateView(CreateView, LoginRequiredMixin):
+class CourseCreateView(LoginRequiredMixin, CreateView):
     model = Course
     fields = ["name", "codification", "professor"]
 
@@ -59,7 +59,7 @@ class CourseCreateView(CreateView, LoginRequiredMixin):
         return redirect("professors:specific_professor", pk=form.instance.professor.pk)
 
 
-class CourseCodificationUpdateView(UpdateView, LoginRequiredMixin):
+class CourseCodificationUpdateView(LoginRequiredMixin, UpdateView):
     model = Course
     fields = ["codification"]
 
