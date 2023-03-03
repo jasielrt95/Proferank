@@ -954,6 +954,22 @@ select {
   width: 144px;
 }
 
+.w-\[1\] {
+  width: 1;
+}
+
+.w-\[32\] {
+  width: 32;
+}
+
+.w-\[320\] {
+  width: 320;
+}
+
+.w-\[320px\] {
+  width: 320px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
